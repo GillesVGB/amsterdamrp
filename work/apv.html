@@ -1,0 +1,1023 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Amsterdam Roleplay · APV</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png?ex=6a3222b8&is=6a30d138&hm=d0d7f20844853317fb2cce30dac366f61e54194867d3fb0b54e02087479b4b71&=&format=webp&quality=lossless&width=525&height=525">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    :root {
+        --bg: #f6fbff;
+        --panel: #ffffff;
+        --text: #071b2f;
+        --muted: #5c7184;
+        --nav-color: #1a5276;
+        --line: rgba(7,27,47,0.13);
+        --panel-soft: #f8fafc;
+        --accent-strong: #154360;
+    }
+    /* ============================================================
+   CSS TOT AAN NAVIGATIE
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--panel-soft); border-radius: 12px; }
+::-webkit-scrollbar-thumb { background: var(--nav-color); border-radius: 12px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-strong); }
+
+.docs-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    background: var(--panel);
+    border-radius: 0 0 32px 32px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+}
+
+/* ============================================================
+   NAVIGATIE
+   ============================================================ */
+
+.top-nav {
+    background: var(--panel);
+    padding: 0.8rem 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.nav-logo img {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+}
+.nav-logo span {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.nav-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--nav-color);
+    color: var(--nav-color);
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+        min-width: 100px;
+    justify-content: center;
+}
+.nav-btn:hover {
+    background: var(--nav-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 82, 118, 0.3);
+}
+.nav-btn.active {
+    background: var(--nav-color);
+    color: white;
+}
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+body.dark-mode {
+    background: #0d1b2a;
+    color: #e0e8f0;
+}
+body.dark-mode .docs-container { background: #1b2a3a; }
+body.dark-mode .top-nav { background: #1b2a3a; }
+body.dark-mode .nav-logo span { color: #e0e8f0; }
+body.dark-mode .hero { background: linear-gradient(135deg, #1a2a3a, #0d1b2a); }
+body.dark-mode .hero-content h1 { color: #e0e8f0; }
+body.dark-mode .hero-sub { color: #a0b8c8; }
+body.dark-mode .section-title { color: #e0e8f0; }
+body.dark-mode .rule-card { background: #1b2a3a; border-color: #2a4a5a; }
+body.dark-mode .rule-header { background: #122230; }
+body.dark-mode .rule-naam { color: #e0e8f0; }
+body.dark-mode .rule-content { background: #162638; color: #d0d8e0; border-top-color: #2a4a5a; }
+body.dark-mode .search-section { background: #122230; }
+body.dark-mode .search-box { background: #1b2a3a; border-color: #2a4a5a; }
+body.dark-mode .search-box input { color: #e0e8f0; }
+body.dark-mode .reset-btn { background: #1b2a3a; color: #e0e8f0; border-color: #2a5a7a; }
+body.dark-mode .sanctie-tabel { background: #1b2a3a; border-color: #2a4a5a; }
+body.dark-mode .sanctie-tabel th { background: #122230; color: #e0e8f0; }
+body.dark-mode .sanctie-tabel td { color: #d0d8e0; border-bottom-color: #2a4a5a; }
+body.dark-mode .dropdown-content { background: #1b2a3a; border-color: #2a4a5a; }
+body.dark-mode .dropdown-content a { color: #d0d8e0; }
+body.dark-mode footer { background: #122230; color: #8aa8b8; border-top-color: #2a4a5a; }
+body.dark-mode .stat-chip { background: rgba(26,42,58,0.85); color: #e0e8f0; border-color: #2a5a7a; }
+body.dark-mode .nav-btn { border-color: #2a5a7a; color: #8ab8d8; }
+body.dark-mode .nav-btn:hover { background: #1a5276; color: white; }
+/* Discord Regels & Algemene Regels - Dark Mode */
+body.dark-mode #discord-regels + div,
+body.dark-mode #regels + div {
+    background: #122230 !important;
+    border-color: #2a4a5a !important;
+}
+body.dark-mode #discord-regels + div h3,
+body.dark-mode #regels + div h3 {
+    color: #8ab8d8 !important;
+}
+body.dark-mode #discord-regels + div > div,
+body.dark-mode #regels + div > div {
+    background: #1b2a3a !important;
+    border-color: #2a4a5a !important;
+    color: #d0d8e0 !important;
+}
+body.dark-mode #discord-regels + div > div h4 {
+    color: #e0e8f0 !important;
+}
+body.dark-mode #discord-regels + div > div p,
+body.dark-mode #regels + div > div p {
+    color: #d0d8e0 !important;
+}
+body.dark-mode #discord-regels + div > div:last-child {
+    background: #1a5276 !important;
+}
+body.dark-mode #discord-regels + div > div:last-child h4 {
+    color: white !important;
+}
+body.dark-mode #discord-regels + div > div:last-child p {
+    color: #e8f0f8 !important;
+}
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #1a5276;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(26, 82, 118, 0.4);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Standaard: verborgen + naar beneden + kleiner */
+    transform: translateY(100px) scale(0.5);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#scrollTopBtn.visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#scrollTopBtn:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 8px 30px rgba(26, 82, 118, 0.6);
+    background: #1a6a8a;
+}
+
+#scrollTopBtn:active {
+    transform: scale(0.95);
+}
+
+/* Dark mode */
+body.dark-mode #scrollTopBtn {
+    background: #2a6a8a;
+    box-shadow: 0 4px 20px rgba(42, 106, 138, 0.5);
+}
+body.dark-mode #scrollTopBtn:hover {
+    background: #3a8aaa;
+    box-shadow: 0 8px 30px rgba(42, 106, 138, 0.7);
+}
+
+/* Mobiel */
+@media (max-width: 750px) {
+    #scrollTopBtn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #ffffff;
+    min-width: 180px;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    border: 1px solid #dce4ec;
+    overflow: hidden;
+    z-index: 1000;
+    padding: 0.3rem 0;
+}
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    color: #1a2a3a;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.dropdown-content a:hover {
+    background: #e8f0f8;
+    color: #1a5276;
+}
+.dropdown-content a i {
+    width: 18px;
+    color: #1a5276;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropdown-btn {
+    background: #1a5276;
+    color: white;
+}
+/* Dropdown knop styling - zelfde als nav-btn */
+.dropdown-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    border: 1px solid #1a5276;
+    color: #1a5276;
+    background: transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+}
+
+.dropdown-btn:hover {
+    background: #1a5276;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 82, 118, 0.3);
+}
+
+.dropdown-btn:focus {
+    outline: none;
+}
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--panel-soft), var(--panel));
+            padding: 2.5rem 2.8rem 2rem 2.8rem;
+            text-align: center;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .hero-content img {
+            height: 70px;
+            width: auto;
+        }
+        .hero-content h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin: 0;
+        }
+        .hero-content h1 i {
+            color: var(--nav-color);
+        }
+        .hero-sub {
+            color: var(--muted);
+            margin-top: 0.6rem;
+            font-weight: 400;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .badge-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            justify-content: center;
+        }
+        .stat-chip {
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 100px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--nav-color);
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .stat-chip:hover {
+            background: var(--nav-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 82, 118, 0.2);
+        }
+        .stat-chip i { margin-right: 6px; }
+
+        /* Zoekbalk */
+        .search-section {
+            padding: 1rem 2.2rem;
+            background: #f8fafc;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .search-box {
+            flex: 2;
+            min-width: 280px;
+            background: #ffffff;
+            border-radius: 60px;
+            padding: 0.65rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid #dce4ec;
+            transition: all 0.25s ease;
+        }
+        .search-box:focus-within {
+            border-color: var(--nav-color);
+            box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.15);
+        }
+        .search-box i { color: var(--nav-color); font-size: 1rem; }
+        .search-box input {
+            background: transparent;
+            border: none;
+            width: 100%;
+            outline: none;
+            font-size: 0.9rem;
+            color: #1a2a3a;
+        }
+        .search-box input::placeholder { color: #7a9aaa; }
+        .reset-btn {
+            background: #e8f0f8;
+            padding: 0.55rem 1.3rem;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1a3a4a;
+            transition: 0.3s ease;
+            border: 2px solid #dce4ec;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .reset-btn:hover {
+            background: #1a5276;
+            color: white;
+            border-color: #1a5276;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 82, 118, 0.2);
+        }
+
+        /* Main */
+        .main-rules {
+            padding: 2rem 2.2rem 3rem 2.2rem;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 1.8rem 0 1.2rem 0;
+            border-left: 4px solid var(--nav-color);
+            padding-left: 1rem;
+            color: var(--text);
+            scroll-margin-top: 80px;
+        }
+        .section-title i { color: var(--nav-color); margin-right: 10px; }
+
+        /* Tabel */
+        .sanctie-tabel {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            margin: 1.5rem 0 2rem 0;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #dce4ec;
+            font-size: 0.85rem;
+        }
+        .sanctie-tabel th {
+            background: var(--panel-soft);
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text);
+            border-bottom: 2px solid var(--nav-color);
+        }
+        .sanctie-tabel td {
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid #e8f0f8;
+            color: #1a2a3a;
+        }
+        .sanctie-tabel tr:hover td { background: #f0f6fa; }
+
+        .cat-badge {
+            display: inline-block;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+        .bg-cat0 { background: #d4e4ec; color: #1a3a4a; }
+        .bg-cat1 { background: #b8e0d4; color: #1a4a3a; }
+        .bg-cat2 { background: #b8d4ec; color: #1a3a5a; }
+        .bg-cat3 { background: #f0d8b0; color: #5a3a1a; }
+        .bg-cat4 { background: #f0c0c0; color: #5a1a1a; }
+        .bg-cat5 { background: #d4b8e8; color: #3a1a5a; }
+        .bg-cat6 { background: #b8d8e8; color: #1a3a5a; }
+        .bg-cat7 { background: #b8e0d4; color: #1a4a3a; }
+        .bg-cat8 { background: #f0d8b0; color: #5a3a1a; }
+        .bg-cat9 { background: #f0b0b8; color: #5a1a2a; }
+        .bg-var { background: #d4dce4; color: #1a2a3a; }
+        /* Accordion */
+        .rule-card {
+            background: #ffffff;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            border: 1px solid #dce4ec;
+            transition: all 0.3s ease;
+        }
+        .rule-card:hover {
+            border-color: #1a5276;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .rule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.8rem;
+            cursor: pointer;
+            background: #f8fafc;
+            border-radius: 20px;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            transition: background 0.3s ease;
+        }
+        .rule-header:hover { background: #eef4f8; }
+        .rule-title {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .rule-nummer {
+            background: #e8f0f8;
+            padding: 0.25rem 0.9rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: #1a4a6a;
+        }
+        .rule-naam {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a2a3a;
+        }
+        .sanction-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.35rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+        .cat0 { background: #d4e4ec; color: #1a3a4a; }
+        .cat1 { background: #b8e0d4; color: #1a4a3a; }
+        .cat2 { background: #b8d4ec; color: #1a3a5a; }
+        .cat3 { background: #f0d8b0; color: #5a3a1a; }
+        .cat4 { background: #f0c0c0; color: #5a1a1a; }
+        .cat5 { background: #d4b8e8; color: #3a1a5a; }
+        .cat6 { background: #b8d8e8; color: #1a3a5a; }
+        .cat7 { background: #b8e0d4; color: #1a4a3a; }
+        .cat8 { background: #f0d8b0; color: #5a3a1a; }
+        .cat9 { background: #f0b0b8; color: #5a1a2a; }
+        .cat-var { background: #d4dce4; color: #1a2a3a; }
+/* Vervang de bestaande rule-content door dit: */
+.rule-content {
+    display: block;
+    padding: 0 1.8rem;
+    border-top: 1px solid #dce4ec;
+    background: #fafcfe;
+    font-size: 0.9rem;
+    color: #1a2a3a;
+    line-height: 1.55;
+    border-radius: 0 0 20px 20px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease, 
+                transform 0.3s ease,
+                padding 0.3s ease;
+}
+.rule-content.open {
+    max-height: 3000px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 0.2rem 1.8rem 1.8rem 1.8rem;
+}
+        .rule-content p, .rule-content ul { margin: 0.8rem 0; }
+        .rule-content li { margin-left: 1.5rem; margin-bottom: 0.3rem; }
+        .rule-content strong { color: var(--nav-color); font-weight: 600; }
+
+        footer {
+            background: #e8f0f8;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.7rem;
+            border-top: 1px solid #dce4ec;
+            color: #4a6a7a;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 750px) {
+            .hero { padding: 1.5rem; }
+            .main-rules { padding: 1rem; }
+            .rule-header { flex-direction: column; align-items: flex-start; }
+            .section-title { font-size: 1.3rem; }
+            .top-nav { padding: 0.8rem 1rem; flex-direction: column; align-items: stretch; }
+            .nav-links { justify-content: center; }
+            .hero-content img { height: 50px; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .discord-grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+</head>
+<body>
+<div class="docs-container">
+
+<!-- ============================================================
+     NAVIGATIE (VOLLEDIG)
+     ============================================================ -->
+
+<nav class="top-nav">
+    <a href="#" class="nav-logo">
+        <img src="https://media.discordapp.net/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png?ex=6a3222b8&is=6a30d138&hm=d0d7f20844853317fb2cce30dac366f61e54194867d3fb0b54e02087479b4b71&=&format=webp&quality=lossless&width=525&height=525" alt="Amsterdam Roleplay">
+        <span>Amsterdam RP</span>
+    </a>
+<div class="nav-links">
+    <a href="#strafcategorieen" class="nav-btn">Strafcategorieën</a>
+    <a href="#apv" class="nav-btn">APV</a>
+    <a href="#discord-regels" class="nav-btn">Discord Regels</a>
+    <a href="#regels" class="nav-btn">Algemene Regels</a>  
+    <!-- Discord Dropdown -->
+    <div class="dropdown">
+    <div class="dropdown">
+    <button class="nav-btn dropdown-btn">
+        Links <i class="fas fa-chevron-down" style="font-size: 0.6rem; margin-left: 4px;"></i>
+    </button>
+   <button id="darkModeToggle" class="nav-btn" style="min-width: auto;">🌙</button>
+    <div class="dropdown-content">
+            <a href="https://discord.gg/PPcBUGhePj" target="_blank"><i class="fab fa-discord"></i> Amsterdam</a>
+            <a href="https://discord.gg/Ftvxq562bC" target="_blank"><i class="fas fa-headset"></i> Support</a>
+            <a href="https://discord.gg/3T5geFpt" target="_blank"><i class="fas fa-landmark"></i> Overheid</a>
+            <a href="https://discord.gg/bjmDfK6r68" target="_blank"><i class="fas fa-skull"></i> Onderwereld</a>
+        </div>
+    </div>
+</div>
+    
+</nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <img src="https://media.discordapp.net/attachments/1507087328752177214/1515755129452757082/amsterdamlogo.png?ex=6a3222b8&is=6a30d138&hm=d0d7f20844853317fb2cce30dac366f61e54194867d3fb0b54e02087479b4b71&=&format=webp&quality=lossless&width=525&height=525" alt="Amsterdam Roleplay Logo">
+        <h1>Amsterdam Roleplay · APV</h1>
+        </div>
+        <div class="hero-sub">APV · Algemene Regels · Discord Regels voor alle spelers &amp; staff</div>
+        <div class="badge-panel">
+            <a href="#strafcategorieen" class="stat-chip"><i class="fas fa-chart-line"></i> Strafcategorieën</a>
+            <a href="#apv" class="stat-chip"><i class="fas fa-book-open"></i> APV</a>
+            <a href="#discord-regels" class="stat-chip"><i class="fab fa-discord"></i> Discord Regels</a>
+            <a href="#regels" class="stat-chip"><i class="fas fa-list-check"></i> Regels</a>
+        </div>
+    </div>
+
+    <!-- Zoekbalk -->
+    <div class="search-section">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Zoek in alle 62 artikelen (bijv. 'RDM', 'metagamen', 'powergamen')">
+        </div>
+        <button class="reset-btn" id="resetFilterBtn"><i class="fas fa-undo-alt"></i> Wis filter</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-rules">
+
+        <!-- Strafcategorieën sectie -->
+        <div id="strafcategorieen" class="section-title"><i class="fas fa-chart-line"></i> Strafcategorieën Overzicht</div>
+        <table class="sanctie-tabel">
+            <thead><tr><th>Categorie</th><th>Sanctie</th><th>Omschrijving</th></tr></thead>
+            <tbody>
+                <tr><td><span class="cat-badge bg-cat0">Categorie 0</span></td><td>Mondelinge waarschuwing</td><td>Informeel / eerste lichte fout, geen ban.</td></tr>
+                <tr><td><span class="cat-badge bg-cat1">Categorie 1</span></td><td>Waarschuwing + 20 taken</td><td>Kleine overtredingen: karakter breken, earrape, taal, lichte failRP.</td></tr>
+                <tr><td><span class="cat-badge bg-cat2">Categorie 2</span></td><td>30 taken taakstraf</td><td>Middelgroot: NLR, criminele basisregels, rippen zonder indicatie, gangwar basis.</td></tr>
+                <tr><td><span class="cat-badge bg-cat3">Categorie 3</span></td><td>50 taken taakstraf</td><td>Ernstig: powergamen, metagamen, stream sniping, AFK omzeilen, onder dreiging houden.</td></tr>
+                <tr><td><span class="cat-badge bg-cat4">Categorie 4</span></td><td>1 dag ban</td><td>Zeer ernstig: RDM, failRP (structureel), NVOL, combatloggen, VDM meerdere slachtoffers.</td></tr>
+                <tr><td><span class="cat-badge bg-cat5">Categorie 5</span></td><td>2 dagen ban</td><td>Zwaar: schelden ziektes, toxiciteit, erotische RP, gang-warns, wraak op whitelisted jobs.</td></tr>
+                <tr><td><span class="cat-badge bg-cat6">Categorie 6</span></td><td>3 dagen ban</td><td>Structureel: streamers in kwaad daglicht, corruptie hulpdiensten, racisme, haatzaaien.</td></tr>
+                <tr><td><span class="cat-badge bg-cat7">Categorie 7</span></td><td>1 week ban</td><td>Extreem: combatgedrag (alleen vechten), externe software, duplicatie-exploits.</td></tr>
+                <tr><td><span class="cat-badge bg-cat8">Categorie 8</span></td><td>Permanente verbanning</td><td>Economische fraude: IRL trade, startersgeld misbruik, alt-fraude, goederen weggeven.</td></tr>
+                <tr><td><span class="cat-badge bg-cat9">Categorie 9</span></td><td>Permanente ban + account wipe</td><td>Cheats, hacks, alt misbruik, bedreiging/doxing.</td></tr>
+                <tr><td><span class="cat-badge bg-var">Variabel</span></td><td>Afhankelijk van context</td><td>Hoogte van de straf, /report gebruik, staff limiet, situationeel.</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Strafverzwaring:</strong> Bij herhaling wordt de straf met een categorie verhoogd (Categorie 1 → 2 → 3, etc.).</p>
+<div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem;">
+    <i class="fas fa-file-alt"></i> <span id="articleCount">62</span> artikelen geladen
+</div>
+        <!-- APV Artikelen -->
+        <div id="apv" class="section-title"><i class="fas fa-book-open"></i> Alle 62 Artikelen (APV)</div>
+        <div id="accordion-root"></div>
+
+        <!-- Discord Regels -->
+<div id="discord-regels" class="section-title"><i class="fab fa-discord"></i> Discord Regels</div>
+<div style="background: var(--panel-soft); padding: 2rem; border-radius: 20px; border: 1px solid #dce4ec;">
+    <h3 style="color: #1a5276; margin-bottom: 1.5rem; font-size: 1.2rem;">
+        <i class="fab fa-discord"></i> Discord regels van Amsterdam Roleplay
+    </h3>
+    
+    <!-- Regel 1: Schelden & Racisme -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #c0392b;">
+        <h4 style="color: #c0392b; margin-bottom: 0.5rem;"><i class="fas fa-times-circle"></i> 1. Schelden & Racisme</h4>
+        <p>Schelden met hedendaagse ziektes en het maken van racistische of discriminerende opmerkingen is ten strengste verboden. Ook de intentie tot dergelijk gedrag wordt beschouwd als een overtreding. Overtreding van deze regel resulteert in een onmiddellijke verbanning van de main Discord-server. Amsterdam Roleplay staat voor een inclusieve en respectvolle omgeving waar iedereen zich veilig en welkom voelt.</p>
+    </div>
+
+    <!-- Regel 2: Reclame -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #e67e22;">
+        <h4 style="color: #e67e22; margin-bottom: 0.5rem;"><i class="fas fa-ban"></i> 2. Reclame & Promotie</h4>
+        <p>Alle vormen van promotie, reclame of uitnodigingen die niet gerelateerd zijn aan Amsterdam Roleplay zijn verboden. Dit omvat het delen van links naar andere Discord-servers, sociale media kanalen, of het promoten van andere FiveM servers. Alleen content die direct bijdraagt aan de Amsterdam Roleplay-community is toegestaan.</p>
+    </div>
+
+    <!-- Regel 3: Gedragsregels -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #2980b9;">
+        <h4 style="color: #2980b9; margin-bottom: 0.5rem;"><i class="fas fa-users"></i> 3. Gedragsregels</h4>
+        <p>Asociaal gedrag, spam, en het creëren van onnodige discussies of conflicten zijn niet toegestaan. Discussies zijn welkom, mits deze respectvol en constructief worden gevoerd. Amsterdam Roleplay hecht grote waarde aan een gastvrije en veilige sfeer. Haatdragende reacties, vrouwonvriendelijk gedrag, pesten en intimidatie worden niet getolereerd en zullen streng worden bestraft.</p>
+    </div>
+
+    <!-- Regel 4: NSFW -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #8e44ad;">
+        <h4 style="color: #8e44ad; margin-bottom: 0.5rem;"><i class="fas fa-eye-slash"></i> 4. NSFW Content</h4>
+        <p>Het versturen, delen of posten van pornografisch, seksueel expliciet of anderszins ongepast beeldmateriaal is absoluut verboden. Dit geldt voor alle kanalen, privéberichten en gebruikersnamen. Overtreding van deze regel leidt tot onmiddellijke verwijdering uit de server zonder waarschuwing.</p>
+    </div>
+
+    <!-- Regel 5: Externe Software / ToS -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;"><i class="fas fa-code"></i> 5. Externe Software & Discord ToS</h4>
+        <p>Als server zijn wij verplicht de Algemene Voorwaarden (Terms of Service) van Discord na te leven. Het gebruik van externe software zoals BetterDiscord, Discord mods, client modifications of andere ongeoorloofde tools is verboden. Wanneer wij constateren dat je gebruik maakt van dergelijke software, zijn wij genoodzaakt je te verwijderen uit de server en je account te rapporteren aan Discord.</p>
+    </div>
+
+    <!-- Regel 6: Regels Buigen -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #e67e22;">
+        <h4 style="color: #e67e22; margin-bottom: 0.5rem;"><i class="fas fa-exclamation-triangle"></i> 6. Regels Buigen & Ontwijken</h4>
+        <p>Het omzeilen, buigen of op een andere manier ontwijken van de regels wordt beschouwd als een overtreding van de desbetreffende regel. Probeer niet de grenzen van de regels op te zoeken of deze te interpreteren naar jouw eigen voordeel. Bij twijfel over een bepaalde situatie kun je altijd contact opnemen met een stafflid voor verduidelijking.</p>
+    </div>
+
+    <!-- Regel 7: Staff Taggen -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #2980b9;">
+        <h4 style="color: #2980b9; margin-bottom: 0.5rem;"><i class="fas fa-user-shield"></i> 7. Staff Taggen & Berichten</h4>
+        <p>Het taggen van staffleden is toegestaan voor legitieme vragen of meldingen. Echter, het spam-taggen van staff zonder duidelijke reden, het versturen van ongevraagde privéberichten over staff-gerelateerde zaken, of het benaderen van staff voor een unban via privéberichten wordt niet gewaardeerd. Vragen om een unban via PM zal je kans op een unban alleen maar verkleinen. Gebruik het daarvoor bestemde ticket-systeem en wacht geduldig op een reactie.</p>
+    </div>
+
+    <!-- Regel 8: Complimenten Kanaal -->
+    <div style="margin-bottom: 1.2rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #27ae60;">
+        <h4 style="color: #27ae60; margin-bottom: 0.5rem;"><i class="fas fa-heart"></i> 8. Complimenten Kanaal</h4>
+        <p>Het complimenten-kanaal is bedoeld om anderen een positieve boost te geven. Gebruik dit kanaal alleen waarvoor het bedoeld is: het geven van oprechte complimenten aan medespelers. Geen onnodige zelfpromotie, spam of irrelevante berichten. Reageer alleen met emoji's als je het eens bent met een compliment, om het kanaal overzichtelijk te houden.</p>
+    </div>
+
+    <!-- Regel 9: Disclaimer -->
+    <div style="margin-bottom: 0.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid #c0392b;">
+        <h4 style="color: #c0392b; margin-bottom: 0.5rem;"><i class="fas fa-gavel"></i> 9. Disclaimer & Wijzigingen</h4>
+        <p>Het staffteam van Amsterdam Roleplay behoudt te allen tijde het recht om deze regels te modificeren, aan te passen, uit te breiden of te herzien zonder voorafgaande aankondiging. Het is de verantwoordelijkheid van elke gebruiker om op de hoogte te blijven van de huidige regels. Bij het betreden van onze Discord-server ga je akkoord met deze regels en de eventuele toekomstige wijzigingen.</p>
+    </div>
+
+    <!-- Belangrijk -->
+    <div style="background: var(--nav-color); color: white; padding: 1.2rem; border-radius: 12px; margin-top: 0.5rem;">
+        <h4 style="color: white; margin-bottom: 0.5rem;"><i class="fas fa-info-circle"></i> Belangrijk</h4>
+        <p style="color: #e8f0f8;">Overtreding van deze regels kan leiden tot waarschuwingen, tijdelijke of permanente verbanningen van de Discord-server. De ernst en frequentie van de overtreding bepalen de uiteindelijke straf. Het staffteam heeft altijd het laatste woord en kan in uitzonderlijke gevallen afwijken van de standaard strafmaat.</p>
+        <p style="color: #e8f0f8; margin-top: 0.5rem;"><strong>Onthoud:</strong> Gezond verstand en wederzijds respect gaan boven alle regels. Samen maken we van Amsterdam Roleplay een geweldige plek om te zijn!</p>
+    </div>
+</div>
+<!-- ============================================================
+     REGELS SECTIE (VOLLEDIG)
+     ============================================================ -->
+<!-- Algemene Regels -->
+<div id="regels" class="section-title"><i class="fas fa-list-check"></i> Algemene Regels</div>
+<div style="background: #f8fafc; padding: 2rem; border-radius: 20px; border: 1px solid #dce4ec;">
+    <h3 style="color: #1a5276; margin-bottom: 1.5rem; font-size: 1.2rem;">
+        <i class="fas fa-info-circle"></i> Algemene regels van Amsterdam Roleplay
+    </h3>
+    
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">1. Respect en gedrag</h4>
+        <p>Behandel alle spelers en staff met respect. Discriminatie, racisme, seksisme, homofobie en ander haatzaaiend gedrag is ten strengste verboden. We streven naar een veilige en inclusieve omgeving voor iedereen.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">2. Roleplay kwaliteit</h4>
+        <p>Streef naar realistische en kwalitatieve roleplay. Vermijd powergamen, metagamen en failRP. Je personage moet een realistisch leven leiden binnen de wereld van Amsterdam Roleplay.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">3. Staff instructies</h4>
+        <p>Volg altijd de instructies van staffleden op. Zij zijn er om de server draaiende te houden en problemen op te lossen. Liegen tegen staff of het negeren van instructies kan leiden tot een ban. Het bedreigen van staff is ten strengste verboden.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">4. Bugs en exploits</h4>
+        <p>Meld bugs en exploits direct bij de staff. Het misbruiken van bugs of exploits wordt streng bestraft en kan leiden tot een permanente ban.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">5. Realisme</h4>
+        <p>Houd je roleplay realistisch. Dit betekent dat je je moet gedragen zoals een normaal persoon zou doen in de situatie die zich voordoet. Denk aan verkeersregels, sociale interacties en emotionele reacties.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">6. Communicatie</h4>
+        <p>Gebruik alleen Nederlands of Engels in de voice chat. Andere talen zijn niet toegestaan tenzij er toestemming is gegeven door de staff. Zorg dat je een werkende microfoon hebt en gebruik push-to-talk.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">7. Cheats en mods</h4>
+        <p>Het gebruik van cheats, hacks, mods of externe software die een oneerlijk voordeel geven is ten strengste verboden. Dit wordt bestraft met een permanente ban.</p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; background: var(--panel); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--nav-color);">
+        <h4 style="color: var(--nav-color); margin-bottom: 0.5rem;">8. Gezond verstand</h4>
+        <p><strong>Gezond verstand gaat boven alle regels.</strong> Roleplay draait om samen plezier hebben. Als je twijfelt over een situatie, gebruik dan je gezonde verstand en overleg met de staff.</p>
+    </div>
+
+    <div style="background: white; padding: 1.2rem; border-radius: 12px; border-left: 4px solid #c0392b; margin-top: 0.5rem;">
+        <h4 style="color: #c0392b; margin-bottom: 0.5rem;"><i class="fas fa-exclamation-triangle"></i> Belangrijk</h4>
+        <p>Overtreding van deze regels kan leiden tot waarschuwingen, tijdelijke of permanente verbanningen, afhankelijk van de ernst en frequentie van de overtreding. Staff heeft altijd het laatste woord.</p>
+    </div>
+</div>
+        <footer>
+            <i class="fas fa-ticket-alt"></i> Vragen of onduidelijkheden? Ticket aanmaken in onze Support Discord.<br>
+            © 2026 Amsterdam Roleplay — Gezond verstand gaat boven alle regels — Roleplay draait om samen plezier.<br>
+            <strong>APV · Algemene Regels · Discord Regels opgesteld door het Bestuur.</strong>
+        </footer>
+    </div>
+</div>
+    <button id="scrollTopBtn">↑</button>
+
+<script>
+// =============================================================
+// COMPLETE 62 ARTIKELEN - VOLLEDIGE ONVERKORTE TEKST
+// =============================================================
+const allRules = [
+    { num: "1", title: "Cheats & Ongeoorloofde Software", sanctie: "Categorie 9", catClass: "cat9", content: "<p><strong>Wat houdt dit in?</strong><br>Het gebruik van software van derden die bedoeld is om een oneerlijk voordeel te behalen in het spel is ten strengste verboden. Dit omvat alle vormen van cheats, hacks, aimbots, wallhacks, ESP, snelheidshacks, en elke andere modificatie die de normale spelervaring beïnvloedt. Ook als je op andere servers betrapt bent op cheatgebruik en wij hier duidelijk bewijs van hebben, behouden wij het recht om je te weren. Wij hanteren een zero-tolerancebeleid voor cheaters.</p><p><strong>Straf:</strong> Directe permanente ban (Categorie 9) zonder kans op rehabilitatie.</p>" },
+    { num: "1A", title: "Externe Software & Instellingen", sanctie: "Categorie 7", catClass: "cat7", content: "<p><strong>Wat houdt dit in?</strong><br>Programma's of hardware-instellingen die je een oneerlijk voordeel geven in gevechtssituaties zijn niet toegestaan. Verboden: crosshairs, aangepaste resoluties (alleen AUTO/16:9/16:10), ReShade, macro's.</p><p><strong>Straf:</strong> Categorie 7 (tijdelijke ban van 7 tot 14 dagen).</p>" },
+    { num: "2", title: "Exploits & Bugs", sanctie: "Categorie 3 t/m 7 + wipe", catClass: "cat7", content: "<p><strong>Wat houdt dit in?</strong><br>Een bug of exploit doelbewust gebruiken is verboden. Je bent verplicht bugs te melden. Emotes misbruik (cat6), duplicatie (cat7+wipe), one punch bug (cat4).</p><p><strong>Straf:</strong> Afhankelijk van ernst: Categorie 4, 6 of 7 + accountwipe bij duplicatie.</p>" },
+    { num: "2A", title: "Real-Life Handel (IRL Trade)", sanctie: "Categorie 8", catClass: "cat8", content: "<p><strong>Wat houdt dit in?</strong><br>Het kopen of verkopen van in-game geld, items, diensten of accounts tegen echt geld is verboden. Transacties via PayPal, crypto, etc.</p><p><strong>Straf:</strong> Categorie 8 (ban 14-30 dagen + accountwipe, bij herhaling permanent).</p>" },
+    { num: "3", title: "Alt Characters", sanctie: "Categorie 9", catClass: "cat9", content: "<p><strong>Wat houdt dit in?</strong><br>Verboden: geld/items overdragen tussen alts, extra startersgeld, alt als verkenner, ban omzeilen. Toegestaan: 2e karakter op zelfde account.</p><p><strong>Straf:</strong> Categorie 9 (permanente ban voor alle accounts).</p>" },
+    { num: "3A", title: "Startersgeld", sanctie: "Categorie 8", catClass: "cat8", content: "<p><strong>Wat houdt dit in?</strong><br>Startersgeld is eenmalig en mag niet worden weggegeven aan anderen.</p><p><strong>Straf:</strong> Categorie 8 (ban 14-30 dagen + accountwipe voor beide partijen).</p>" },
+    { num: "4", title: "Bedreiging & Intimidatie", sanctie: "Categorie 8", catClass: "cat8", content: "<p><strong>Wat houdt dit in?</strong><br>Real-life bedreigingen, doxing, DDoS-aanvallen zijn ten strengste verboden.</p><p><strong>Straf:</strong> Categorie 8 (directe permanente ban + melding autoriteiten).</p>" },
+    { num: "5", title: "Fail RP", sanctie: "Categorie 4", catClass: "cat4", content: "<p><strong>Wat houdt dit in?</strong><br>Fail RP: geen roleplay bij verwondingen, emotespam, praten onder water, banden leksteken zonder reden. Medische regel: doden naar ziekenhuis. Verwondingen uitspelen: over kop >40 km/u, crash >85 km/u. Banden schieten alleen bij waarschuwing/achtervolging. Campen op drugslocaties verboden.</p><p><strong>Straf:</strong> Categorie 4 (ban 24-72 uur).</p>" },
+    { num: "6", title: "Powergamen", sanctie: "Categorie 3", catClass: "cat3", content: "<p><strong>Wat houdt dit in?</strong><br>Powergamen: vluchten in appartement, wapen wegstoppen <10 min, DEL-menu misbruik, ambulance dwingen, emote abuse, campen bij politiebureau/ziekenhuis.</p><p><strong>Straf:</strong> Categorie 3 (ban 24-72 uur).</p>" },
+    { num: "7", title: "Karakter breken / OOC", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Verboden OOC-woorden: staff, broodje, tickets, refund, bug. Alleen Nederlands/Engels. Ban/warn vermelden verboden.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing of korte ban 0-6 uur).</p>" },
+    { num: "8", title: "Copbaiten", sanctie: "Categorie 1-4", catClass: "cat4", content: "<p><strong>Wat houdt dit in?</strong><br>Copbaiten is het doelbewust uitlokken van politie-reacties zonder geldige roleplay-reden. Basis copbaiten cat1, zwaar copbaiten cat4.</p><p><strong>Straf:</strong> Categorie 1-4 afhankelijk van ernst.</p>" },
+    { num: "9", title: "No Value of Life (NVOL)", sanctie: "Categorie 4", catClass: "cat4", content: "<p><strong>Wat houdt dit in?</strong><br>Je bent verplicht waarde te hechten aan je personageleven. Zelfmoord, noodknop onder schot, porto onder schot, dekking voertuig. Gunpoint 15-20m. Meewerken bij wapendreiging.</p><p><strong>Straf:</strong> Categorie 4 (ban 24-72 uur). Bij herhaling wapen inleveren.</p>" },
+    { num: "10", title: "New Life Rule (NLR)", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Na overlijden vergeet je alles van dat scenario. Je mag niet meer deelnemen aan hetzelfde conflict.</p><p><strong>Straf:</strong> Categorie 2 (ban 6-24 uur).</p>" },
+    { num: "11", title: "Microfoon", sanctie: "Categorie 1-2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Push-to-talk verplicht, voice changer alleen onderwereld. Soundpad met admin-toestemming.</p><p><strong>Straf:</strong> Categorie 1-2 (waarschuwing tot ban 6-24 uur).</p>" },
+    { num: "12", title: "Earrape", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Overmatig lawaai, schreeuwen, pijngeluiden. Structureel of opzettelijk overlast.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing of korte ban 0-6 uur).</p>" },
+    { num: "13", title: "VDM", sanctie: "Categorie 2 of 4", catClass: "cat4", content: "<p><strong>Wat houdt dit in?</strong><br>Voertuig opzettelijk als wapen gebruiken. 1 slachtoffer cat2, meerdere cat4.</p><p><strong>Straf:</strong> Categorie 2 (6-24u) of Categorie 4 (3-7d).</p>" },
+    { num: "14", title: "RDM", sanctie: "Categorie 4", catClass: "cat4", content: "<p><strong>Wat houdt dit in?</strong><br>Willekeurig doden zonder RP-reden. Geen geldige reden: aanrijding, weigeren dansen. Wel Birdy-uitdaging. Kill on Sight = RDM.</p><p><strong>Straf:</strong> Eerste keer Categorie 4 (24-72u), tweede keer + wapen inleveren.</p>" },
+    { num: "15", title: "Metagamen", sanctie: "Categorie 3", catClass: "cat3", content: "<p><strong>Wat houdt dit in?</strong><br>Informatie uit Discord, calls, streams gebruiken. Privestreamen verboden.</p><p><strong>Straf:</strong> Categorie 3 (ban 24-72 uur).</p>" },
+    { num: "16", title: "Voertuig gebruik", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Pitten boven 130km/u verboden, grotere klasse pitten nooit. Off-road regels.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" },
+    { num: "17", title: "GTA Style Driving", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Stuntjumps, onrealistisch off-road, rammen. Lekke banden max 130km/u.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing of korte ban).</p>" },
+    { num: "18", title: "Illegale activiteiten Birdy/Instapic", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Geen witwas, wapens, drugs aanbieden op sociale media. Synoniemen ook verboden.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" },
+    { num: "19", title: "Overheidskleding", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Verboden: POLICE/AMBULANCE logo's, pechhulpkleding. Undercover uitgezonderd.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" },
+    { num: "20", title: "Schelden/beledigen", sanctie: "Categorie 5 of 6", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Ziektes cat5, seksuele beledigingen cat5, racisme cat6.</p><p><strong>Straf:</strong> Categorie 5 (7-14d) of Categorie 6 (14-30d).</p>" }
+];
+
+// Artikelen 21 t/m 62 toevoegen
+for (let i = 21; i <= 62; i++) {
+    if (i === 21) allRules.push({ num: "21", title: "Standaard outfit", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Geen standaard zwart-wit outfit. Skinny kleding niet tijdens combat.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 22) allRules.push({ num: "22", title: "Combatloggen", sanctie: "Categorie 4", catClass: "cat4", content: "<p><strong>Wat houdt dit in?</strong><br>Server verlaten tijdens actief scenario. 5 min om terug te keren.</p><p><strong>Straf:</strong> Categorie 4 (ban 24-72 uur).</p>" });
+    else if (i === 23) allRules.push({ num: "23", title: "Stream sniping", sanctie: "Categorie 3", catClass: "cat3", content: "<p><strong>Wat houdt dit in?</strong><br>Info uit livestreams gebruiken. Streamdelay min 30 sec verplicht.</p><p><strong>Straf:</strong> Categorie 3 (ban 24-72 uur).</p>" });
+    else if (i === 24) allRules.push({ num: "24", title: "Job voertuigen", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Jobvoertuig niet voor illegale activiteiten.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 25) allRules.push({ num: "25", title: "/report gebruik", sanctie: "Geen straf", catClass: "cat-var", content: "<p><strong>Wat houdt dit in?</strong><br>Reports duidelijk verwoorden. Voor RDM/metagame ticket in Discord.</p><p><strong>Straf:</strong> Geen directe straf.</p>" });
+    else if (i === 26) allRules.push({ num: "26", title: "Spammen", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Meer dan 3 reports in 10 sec of 1 minuut.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 27) allRules.push({ num: "27", title: "Taal", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Nederlands is voertaal. Standaard Engels niet toegestaan.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 28) allRules.push({ num: "28", title: "Stemherkenning", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Stemherkenning mag, tenzij voice changer actief is.</p><p><strong>Straf:</strong> Categorie 1.</p>" });
+    else if (i === 29) allRules.push({ num: "29", title: "Birdy/Instapic media", sanctie: "Eigen verantw.", catClass: "cat-var", content: "<p><strong>Wat houdt dit in?</strong><br>Informatie uit social media is openbaar en mag gebruikt worden.</p><p><strong>Straf:</strong> Eigen risico.</p>" });
+    else if (i === 30) allRules.push({ num: "30", title: "Criminele activiteiten", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Geen deals vanuit voertuig, geen dwang tot huis/auto sleutel.</p><p><strong>Straf:</strong> Categorie 2 (ban 6-24 uur).</p>" });
+    else if (i === 31) allRules.push({ num: "31", title: "Criminele groeperingen", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Meer dan 5 = groepering, ganging up verboden.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 32) allRules.push({ num: "32", title: "Oplichten en scammen", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Scammen voertuigen verboden, limiet €30.000.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 33) allRules.push({ num: "33", title: "Overvallen", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Geen vrienden als gijzelaar, DSI alleen bij automatische wapens.</p><p><strong>Straf:</strong> Categorie 2 (ban 6-24 uur).</p>" });
+    else if (i === 34) allRules.push({ num: "34", title: "Onderwereld & Rippen", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Rip-indicatoren: masker, holster, vest. Max 20 leden per gang.</p><p><strong>Straf:</strong> Categorie 2 (ban 6-24 uur).</p>" });
+    else if (i === 35) allRules.push({ num: "35", title: "Gangwars", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Max 48 uur, bewijs nodig, dood = uit war.</p><p><strong>Straf:</strong> Categorie 2 (ban 6-24 uur).</p>" });
+    else if (i === 36) allRules.push({ num: "36", title: "Ontvoeren", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Min. agenten: burger 2, 1 agent 4, 2 agenten 8. Max 90 min, max eis €30k/€50k.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 37) allRules.push({ num: "37", title: "Onder dreiging houden", sanctie: "Categorie 3", catClass: "cat3", content: "<p><strong>Wat houdt dit in?</strong><br>Alleen bij zichtbare criminele attributen (holster, masker, vest).</p><p><strong>Straf:</strong> Categorie 3 (ban 24-72 uur).</p>" });
+    else if (i === 38) allRules.push({ num: "38", title: "Leden criminele organisaties", sanctie: "Max 20", catClass: "cat-var", content: "<p><strong>Wat houdt dit in?</strong><br>Max 20 leden per organisatie. Vanaf 10 leden verplicht in Discord.</p><p><strong>Straf:</strong> Gang-waarschuwing.</p>" });
+    else if (i === 39) allRules.push({ num: "39", title: "Rippen van wapens", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Wapen fysiek gezien, clip verplicht, max 2 uur.</p><p><strong>Straf:</strong> Categorie 1 (waarschuwing).</p>" });
+    else if (i === 40) allRules.push({ num: "40", title: "Officiële gangs", sanctie: "Categorie 5 + Warn", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Wekelijks RP-scenario, items via F6.</p><p><strong>Straf:</strong> Categorie 5 (7-14d) + gang-warn.</p>" });
+    else if (i === 41) allRules.push({ num: "41", title: "Erkende gangs", sanctie: "Categorie 5 + Warn", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Wekelijks scenario, geen /me innemen.</p><p><strong>Straf:</strong> Categorie 5 + gang-warn.</p>" });
+    else if (i === 42) allRules.push({ num: "42", title: "Wraakacties", sanctie: "Categorie 4-5", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Wraak tegen whitelisted jobs verboden (cat5). Na overlijden niet mengen (cat4).</p><p><strong>Straf:</strong> Categorie 4 of 5.</p>" });
+    else if (i === 43) allRules.push({ num: "43", title: "Fouilleren", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Alleen met getrokken wapen en zichtbare indicatie.</p><p><strong>Straf:</strong> Categorie 2 (6-24u).</p>" });
+    else if (i === 44) allRules.push({ num: "44", title: "Ambulance", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Ambulance niet vermoorden, geen revive bij hoofdschot/verdrinking/val >5.</p><p><strong>Straf:</strong> Categorie 2.</p>" });
+    else if (i === 45) allRules.push({ num: "45", title: "Pechhulp", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Pechhulpmedewerkers niet vermoorden.</p><p><strong>Straf:</strong> Categorie 2.</p>" });
+    else if (i === 46) allRules.push({ num: "46", title: "Streamers", sanctie: "Categorie 6", catClass: "cat6", content: "<p><strong>Wat houdt dit in?</strong><br>'Amsterdam Roleplay' in titel, geen kwaad daglicht.</p><p><strong>Straf:</strong> Categorie 6 (14-30d).</p>" });
+    else if (i === 47) allRules.push({ num: "47", title: "Erotische roleplay", sanctie: "Categorie 5", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Seksuele handelingen verboden.</p><p><strong>Straf:</strong> Categorie 5 (7-14d).</p>" });
+    else if (i === 48) allRules.push({ num: "48", title: "AFK kick voorkomen", sanctie: "Categorie 3", catClass: "cat3", content: "<p><strong>Wat houdt dit in?</strong><br>Scripts/gewicht op toetsenbord verboden.</p><p><strong>Straf:</strong> Categorie 3 (24-72u).</p>" });
+    else if (i === 49) allRules.push({ num: "49", title: "Hulpdiensten algemeen", sanctie: "Categorie 6", catClass: "cat6", content: "<p><strong>Wat houdt dit in?</strong><br>Corruptie = ontslag + ban. Documenten lekken cat4.</p><p><strong>Straf:</strong> Categorie 4-6.</p>" });
+    else if (i === 50) allRules.push({ num: "50", title: "Goederen weggeven bij stoppen", sanctie: "Categorie 8", catClass: "cat8", content: "<p><strong>Wat houdt dit in?</strong><br>Overdragen bij stoppen verboden.</p><p><strong>Straf:</strong> Categorie 8 (permanente ban).</p>" });
+    else if (i === 51) allRules.push({ num: "51", title: "Toxic gedrag", sanctie: "Categorie 4-5", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Respectloze reacties, pesten, ticketmisbruik.</p><p><strong>Straf:</strong> Categorie 4-5.</p>" });
+    else if (i === 52) allRules.push({ num: "52", title: "Stelen overheidsvoertuigen", sanctie: "Categorie 1", catClass: "cat1", content: "<p><strong>Wat houdt dit in?</strong><br>Alleen tijdens achtervolging.</p><p><strong>Straf:</strong> Categorie 1.</p>" });
+    else if (i === 53) allRules.push({ num: "53", title: "Staff", sanctie: "Categorie 5-6", catClass: "cat6", content: "<p><strong>Wat houdt dit in?</strong><br>Liegen tegen staff cat5, voordoen als staff cat6.</p><p><strong>Straf:</strong> Categorie 5-6.</p>" });
+    else if (i === 54) allRules.push({ num: "54", title: "Rippen op eiland", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Op eiland vrijwel alles afpakken en doden na rip.</p><p><strong>Straf:</strong> Categorie 2.</p>" });
+    else if (i === 55) allRules.push({ num: "55", title: "Politie op eiland", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Politie houdt NVOL/FailRP aan.</p><p><strong>Straf:</strong> Categorie 2.</p>" });
+    else if (i === 56) allRules.push({ num: "56", title: "Samenwerking eiland", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Samenwerken zonder toestemming verboden.</p><p><strong>Straf:</strong> Categorie 2.</p>" });
+    else if (i === 57) allRules.push({ num: "57", title: "Vliegtuig/Helikopter", sanctie: "Categorie 4", catClass: "cat4", content: "<p><strong>Wat houdt dit in?</strong><br>Vliegbrevet verplicht, geen gevangenisuitbraak met heli.</p><p><strong>Straf:</strong> Categorie 4.</p>" });
+    else if (i === 58) allRules.push({ num: "58", title: "Vliegdekschip", sanctie: "Categorie 2", catClass: "cat2", content: "<p><strong>Wat houdt dit in?</strong><br>Militair gebied, betreden op eigen risico.</p><p><strong>Straf:</strong> Categorie 2.</p>" });
+    else if (i === 59) allRules.push({ num: "59", title: "Helikopter op eiland", sanctie: "Specifiek", catClass: "cat-var", content: "<p><strong>Wat houdt dit in?</strong><br>Heli's uitschieten op eiland toegestaan.</p><p><strong>Straf:</strong> Geen specifiek.</p>" });
+    else if (i === 60) allRules.push({ num: "60", title: "Staff limiet", sanctie: "Reglement", catClass: "cat-var", content: "<p><strong>Wat houdt dit in?</strong><br>Max 3 leden per gang in staffteam.</p><p><strong>Straf:</strong> Gang-waarschuwing.</p>" });
+    else if (i === 61) allRules.push({ num: "61", title: "Combat Gedrag", sanctie: "Categorie 7", catClass: "cat7", content: "<p><strong>Wat houdt dit in?</strong><br>Alleen combat zoeken, geen roleplay.</p><p><strong>Straf:</strong> Categorie 7 (30 dagen ban).</p>" });
+    else if (i === 62) allRules.push({ num: "62", title: "Haat veroorzakend", sanctie: "Categorie 5", catClass: "cat5", content: "<p><strong>Wat houdt dit in?</strong><br>Toxic op Twitter, tickets zonder reden, Discord toxiciteit.</p><p><strong>Straf:</strong> Categorie 5 (7-14 dagen).</p><p><strong>Onthoud:</strong> Gezond verstand gaat boven alle regels - roleplay draait om samen plezier.</p>" });
+}
+function buildAccordion(filterText = "") {
+    const root = document.getElementById("accordion-root");
+    if (!root) return;
+    root.innerHTML = "";
+    const lowerFilter = filterText.toLowerCase();
+    const filtered = allRules.filter(rule => !lowerFilter || rule.num.includes(lowerFilter) || rule.title.toLowerCase().includes(lowerFilter) || rule.sanctie.toLowerCase().includes(lowerFilter) || rule.content.toLowerCase().includes(lowerFilter));
+    
+    if (filtered.length === 0) { 
+        root.innerHTML = `<div style="padding:2rem;text-align:center;color:#4a6a7a;">Geen artikelen gevonden voor "${filterText}".</div>`; 
+        return; 
+    }
+    
+    
+    filtered.forEach(rule => {
+        const card = document.createElement("div"); 
+        card.className = "rule-card";
+        card.dataset.match = "true";
+        
+        const header = document.createElement("div"); 
+        header.className = "rule-header";
+        const titleDiv = document.createElement("div"); 
+        titleDiv.className = "rule-title";
+        titleDiv.innerHTML = `<span class="rule-nummer">Art. ${rule.num}</span> <span class="rule-naam">${rule.title}</span>`;
+        const badge = document.createElement("span"); 
+        badge.className = `sanction-badge ${rule.catClass}`;
+        badge.innerHTML = `${rule.sanctie}`;
+        header.appendChild(titleDiv); 
+        header.appendChild(badge);
+        
+        const contentDiv = document.createElement("div"); 
+        contentDiv.className = "rule-content";
+        contentDiv.innerHTML = rule.content;
+        
+        header.addEventListener("click", () => contentDiv.classList.toggle("open"));
+        card.appendChild(header); 
+        card.appendChild(contentDiv);
+        root.appendChild(card);
+    });
+        document.getElementById('articleCount').textContent = document.querySelectorAll('.rule-card').length;
+
+}
+
+// Bouw de accordion
+buildAccordion("");
+// Zoekfunctie
+document.getElementById("searchInput")?.addEventListener("input", function(e) {
+    const filterText = e.target.value.trim();
+    buildAccordion(filterText);
+    
+    // Als er wordt gezocht, scroll naar en open het eerste resultaat
+    if (filterText.length > 0) {
+        setTimeout(() => {
+            const firstResult = document.querySelector(".rule-card");
+            if (firstResult) {
+                firstResult.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                const content = firstResult.querySelector(".rule-content");
+                if (content && !content.classList.contains("open")) {
+                    content.classList.add("open");
+                }
+                
+                firstResult.style.transition = "all 0.3s ease";
+                firstResult.style.borderColor = "var(--nav-color)";
+                firstResult.style.boxShadow = "0 0 20px rgba(26, 82, 118, 0.3)";
+                setTimeout(() => {
+                    firstResult.style.borderColor = "";
+                    firstResult.style.boxShadow = "";
+                }, 2000);
+            }
+        }, 150);
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+        e.preventDefault();
+        document.getElementById('searchInput')?.focus();
+    }
+});
+
+document.getElementById('scrollTopBtn')?.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+    document.querySelector('a[href="#apv"]')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.getElementById('apv');
+    if (target) {
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+});
+    // Dark mode toggle
+document.getElementById('darkModeToggle')?.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    this.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+// Scroll naar boven knop - slide animatie
+window.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 300) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+});
+</script>
+</body>
+</html>
+

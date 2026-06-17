@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joinen | Amsterdam Roleplay</title>
+    <meta name="description" content="Startgids om Amsterdam Roleplay te joinen via FiveM en Discord." />
+    <link rel="icon" type="image/png" href="assets/logo-amsterdam-roleplay.png" />
+    <link rel="preload" href="assets/logo-amsterdam-roleplay.png" as="image" />
+    <link rel="preload" href="assets/banner-amsterdam-roleplay.webp" as="image" />
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("ar-theme");
+          document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+        } catch {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="joinen">
+    <header class="site-header">
+      <nav class="nav container" aria-label="Hoofdnavigatie">
+        <a class="brand" href="index.html" aria-label="Amsterdam Roleplay home">
+          <img src="assets/logo-amsterdam-roleplay.png" alt="" />
+          <span>
+            <strong>Amsterdam Roleplay</strong>
+            <small>Easy Weapons Roleplay</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a data-page-link="home" href="index.html">Home</a><a data-page-link="regels" href="regels.html">APV</a><a data-page-link="vacatures" href="vacatures.html">Vacatures</a><a data-page-link="status" href="status.html">Status</a><a data-page-link="informatie" href="informatie.html">Informatie</a><a data-page-link="joinen" href="joinen.html">Joinen</a>
+          <div class="nav-more">
+            <button type="button" aria-expanded="false">Meer</button>
+            <div class="more-menu"><a data-page-link="faq" href="faq.html">FAQ</a><a data-page-link="support" href="support.html">Support</a></div>
+          </div>
+          <div class="nav-more nav-servers">
+            <button type="button" aria-expanded="false">Servers</button>
+            <div class="more-menu"><a href="https://discord.gg/9W7wgZF6T4" target="_blank" rel="noopener">Main</a><a href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support</a><a href="https://discord.gg/k3NhmZdxty" target="_blank" rel="noopener">Overheid</a><a href="https://discord.gg/feCbm7nYh4" target="_blank" rel="noopener">Onderwereld</a></div>
+          </div>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Schakel naar zwart thema">
+            <span class="theme-dot" aria-hidden="true"></span>
+            <span data-theme-label>Zwart</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <a class="skip-link" href="#content">Naar inhoud</a>
+    <main id="content">
+      
+    <section class="page-hero ">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-photo-shade" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy-block">
+          <p class="eyebrow">Joinen</p>
+          <h1>Hoe join ik Amsterdam Roleplay?</h1>
+          <p class="hero-lead">Een startpagina voor nieuwe spelers met uitleg over FiveM, APV, characterbouw en de juiste Discord-routes.</p>
+        </div>
+      </div>
+    </section>
+      
+      <section class="band">
+        <div class="container" style="text-align: center;">
+          <p class="eyebrow">Snelle Connect</p>
+          <p style="margin-bottom: 0.75rem; font-size: 0.9rem;">Plak in FiveM:</p>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.4rem; padding: 0.7rem; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin: 0 auto 0.5rem; max-width: 350px; cursor: pointer;" onclick="navigator.clipboard.writeText('connect 185.229.35.13'); alert('Gekopieerd!');">
+            <code>connect 185.229.35.13</code>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--muted);">Klik om te kopiëren</p>
+        </div>
+      </section>
+
+      <section class="container section">
+        <div class="section-head">
+          <p class="eyebrow">Startgids</p>
+          <h2>Begin netjes, speel sterker.</h2>
+        </div>
+        <div class="guide-list">
+          <article><span>01</span><div><h3>Installeer FiveM</h3><p>Zorg voor een werkende GTA V-installatie, FiveM-client en een stabiele microfoon.</p></div></article>
+          <article><span>02</span><div><h3>Join de main Discord</h3><p>Gebruik de serverknop om updates, regels en communityinformatie te volgen.</p></div></article>
+          <article><span>03</span><div><h3>Lees APV en wetboek</h3><p>Regels over RDM, VDM, FailRP, wapens en straffen bepalen wat kan.</p></div></article>
+          <article><span>04</span><div><h3>Maak een character</h3><p>Bedenk naam, achtergrond, doelen en gedrag voordat je grote scenario's zoekt.</p></div></article>
+        </div>
+      </section>
+
+      <section class="container section slim">
+        <div class="card-grid three">
+          <article class="feature-card"><h3>In character</h3><p>Je reageert vanuit je personage en niet vanuit wat jij als speler weet.</p></article>
+          <article class="feature-card"><h3>Value of life</h3><p>Je personage wil overleven en neemt dreiging serieus.</p></article>
+          <article class="feature-card"><h3>Easy Weapons</h3><p>Wapenbezit en gebruik hebben duidelijke gevolgen in APV en wetboek.</p></article>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="index.html" aria-label="Amsterdam Roleplay home">
+            <img src="assets/logo-amsterdam-roleplay.png" alt="" />
+            <span>
+              <strong>Amsterdam Roleplay</strong>
+              <small>Communityhub</small>
+            </span>
+          </a>
+          <p>Niet geassocieerd met Cfx.re, Rockstar Games of Take-Two Interactive.</p>
+        </div>
+        <div class="footer-column">
+          <h2>Pagina's</h2>
+          <div class="footer-links"><a data-page-link="home" href="index.html">Home</a><a data-page-link="regels" href="regels.html">APV</a><a data-page-link="vacatures" href="vacatures.html">Vacatures</a><a data-page-link="status" href="status.html">Status</a><a data-page-link="informatie" href="informatie.html">Informatie</a><a data-page-link="joinen" href="joinen.html">Joinen</a><a data-page-link="faq" href="faq.html">FAQ</a><a data-page-link="support" href="support.html">Support</a></div>
+        </div>
+        <div class="footer-column">
+          <h2>Direct</h2>
+          <div class="footer-links">
+            <a href="https://discord.gg/9W7wgZF6T4" target="_blank" rel="noopener">Main server</a>
+            <a href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support server</a>
+            <a href="https://discord.gg/k3NhmZdxty" target="_blank" rel="noopener">Overheid server</a>
+            <a href="https://discord.gg/feCbm7nYh4" target="_blank" rel="noopener">Onderwereld server</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
