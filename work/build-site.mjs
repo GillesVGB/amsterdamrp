@@ -170,7 +170,7 @@ const pages = [
     title: "Home",
     description: "Amsterdam Roleplay Easy Weapons communityhub met APV, vacatures, wetboek en Discord servers.",
     eyebrow: "Easy Weapons Amsterdam",
-    heading: "Amsterdam Roleplay, direct speelbaar.",
+    heading: "<span>Amsterdam Roleplay</span><span>direct speelbaar.</span>",
     intro:
       "Een compacte hub voor APV, straffen, vacatures, wetboek, support en de juiste Discord server voor elke route.",
     actions: [
@@ -186,45 +186,45 @@ const pages = [
     content: `
       <section class="band">
         <div class="container">
-          <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-            <p class="eyebrow">Dit is Echt</p>
-            <h2>Amsterdam brandt. En jij bent niet veilig.</h2>
-            <p>Elke nacht: vuurgevechten, verraad, imperium's die gebouwd en verwoest worden. Criminelen tegen agenten. Allianties die barsten. Keuzes die je leven veranderen. Dit is roleplay op een level dat je ergens anders niet vindt.</p>
+          <div style="text-align: center; max-width: 760px; margin: 0 auto;">
+            <p class="eyebrow">Snel starten</p>
+            <h2>Alles voor Amsterdam Roleplay op een plek.</h2>
+            <p>Een lichte, snelle hub voor spelers die meteen willen weten waar ze moeten zijn: APV, straffen, vacatures, support en de juiste Discord-route.</p>
           </div>
         </div>
       </section>
 
       <section class="container section">
         <div class="section-head">
-          <p class="eyebrow">Kies je Route</p>
-          <h2>Elk pad, echt drama.</h2>
+          <p class="eyebrow">Kies je route</p>
+          <h2>Speel via overheid, onderwereld of staff.</h2>
         </div>
         <div class="card-grid two">
           <div class="feature-card">
             <h3>Onderwereld</h3>
-            <p><strong>Macht, Fortuin, Straatoorlog.</strong></p>
-            <p>Bouw je gang op, controleer territorio, en voer strategische veten uit. Samenwerking en verraad wisselen elkaar af. Je beslissingen bepalen wie je bent en wie tegen je staat.</p>
-            <a class="button secondary" href="${discord.onderwereld}" target="_blank" rel="noopener">Onderwereld Discord →</a>
+            <p><strong>Easy Weapons, spanning en consequenties.</strong></p>
+            <p>Bouw een groep op, maak slimme deals en speel scenario's uit binnen de APV. Minder gedoe, meer actie, maar wel met duidelijke regels.</p>
+            <a class="button secondary" href="${discord.onderwereld}" target="_blank" rel="noopener">Onderwereld Discord</a>
           </div>
           <div class="feature-card">
             <h3>Overheid</h3>
-            <p><strong>Orde, Macht, Systeem.</strong></p>
-            <p>Join politie, ambulance of overheid. Defend de stad, maak keuzes die impact hebben, en speel tegen criminelen die jouw voorkeurstrategie kennen. Regelhandhaving is politiek.</p>
-            <a class="button secondary" href="${discord.overheid}" target="_blank" rel="noopener">Overheid Discord →</a>
+            <p><strong>Politie, ambulance en overheid.</strong></p>
+            <p>Solliciteer voor een whitelisted job en speel situaties uit met porto, bewijs, overleg en duidelijke straffen. De overheidserver staat klaar.</p>
+            <a class="button secondary" href="${discord.overheid}" target="_blank" rel="noopener">Overheid Discord</a>
           </div>
         </div>
       </section>
 
       <section class="band">
         <div class="container">
-          <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-            <p class="eyebrow">COUNTDOWN</p>
-            <h2>Je concurrenten groeien nu.</h2>
-            <p>Terwijl je dit leest, bouwen anderen hun gang, hun naam, hun reputatie. Ze kennen de regels. Ze hebben connecties. Ze hebben voordeel. Hoe langer je wacht, hoe verder je achterblijft. Dit is het moment.</p>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
-              <div><p style="font-size: 0.85rem; color: var(--muted);">NU</p><h3 style="margin: 0.5rem 0; font-size: 1.5rem;">Start</h3></div>
-              <div><p style="font-size: 0.85rem; color: var(--muted);">WEEK 1</p><h3 style="margin: 0.5rem 0; font-size: 1.5rem;">Build</h3></div>
-              <div><p style="font-size: 0.85rem; color: var(--muted);">MAAND 1</p><h3 style="margin: 0.5rem 0; font-size: 1.5rem;">Dominant</h3></div>
+          <div style="text-align: center; max-width: 760px; margin: 0 auto;">
+            <p class="eyebrow">Startflow</p>
+            <h2>Van Discord naar de stad.</h2>
+            <p>Nieuwe spelers moeten niet zoeken. Deze site stuurt je direct naar de juiste plek en laat zien wat je eerst moet lezen.</p>
+            <div class="quick-steps">
+              <div><p>Stap 1</p><h3>Main Discord</h3></div>
+              <div><p>Stap 2</p><h3>APV lezen</h3></div>
+              <div><p>Stap 3</p><h3>FiveM joinen</h3></div>
             </div>
           </div>
         </div>
@@ -232,45 +232,45 @@ const pages = [
 
       <section class="container section">
         <div class="section-head">
-          <p class="eyebrow">Gereedschap</p>
-          <h2>Alles wat je nodig hebt om te winnen.</h2>
+          <p class="eyebrow">Overzicht</p>
+          <h2>Alles wat je nodig hebt om mee te spelen.</h2>
         </div>
         <div class="card-grid three">
           <a class="feature-card link-card" href="regels.html">
-            <h3>APV Volledig</h3>
-            <p>65 artikelen. Weet elke regel. Geen surprises. Voordeel is kennis.</p>
+            <h3>APV volledig</h3>
+            <p>65 artikelen, strafcategorieen en zoekfunctie op een pagina.</p>
           </a>
           <a class="feature-card link-card" href="joinen.html">
-            <h3>Start Nu</h3>
-            <p>10 minuten tot je speelt. Download, install, join. Begin je verhaal vandaag.</p>
+            <h3>Start nu</h3>
+            <p>De korte route voor nieuwe spelers: Discord, regels en FiveM.</p>
           </a>
           <a class="feature-card link-card" href="vacatures.html">
-            <h3>Werk met Ons</h3>
-            <p>Staff, Overheid, Organisaties. Machtige rollen wachten.</p>
+            <h3>Vacatures</h3>
+            <p>Overheid, staff en onderwereld met werkende Discord-knoppen.</p>
           </a>
           <a class="feature-card link-card" href="assets/documents/wetboek-van-strafrecht-amrp.pdf" target="_blank" rel="noopener">
-            <h3>Wetboek</h3>
-            <p>Strafrecht. Proceduren. Alles wat je tegen je kan gebruikt worden.</p>
+            <h3>Wetboek PDF</h3>
+            <p>De directe PDF voor staff, overheid en spelers die willen checken.</p>
           </a>
           <a class="feature-card link-card" href="status.html">
-            <h3>Live Status</h3>
-            <p>Server aan? Capaciteit? Check hier, altijd up-to-date.</p>
+            <h3>Serverstatus</h3>
+            <p>Een nette statuspagina klaar voor live serverdata.</p>
           </a>
           <a class="feature-card link-card" href="support.html">
-            <h3>Support Team</h3>
-            <p>Problemen? Appeal? We helpen. Direct.</p>
+            <h3>Support</h3>
+            <p>Vragen, reports of appeals gaan via de support Discord.</p>
           </a>
         </div>
       </section>
 
       <section class="band">
         <div class="container" style="text-align: center;">
-          <p class="eyebrow">HET MOMENT IS NU</p>
-          <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Jij Tegenover Amsterdam.</h2>
-          <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">De server draait. De stad leeft. Mensen spelen, groeien, winnen, verliezen. Jij gaat ergens anders wachten? Of maak je je naam vandaag?</p>
+          <p class="eyebrow">Klaar om te joinen</p>
+          <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Amsterdam staat open.</h2>
+          <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 620px; margin-left: auto; margin-right: auto;">Pak de main Discord, lees de APV en kies je route. De rest van de site helpt je snel verder.</p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a class="button" href="${discord.main}" target="_blank" rel="noopener">JOIN MAIN SERVER NU</a>
-            <a class="button secondary" href="joinen.html">Hoe Begin Ik?</a>
+            <a class="button primary" href="${discord.main}" target="_blank" rel="noopener">Join main server</a>
+            <a class="button secondary" href="joinen.html">Hoe begin ik?</a>
           </div>
         </div>
       </section>`,
@@ -352,9 +352,9 @@ const pages = [
       <section class="band">
         <div class="container split">
           <div>
-            <p class="eyebrow">Document</p>
-            <h2>Wetboek van Strafrecht — direct beschikbaar</h2>
-            <p class="muted">Het officiële wetboek als PDF. Gebruikt door staff en overheid als primaire referentie — open, bekijk of download in één klik.</p>
+            <p class="eyebrow">Wetboek PDF</p>
+            <h2>Wetboek van Strafrecht direct beschikbaar.</h2>
+            <p class="muted">Het officiele wetboek als PDF. Gebruikt door staff en overheid als primaire referentie. Open, bekijk of download in een klik.</p>
             <ul style="margin: 1rem 0 0.5rem; padding-left: 1.15rem; color: var(--muted);">
               <li><strong>Volledig PDF:</strong> Complete tekst van het wetboek.</li>
               <li><strong>Direct referentie:</strong> Voor politie, justitie en staff.</li>
@@ -374,7 +374,7 @@ const pages = [
               </svg>
               <div>
                 <h3 style="margin:0 0 6px 0;">Wetboek van Strafrecht</h3>
-                <p style="margin:0 0 8px 0; color:var(--muted);">13 pagina's • Officiële referentie</p>
+                <p style="margin:0 0 8px 0; color:var(--muted);">13 pagina's - officiele referentie</p>
                 <a class="text-link" href="${wetboekPdf}" target="_blank" rel="noopener">Bekijk in nieuw venster</a>
               </div>
             </div>
@@ -781,18 +781,19 @@ ul, ol { padding-left: 1.2rem; }
 .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 8px; background: var(--theme-toggle-bg); padding: 9px; }
 .menu-toggle span { display: block; height: 2px; margin: 5px 0; border-radius: 999px; background: var(--text); }
 
-.page-hero { position: relative; min-height: 620px; display: flex; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--banner-bg); }
+.page-hero { position: relative; min-height: 560px; display: flex; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--banner-bg); }
 .hero-bg, .hero-photo-shade { position: absolute; inset: 0; }
 .hero-bg { background-image: url("assets/banner-amsterdam-roleplay.webp"); background-size: cover; background-position: center; transform: scale(1.01); }
-.hero-photo-shade { background: linear-gradient(90deg, rgba(3, 9, 19, 0.92) 0%, rgba(3, 9, 19, 0.7) 34%, rgba(3, 9, 19, 0.16) 58%, rgba(3, 9, 19, 0.05) 100%), linear-gradient(0deg, rgba(3, 9, 19, 0.2) 0%, rgba(3, 9, 19, 0) 30%); }
-.hero-inner { position: relative; z-index: 1; display: block; padding: clamp(64px, 9vh, 96px) 0 230px; }
+.hero-photo-shade { background: linear-gradient(90deg, rgba(2, 7, 13, 0.98) 0%, rgba(2, 7, 13, 0.94) 36%, rgba(2, 7, 13, 0.62) 54%, rgba(2, 7, 13, 0.16) 78%, rgba(2, 7, 13, 0.04) 100%), linear-gradient(0deg, rgba(2, 7, 13, 0.55) 0%, rgba(2, 7, 13, 0.1) 42%, rgba(2, 7, 13, 0) 72%); }
+.hero-inner { position: relative; z-index: 1; display: block; padding: clamp(58px, 8vh, 88px) 0 104px; }
 .hero-copy-block { max-width: 680px; }
 .eyebrow { color: var(--blue); font-size: 0.76rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
   .page-hero .eyebrow { color: var(--hero-eyebrow); text-shadow: 0 2px 18px rgba(0, 0, 0, 0.38); }
 h1 { margin-top: 14px; color: var(--text); font-size: clamp(2.8rem, 6.2vw, 5.8rem); line-height: 0.96; letter-spacing: 0; }
-  .page-hero h1 { max-width: 760px; color: var(--hero-h1); font-size: clamp(2.55rem, 4.8vw, 4.8rem); text-shadow: 0 12px 42px rgba(0, 0, 0, 0.42); }
-.hero-lead { max-width: 650px; margin-top: 22px; color: rgba(255, 255, 255, 0.88); font-size: clamp(1.02rem, 1.8vw, 1.24rem); line-height: 1.7; text-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); }
-.hero-actions { display: flex; flex-wrap: nowrap; gap: 14px; margin-top: 30px; }
+  .page-hero h1 { max-width: 720px; color: var(--hero-h1); font-size: clamp(2.65rem, 4.55vw, 4.85rem); line-height: 0.98; text-shadow: 0 14px 44px rgba(0, 0, 0, 0.55); }
+  .page-hero h1 span { display: block; }
+.hero-lead { max-width: 610px; margin-top: 18px; color: rgba(255, 255, 255, 0.9); font-size: clamp(1rem, 1.55vw, 1.18rem); line-height: 1.58; text-shadow: 0 8px 30px rgba(0, 0, 0, 0.46); }
+.hero-actions { display: flex; flex-wrap: nowrap; gap: 12px; margin-top: 24px; }
 @media (max-width: 820px) {
   .hero-actions { flex-wrap: wrap; }
 }
@@ -801,35 +802,35 @@ h1 { margin-top: 14px; color: var(--text); font-size: clamp(2.8rem, 6.2vw, 5.8re
   .button.primary { color: var(--button-primary-text); background: linear-gradient(135deg, var(--button-primary-start), var(--gold)); box-shadow: 0 16px 42px rgba(46, 168, 201, 0.22); }
 .button.secondary { border: 1px solid var(--line); background: var(--secondary-bg); color: var(--text); }
 .button.ghost { border: 1px solid rgba(241, 186, 88, 0.62); color: var(--ghost-text); background: rgba(241, 186, 88, 0.12); }
-.hero-stats-wrap { padding: 20px 0 0; background: var(--hero-bg); }
-.hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--line); box-shadow: var(--shadow); }
-.hero-stats div { padding: 20px; background: var(--panel-glass); backdrop-filter: blur(14px); }
-.hero-stats dt { color: var(--muted); font-size: 0.74rem; font-weight: 900; text-transform: uppercase; }
-.hero-stats dd { margin-top: 8px; color: var(--text); font-size: 1.08rem; font-weight: 900; }
-
-.section { padding: 96px 0; }
-.section.slim { padding-top: 24px; }
-.section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
-h2 { margin-top: 10px; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.04; letter-spacing: 0; }
+.page-hero .button.ghost { color: #ffe5a8; background: rgba(3, 9, 19, 0.52); border-color: rgba(241, 186, 88, 0.76); }
+.section { padding: 42px 0; }
+.section.slim { padding-top: 6px; }
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 16px; }
+h2 { margin-top: 7px; font-size: clamp(1.85rem, 3.6vw, 3.35rem); line-height: 1.04; letter-spacing: 0; }
 h3 { color: var(--text); font-size: 1.1rem; }
-p { color: var(--muted); line-height: 1.75; }
+p { color: var(--muted); line-height: 1.62; }
 .card-grid { display: grid; gap: 14px; }
+.card-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .card-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .card-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .feature-card, .job-card, .law-card, .document-card, .status-cards article, .text-panel { border: 1px solid var(--line); border-radius: 8px; background: var(--card-bg); box-shadow: var(--shadow); }
-.feature-card { min-height: 190px; padding: 22px; }
-.feature-card.wide { min-height: 150px; }
-.feature-card p, .job-card p, .law-card p { margin-top: 10px; font-size: 0.95rem; }
+.feature-card { min-height: 162px; padding: 20px; }
+.feature-card.wide { min-height: 128px; }
+.feature-card p, .job-card p, .law-card p { margin-top: 8px; font-size: 0.95rem; }
 .link-card { display: block; transition: transform 180ms ease, border-color 180ms ease; }
 .link-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
 .card-index { display: inline-grid; place-items: center; min-width: 42px; height: 32px; margin-bottom: 20px; border-radius: 7px; background: rgba(46, 168, 201, 0.12); color: var(--blue); font-size: 0.76rem; font-weight: 900; }
-.band { padding: 80px 0; border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); background: linear-gradient(135deg, var(--band-bg) 0%, var(--band-bg) 100%); }
+.band { padding: 34px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(135deg, var(--band-bg) 0%, var(--band-bg) 100%); }
 .band:nth-of-type(even) { background: var(--bg); border-color: transparent; }
 .band h2 { color: var(--text); }
 .band p { color: var(--muted); }
 .band .container > div { max-width: 100%; margin: 0 auto; }
 .band-dark { background: var(--bg-deep); }
 .band-light { background: var(--bg); }
+.quick-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.quick-steps div { min-height: 86px; border: 1px solid var(--line); border-radius: 8px; padding: 16px; background: var(--card-bg-soft); box-shadow: var(--shadow); }
+.quick-steps p { color: var(--muted); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; }
+.quick-steps h3 { margin-top: 8px; font-size: 1.22rem; }
 .split { display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 54px; align-items: center; }
 .metric-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .metric-panel div { min-height: 118px; border: 1px solid var(--line); border-radius: 8px; padding: 20px; background: var(--metric-bg); }
@@ -976,8 +977,7 @@ p { color: var(--muted); line-height: 1.75; }
   .more-menu { position: static; display: grid; margin-top: 6px; box-shadow: none; background: var(--menu-panel-bg); }
   .menu-toggle { display: block; }
   .split, .status-dashboard, .footer-grid, .document-card { grid-template-columns: 1fr; }
-  .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .card-grid.three, .card-grid.four, .job-grid, .server-grid, .law-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card-grid.two, .card-grid.three, .card-grid.four, .job-grid, .server-grid, .law-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 680px) {
@@ -987,14 +987,15 @@ p { color: var(--muted); line-height: 1.75; }
   .brand strong { font-size: 0.9rem; }
   .brand small { font-size: 0.68rem; }
   .nav-links { inset: 70px 12px auto 12px; }
-  .page-hero { min-height: 720px; }
-  .hero-bg { background-position: center; }
-  .hero-photo-shade { background: linear-gradient(90deg, rgba(3, 9, 19, 0.94) 0%, rgba(3, 9, 19, 0.76) 62%, rgba(3, 9, 19, 0.18) 100%), linear-gradient(0deg, rgba(3, 9, 19, 0.25) 0%, rgba(3, 9, 19, 0) 32%); }
-  .hero-inner { padding: 48px 0 170px; }
-  h1, .page-hero h1 { font-size: clamp(2.35rem, 12vw, 4rem); }
-  .hero-stats, .card-grid.three, .card-grid.four, .job-grid, .server-grid, .law-grid, .status-cards, .info-layout, .sanction-table, .metric-panel { grid-template-columns: 1fr; }
-  .section { padding: 70px 0; }
-  .section.slim { padding-top: 8px; }
+  .page-hero { min-height: 560px; }
+  .hero-bg { background-position: 0% center; transform: scale(1.06); }
+  .hero-photo-shade { background: linear-gradient(90deg, rgba(2, 7, 13, 0.97) 0%, rgba(2, 7, 13, 0.9) 62%, rgba(2, 7, 13, 0.34) 100%), linear-gradient(0deg, rgba(2, 7, 13, 0.55) 0%, rgba(2, 7, 13, 0.08) 42%, rgba(2, 7, 13, 0) 72%); }
+  .hero-inner { padding: 40px 0 78px; }
+  h1, .page-hero h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+  .hero-lead { font-size: 0.98rem; line-height: 1.55; }
+  .card-grid.two, .card-grid.three, .card-grid.four, .job-grid, .server-grid, .law-grid, .status-cards, .info-layout, .sanction-table, .metric-panel, .quick-steps { grid-template-columns: 1fr; }
+  .section { padding: 34px 0; }
+  .section.slim { padding-top: 4px; }
   .section-head, .rules-summary, .sanction-table div { flex-direction: column; align-items: flex-start; }
   .rules-toolbar { top: 78px; }
   .rule-card summary { align-items: flex-start; flex-direction: column; }
