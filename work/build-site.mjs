@@ -293,7 +293,7 @@ const pages = [
     heading: "APV zoeken en straffen snel vinden.",
     intro:
       "Alle APV-artikelen staan doorzoekbaar op deze pagina. Daaronder vind je direct wat Cat 0 t/m Cat 9 betekent.",
-    actions: [button("Open APV bron", apvUrl, "primary", true), button("Open wetboek PDF", wetboekPdf, "secondary", true)],
+    actions: [button("Open APV bron", apvUrl, "primary", true)],
     stats: [
       ["Artikelen", "65"],
       ["Categorieen", "0 t/m 9"],
@@ -359,35 +359,22 @@ const pages = [
       </section>
 
       <section class="band">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">Wetboek PDF</p>
-            <h2>Wetboek van Strafrecht direct beschikbaar.</h2>
-            <p class="muted">Het officiele wetboek als PDF. Gebruikt door staff en overheid als primaire referentie. Open, bekijk of download in een klik.</p>
-            <ul style="margin: 1rem 0 0.5rem; padding-left: 1.15rem; color: var(--muted);">
-              <li><strong>Volledig PDF:</strong> Complete tekst van het wetboek.</li>
-              <li><strong>Direct referentie:</strong> Voor politie, justitie en staff.</li>
-              <li><strong>Snel toegang:</strong> Open in nieuw venster of download.</li>
-            </ul>
-            <div style="margin-top:1rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
-              <a class="button primary" href="${wetboekPdf}" target="_blank" rel="noopener">Open wetboek PDF</a>
-              <a class="button secondary" href="${wetboekPdf}" download>Download PDF</a>
-            </div>
-          </div>
-          <div class="document-card" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;">
-            <div style="display:flex;align-items:center;gap:16px;max-width:360px;">
-              <svg width="68" height="80" viewBox="0 0 68 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <div class="container">
+          <a class="document-card document-link" href="${wetboekPdf}" target="_blank" rel="noopener">
+            <span class="document-icon" aria-hidden="true">
+              <svg width="54" height="64" viewBox="0 0 68 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="68" height="80" rx="6" fill="var(--panel)" stroke="var(--line)"/>
                 <path d="M18 22h32v6H18zM18 34h32v6H18zM18 46h24v6H18z" fill="var(--muted)"/>
                 <rect x="44" y="8" width="10" height="12" rx="1" fill="var(--gold)"/>
               </svg>
-              <div>
-                <h3 style="margin:0 0 6px 0;">Wetboek van Strafrecht</h3>
-                <p style="margin:0 0 8px 0; color:var(--muted);">13 pagina's - officiele referentie</p>
-                <a class="text-link" href="${wetboekPdf}" target="_blank" rel="noopener">Bekijk in nieuw venster</a>
-              </div>
-            </div>
-          </div>
+            </span>
+            <span class="document-copy">
+              <span class="eyebrow">Wetboek PDF</span>
+              <strong>Wetboek van Strafrecht</strong>
+              <small>Open de volledige PDF in een nieuw venster.</small>
+            </span>
+            <span class="button primary document-action">Open wetboek</span>
+          </a>
         </div>
       </section>`,
   },
@@ -676,6 +663,13 @@ p { color: var(--muted); line-height: 1.62; }
 .category-table tr:last-child td { border-bottom: 0; }
 .category-table tbody tr:nth-child(even) { background: rgba(46, 168, 201, 0.045); }
 .document-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; padding: 30px; }
+.document-link { grid-template-columns: auto minmax(0, 1fr) auto; width: 100%; color: inherit; transition: transform 180ms ease, border-color 180ms ease; }
+.document-link:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+.document-icon { display: grid; place-items: center; width: 74px; height: 74px; border-radius: 8px; background: var(--secondary-bg); }
+.document-copy { min-width: 0; display: grid; gap: 7px; }
+.document-copy strong { color: var(--text); font-size: clamp(1.55rem, 2.5vw, 2.35rem); line-height: 1.05; white-space: nowrap; }
+.document-copy small { color: var(--muted); font-size: 0.95rem; }
+.document-action { white-space: nowrap; }
 .text-link { color: var(--cyan); font-weight: 900; }
 .faq-list { display: grid; gap: 12px; }
 .faq-list details { border: 1px solid var(--line); border-radius: 8px; background: var(--card-bg-soft); overflow: hidden; box-shadow: var(--shadow); }
@@ -803,6 +797,8 @@ p { color: var(--muted); line-height: 1.62; }
   .more-menu { position: static; display: grid; margin-top: 6px; box-shadow: none; background: var(--menu-panel-bg); }
   .menu-toggle { display: block; }
   .split, .status-dashboard, .footer-grid, .document-card { grid-template-columns: 1fr; }
+  .document-link { justify-items: start; }
+  .document-copy strong { white-space: normal; }
   .card-grid.two, .card-grid.three, .card-grid.four, .job-grid, .server-grid, .law-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
