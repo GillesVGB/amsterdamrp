@@ -71,12 +71,14 @@ function pageShell(page) {
     .map(([id, label, href, external]) => `<a data-page-link="${id}" href="${href}"${external ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`)
     .join("");
 
+  const documentTitle = page.title === "Amsterdam Roleplay" ? page.title : `${page.title} | Amsterdam Roleplay`;
+
   return `<!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${page.title} | Amsterdam Roleplay</title>
+    <title>${documentTitle}</title>
     <meta name="description" content="${page.description}" />
     <link rel="icon" type="image/png" href="assets/logo-amsterdam-roleplay.png" />
     <link rel="preload" href="assets/logo-amsterdam-roleplay.png" as="image" />
@@ -167,10 +169,10 @@ const pages = [
   {
     id: "home",
     file: "index.html",
-    title: "Home",
+    title: "Amsterdam Roleplay",
     description: "Amsterdam Roleplay Easy Weapons communityhub met regels, wetboek, store en Discord servers.",
     eyebrow: "Easy Weapons Amsterdam",
-    heading: "<span>Amsterdam Roleplay</span><span>direct speelbaar.</span>",
+    heading: "Amsterdam Roleplay",
     intro:
       "Een compacte hub voor regels, straffen, wetboek, store en de juiste Discord server voor elke route.",
     actions: [
@@ -287,10 +289,10 @@ const pages = [
   {
     id: "regels",
     file: "regels.html",
-    title: "APV en Straffen",
+    title: "Algemene Plaatselijke Verordening",
     description: "Zoekbare APV van Amsterdam Roleplay met uitleg per strafcategorie.",
     eyebrow: "APV en straffen",
-    heading: "APV zoeken en straffen snel vinden.",
+    heading: "Algemene Plaatselijke Verordening",
     intro:
       "Alle APV-artikelen staan doorzoekbaar op deze pagina. Daaronder vind je direct wat Cat 0 t/m Cat 9 betekent.",
     actions: [button("Open APV bron", apvUrl, "primary", true)],
@@ -384,7 +386,7 @@ const pages = [
     title: "Serverstatus",
     description: "Serverstatuspagina voor Amsterdam Roleplay met capaciteit, restartinformatie en Discord-routes.",
     eyebrow: "Live status",
-    heading: "Serverdashboard voor Amsterdam Roleplay.",
+    heading: "Serverstatus",
     intro:
       "Bekijk bereikbaarheid, capaciteit en connectinformatie. De serverknoppen staan overal onder Servers in de navigatie.",
     actions: [button("Join main", discord.main, "primary", true), button("Support", discord.support, "secondary", true)],
@@ -425,10 +427,10 @@ const pages = [
   {
     id: "faq",
     file: "faq.html",
-    title: "FAQ",
+    title: "Frequently Asked Questions",
     description: "Veelgestelde vragen voor nieuwe spelers van Amsterdam Roleplay.",
     eyebrow: "FAQ",
-    heading: "Veelgestelde vragen voor nieuwe spelers.",
+    heading: "Frequently Asked Questions",
     intro:
       "Snel antwoord op de belangrijkste vragen over joinen, Discord, regels, support en wetboek.",
     actions: [button("Join main server", discord.main, "primary", true), button("Regels lezen", "regels.html", "secondary")],
