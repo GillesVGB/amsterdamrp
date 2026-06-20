@@ -4,6 +4,9 @@ import path from "node:path";
 const outDir = "outputs";
 const apvUrl = "https://apv-amsterdamroleplay.onrender.com/";
 const wetboekPdf = "assets/documents/wetboek-van-strafrecht-amrp.pdf";
+const fivemConnectCommand = "connect 185.229.35.13";
+// Wijzig deze URL later als je de echte store-link hebt.
+const storeUrl = "https://store.amsterdamroleplay.nl";
 
 const discord = {
   main: "https://discord.gg/9W7wgZF6T4",
@@ -15,16 +18,14 @@ const discord = {
 
 const nav = [
   ["home", "Home", "index.html"],
-  ["regels", "APV", "regels.html"],
-  ["vacatures", "Vacatures", "vacatures.html"],
+  ["regels", "Regels", "regels.html"],
   ["status", "Status", "status.html"],
-  ["informatie", "Informatie", "informatie.html"],
+  ["store", "Store", storeUrl, true],
   ["joinen", "Joinen", "joinen.html"],
 ];
 
 const extraNav = [
   ["faq", "FAQ", "faq.html"],
-  ["support", "Support", "support.html"],
 ];
 
 const serverLinks = [
@@ -59,16 +60,16 @@ function hero(page) {
 
 function pageShell(page) {
   const navLinks = nav
-    .map(([id, label, href]) => `<a data-page-link="${id}" href="${href}">${label}</a>`)
+    .map(([id, label, href, external]) => `<a data-page-link="${id}" href="${href}"${external ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`)
     .join("");
   const moreLinks = extraNav
-    .map(([id, label, href]) => `<a data-page-link="${id}" href="${href}">${label}</a>`)
+    .map(([id, label, href, external]) => `<a data-page-link="${id}" href="${href}"${external ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`)
     .join("");
   const serversLinks = serverLinks
     .map(([label, href]) => `<a href="${href}" target="_blank" rel="noopener">${label}</a>`)
     .join("");
   const footerLinks = [...nav, ...extraNav]
-    .map(([id, label, href]) => `<a data-page-link="${id}" href="${href}">${label}</a>`)
+    .map(([id, label, href, external]) => `<a data-page-link="${id}" href="${href}"${external ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`)
     .join("");
 
   return `<!DOCTYPE html>
@@ -168,18 +169,18 @@ const pages = [
     id: "home",
     file: "index.html",
     title: "Home",
-    description: "Amsterdam Roleplay Easy Weapons communityhub met APV, vacatures, wetboek en Discord servers.",
+    description: "Amsterdam Roleplay Easy Weapons communityhub met regels, wetboek, store en Discord servers.",
     eyebrow: "Easy Weapons Amsterdam",
     heading: "<span>Amsterdam Roleplay</span><span>direct speelbaar.</span>",
     intro:
-      "Een compacte hub voor APV, straffen, vacatures, wetboek, support en de juiste Discord server voor elke route.",
+      "Een compacte hub voor regels, straffen, wetboek, store en de juiste Discord server voor elke route.",
     actions: [
-      button("Bekijk APV", "regels.html"),
+      button("Bekijk regels", "regels.html"),
       button("Join main server", discord.main, "secondary", true),
       button("Open wetboek", wetboekPdf, "ghost", true),
     ],
     stats: [
-      ["APV", "65 artikelen"],
+      ["Regels", "65 artikelen"],
       ["Wetboek", "13 pagina's"],
       ["Focus", "Easy Weapons"],
     ],
@@ -189,7 +190,7 @@ const pages = [
           <div style="text-align: center; max-width: 760px; margin: 0 auto;">
             <p class="eyebrow">Snel starten</p>
             <h2>Alles voor Amsterdam Roleplay op een plek.</h2>
-            <p>Een lichte, snelle hub voor spelers die meteen willen weten waar ze moeten zijn: APV, straffen, vacatures, support en de juiste Discord-route.</p>
+            <p>Een lichte, snelle hub voor spelers die meteen willen weten waar ze moeten zijn: regels, straffen, store en de juiste Discord-route.</p>
           </div>
         </div>
       </section>
@@ -223,7 +224,7 @@ const pages = [
             <p>Nieuwe spelers moeten niet zoeken. Deze site stuurt je direct naar de juiste plek en laat zien wat je eerst moet lezen.</p>
             <div class="quick-steps">
               <div><p>Stap 1</p><h3>Main Discord</h3></div>
-              <div><p>Stap 2</p><h3>APV lezen</h3></div>
+              <div><p>Stap 2</p><h3>Regels lezen</h3></div>
               <div><p>Stap 3</p><h3>FiveM joinen</h3></div>
             </div>
           </div>
@@ -237,16 +238,16 @@ const pages = [
         </div>
         <div class="card-grid three">
           <a class="feature-card link-card" href="regels.html">
-            <h3>APV volledig</h3>
+            <h3>Regels volledig</h3>
             <p>65 artikelen, strafcategorieen en zoekfunctie op een pagina.</p>
           </a>
           <a class="feature-card link-card" href="joinen.html">
             <h3>Start nu</h3>
             <p>De korte route voor nieuwe spelers: Discord, regels en FiveM.</p>
           </a>
-          <a class="feature-card link-card" href="vacatures.html">
-            <h3>Vacatures</h3>
-            <p>Overheid, staff en onderwereld met werkende Discord-knoppen.</p>
+          <a class="feature-card link-card" href="${storeUrl}" target="_blank" rel="noopener">
+            <h3>Store</h3>
+            <p>Ga direct naar de store. Pas de link later makkelijk aan via storeUrl.</p>
           </a>
           <a class="feature-card link-card" href="assets/documents/wetboek-van-strafrecht-amrp.pdf" target="_blank" rel="noopener">
             <h3>Wetboek PDF</h3>
@@ -256,21 +257,31 @@ const pages = [
             <h3>Serverstatus</h3>
             <p>Een nette statuspagina klaar voor live serverdata.</p>
           </a>
-          <a class="feature-card link-card" href="support.html">
-            <h3>Support</h3>
-            <p>Vragen, reports of appeals gaan via de support Discord.</p>
+          <a class="feature-card link-card" href="${discord.support}" target="_blank" rel="noopener">
+            <h3>Support Discord</h3>
+            <p>Vragen, reports of appeals gaan rechtstreeks via Discord.</p>
           </a>
         </div>
       </section>
 
       <section class="band">
         <div class="container" style="text-align: center;">
-          <p class="eyebrow">Klaar om te joinen</p>
-          <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Amsterdam staat open.</h2>
-          <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 620px; margin-left: auto; margin-right: auto;">Pak de main Discord, lees de APV en kies je route. De rest van de site helpt je snel verder.</p>
+          <p class="eyebrow">Hoe join je?</p>
+          <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Join Amsterdam Roleplay via F8.</h2>
+          <p style="font-size: 1.2rem; margin-bottom: 1.5rem; max-width: 680px; margin-left: auto; margin-right: auto;">Join eerst de Discord, start FiveM, druk op <strong>F8</strong> en plak het connect-command hieronder.</p>
+          <div style="background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 1rem; word-break: break-all; margin: 0 auto 1.5rem; max-width: 430px; cursor: pointer;" onclick="navigator.clipboard.writeText('${fivemConnectCommand}'); alert('Connect gekopieerd!');">
+            <span style="display:block; color: var(--muted); font-family: inherit; font-size: 0.78rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.35rem;">F8 connect</span>
+            <code>${fivemConnectCommand}</code>
+          </div>
+          <div class="quick-steps" style="max-width: 900px; margin: 0 auto 1.5rem;">
+            <div><p>Stap 1</p><h3>Join Discord</h3><span>Pak de main Discord voor updates, regels en community-info.</span></div>
+            <div><p>Stap 2</p><h3>Start FiveM</h3><span>Zorg dat GTA V en je microfoon werken, open FiveM en druk op F8.</span></div>
+            <div><p>Stap 3</p><h3>Connect met F8</h3><span>Plak <strong>${fivemConnectCommand}</strong> en druk op Enter.</span></div>
+          </div>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a class="button primary" href="${discord.main}" target="_blank" rel="noopener">Join main server</a>
-            <a class="button secondary" href="joinen.html">Hoe begin ik?</a>
+            <a class="button secondary" href="regels.html">Regels lezen</a>
+            <a class="button ghost" href="joinen.html">Meer join-info</a>
           </div>
         </div>
       </section>`,
@@ -383,52 +394,6 @@ const pages = [
       </section>`,
   },
   {
-    id: "vacatures",
-    file: "vacatures.html",
-    title: "Vacatures",
-    description: "Werkende vacaturepagina met Discord-links voor overheid, staff en onderwereld.",
-    eyebrow: "Vacatures",
-    heading: "Solliciteer direct via Discord.",
-    intro:
-      "Kies je route en ga meteen naar de juiste Discord. Overheid loopt via de overheidserver en staff via de staff/support sollicitatie.",
-    actions: [button("Overheid Discord", discord.overheid, "primary", true), button("Staff sollicitatie", discord.support, "secondary", true)],
-    stats: [
-      ["Overheid", "Discord join"],
-      ["Staff", "Sollicitatie"],
-      ["Onderwereld", "Aanvragen"],
-    ],
-    content: `
-      <section class="container section">
-        <div class="section-head">
-          <p class="eyebrow">Open routes</p>
-          <h2>Elke vacature heeft een werkende knop.</h2>
-        </div>
-        <div class="job-grid">
-          <article class="job-card"><span>Overheid</span><h3>Politie Amsterdam</h3><p>Handhaving, meldingen, achtervolgingen, onderzoek en proces-verbalen.</p><ul><li>APV en wetboek kennen</li><li>Rustig communiceren</li><li>Teamplay</li></ul><div class="job-actions"><a href="${discord.overheid}" target="_blank" rel="noopener">Join overheid</a><a href="${discord.overheidKanaal}" target="_blank" rel="noopener">Open kanaal</a></div></article>
-          <article class="job-card"><span>Overheid</span><h3>Ambulancezorg</h3><p>Medische roleplay met triage, behandeling, vervoer en nazorg.</p><ul><li>Geduldige RP</li><li>Scenario's uitspelen</li><li>Duidelijke porto</li></ul><div class="job-actions"><a href="${discord.overheid}" target="_blank" rel="noopener">Join overheid</a><a href="${discord.overheidKanaal}" target="_blank" rel="noopener">Open kanaal</a></div></article>
-          <article class="job-card"><span>Overheid</span><h3>Pechhulp en ANWB</h3><p>Reparaties, sleepdiensten, tuning en hulp onderweg.</p><ul><li>Actief op straat</li><li>Klantgericht</li><li>Voertuigkennis</li></ul><div class="job-actions"><a href="${discord.overheid}" target="_blank" rel="noopener">Join overheid</a><a href="${discord.overheidKanaal}" target="_blank" rel="noopener">Open kanaal</a></div></article>
-          <article class="job-card"><span>Team</span><h3>Staffteam</h3><p>Reports behandelen, bewijs beoordelen en spelers helpen.</p><ul><li>Neutraal blijven</li><li>Regels consequent toepassen</li><li>Goed kunnen uitleggen</li></ul><div class="job-actions"><a href="${discord.support}" target="_blank" rel="noopener">Staff sollicitatie</a></div></article>
-          <article class="job-card"><span>Onderwereld</span><h3>Criminele organisatie</h3><p>Bouw een groep met stijl, grenzen en scenario's die binnen de APV passen.</p><ul><li>Onderwereldregels kennen</li><li>Scenario's opbouwen</li><li>Bewijs bewaren</li></ul><div class="job-actions"><a href="${discord.onderwereld}" target="_blank" rel="noopener">Join onderwereld</a></div></article>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">Overheid</p>
-            <h2>Gebruik de overheidserver voor dienstaanvragen.</h2>
-            <p>De overheidlink en het kanaal zijn beide toegevoegd. Spelers kunnen direct naar de server of naar het opgegeven Discord-kanaal.</p>
-          </div>
-          <ol class="timeline">
-            <li><strong>1. Join de juiste Discord</strong><span>Overheid, staff, main of onderwereld.</span></li>
-            <li><strong>2. Lees APV en wetboek</strong><span>Vooral overheid moet de strafregels kennen.</span></li>
-            <li><strong>3. Dien je sollicitatie in</strong><span>Gebruik de aangewezen intake- of ticketroute.</span></li>
-            <li><strong>4. Wacht op beoordeling</strong><span>Staff of leiding neemt contact op.</span></li>
-          </ol>
-        </div>
-      </section>`,
-  },
-  {
     id: "status",
     file: "status.html",
     title: "Serverstatus",
@@ -473,49 +438,6 @@ const pages = [
       </section>`,
   },
   {
-    id: "informatie",
-    file: "informatie.html",
-    title: "Informatie",
-    description: "Informatiepagina voor Amsterdam Roleplay Easy Weapons met servers, rollen en verwachtingen.",
-    eyebrow: "Informatie",
-    heading: "Alles over de stad en routes.",
-    intro:
-      "Een overzicht voor spelers die willen weten welke servers, rollen en wetboek belangrijk zijn voor Amsterdam Roleplay.",
-    actions: [button("Join main", discord.main, "primary", true), button("Open wetboek", wetboekPdf, "secondary", true)],
-    stats: [
-      ["Routes", "Legaal en illegaal"],
-      ["Community", "Easy Weapons"],
-      ["Support", "Discord"],
-    ],
-    content: `
-      <section class="container section">
-        <div class="section-head">
-          <p class="eyebrow">Stadsoverzicht</p>
-          <h2>De kern van Amsterdam Roleplay.</h2>
-        </div>
-        <div class="info-layout">
-          <article class="feature-card wide"><h3>Burgers</h3><p>Maak een karakter met doelen, werk, relaties en plekken waar andere spelers op kunnen reageren.</p></article>
-          <article class="feature-card wide"><h3>Overheid</h3><p>Politie, ambulance en pechhulp gebruiken de overheidserver voor intake en communicatie.</p></article>
-          <article class="feature-card wide"><h3>Onderwereld</h3><p>Criminele roleplay draait om opbouw, spanning, bewijs en consequenties. De APV blijft leidend.</p></article>
-          <article class="feature-card wide"><h3>Wetboek</h3><p>APV en Wetboek van Strafrecht vormen de basis voor staff, overheid en spelers.</p></article>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">Voor je begint</p>
-            <h2>Drie dingen die elke speler moet doen.</h2>
-          </div>
-          <ol class="timeline">
-            <li><strong>Lees de APV</strong><span>Ken de basis rond RDM, VDM, FailRP, NVOL en metagame.</span></li>
-            <li><strong>Check het wetboek</strong><span>Voor overheid en scenario's zijn straffen belangrijk.</span></li>
-            <li><strong>Join de juiste Discord</strong><span>Main, support, overheid of onderwereld.</span></li>
-          </ol>
-        </div>
-      </section>`,
-  },
-  {
     id: "joinen",
     file: "joinen.html",
     title: "Joinen",
@@ -535,8 +457,8 @@ const pages = [
         <div class="container" style="text-align: center;">
           <p class="eyebrow">Snelle Connect</p>
           <p style="margin-bottom: 0.75rem; font-size: 0.9rem;">Plak in FiveM:</p>
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.4rem; padding: 0.7rem; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin: 0 auto 0.5rem; max-width: 350px; cursor: pointer;" onclick="navigator.clipboard.writeText('connect 185.229.35.13'); alert('Gekopieerd!');">
-            <code>connect 185.229.35.13</code>
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.4rem; padding: 0.7rem; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin: 0 auto 0.5rem; max-width: 350px; cursor: pointer;" onclick="navigator.clipboard.writeText('${fivemConnectCommand}'); alert('Gekopieerd!');">
+            <code>${fivemConnectCommand}</code>
           </div>
           <p style="font-size: 0.8rem; color: var(--muted);">Klik om te kopiëren</p>
         </div>
@@ -564,52 +486,6 @@ const pages = [
       </section>`,
   },
   {
-    id: "support",
-    file: "support.html",
-    title: "Support",
-    description: "Supportpagina voor Amsterdam Roleplay met tickettypes en support Discord-link.",
-    eyebrow: "Support",
-    heading: "Support loopt via Discord.",
-    intro:
-      "Gebruik de supportserver voor tickets, reports, refunds, ban appeals, bugs en staff sollicitaties.",
-    actions: [button("Join support", discord.support, "primary", true), button("APV checken", "regels.html", "secondary")],
-    stats: [
-      ["Tickets", "Support"],
-      ["Staff", "Sollicitatie"],
-      ["Bewijs", "Clips"],
-    ],
-    content: `
-      <section class="container section">
-        <div class="section-head">
-          <p class="eyebrow">Tickettypes</p>
-          <h2>Sneller geholpen met de juiste informatie.</h2>
-        </div>
-        <div class="card-grid three">
-          <article class="feature-card"><h3>Report speler</h3><p>Gebruik clips, tijdstip, betrokken spelers en korte uitleg van de situatie.</p></article>
-          <article class="feature-card"><h3>Refund</h3><p>Geef bewijs van verlies, oorzaak en exacte items of bedrag.</p></article>
-          <article class="feature-card"><h3>Ban appeal</h3><p>Leg uit wat er gebeurde, wat je begrijpt van de sanctie en waarom staff opnieuw moet kijken.</p></article>
-          <article class="feature-card"><h3>Bugmelding</h3><p>Beschrijf stappen om de bug te herhalen, locatie en screenshots.</p></article>
-          <article class="feature-card"><h3>Staff sollicitatie</h3><p>Gebruik de staff sollicitatie-link naar de supportserver.</p></article>
-          <article class="feature-card"><h3>Algemene vraag</h3><p>Voor uitleg over APV, verbinden, roleplay of communityzaken.</p></article>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">Supportflow</p>
-            <h2>Van melding naar besluit.</h2>
-          </div>
-          <ol class="timeline">
-            <li><strong>Join support Discord</strong><span>Gebruik de knop bovenaan.</span></li>
-            <li><strong>Maak het juiste ticket</strong><span>Kies report, refund, appeal, bug of sollicitatie.</span></li>
-            <li><strong>Voeg bewijs toe</strong><span>Clips en details maken beoordeling eerlijker.</span></li>
-            <li><strong>Wacht op staff</strong><span>Staff sluit af met beslissing of vervolgvraag.</span></li>
-          </ol>
-        </div>
-      </section>`,
-  },
-  {
     id: "faq",
     file: "faq.html",
     title: "FAQ",
@@ -617,11 +493,11 @@ const pages = [
     eyebrow: "FAQ",
     heading: "Veelgestelde vragen voor nieuwe spelers.",
     intro:
-      "Snel antwoord op de belangrijkste vragen over joinen, Discord, APV, vacatures, support en wetboek.",
-    actions: [button("Join main server", discord.main, "primary", true), button("APV lezen", "regels.html", "secondary")],
+      "Snel antwoord op de belangrijkste vragen over joinen, Discord, regels, support en wetboek.",
+    actions: [button("Join main server", discord.main, "primary", true), button("Regels lezen", "regels.html", "secondary")],
     stats: [
       ["Start", "Joinen + Discord"],
-      ["Lezen", "APV + wetboek"],
+      ["Lezen", "Regels + wetboek"],
       ["Hulp", "Support"],
     ],
     content: `
@@ -635,8 +511,8 @@ const pages = [
           <details><summary>Welke Discord moet ik joinen?</summary><p>Main is voor de community, Support voor tickets en staff sollicitaties, Overheid voor politie/ambulance/pechhulp en Onderwereld voor criminele routes.</p></details>
           <details><summary>Moet ik de APV lezen?</summary><p>Ja. De APV bepaalt wat wel en niet mag. Lees vooral regels over RDM, VDM, FailRP, combatloggen, wapens en overvallen.</p></details>
           <details><summary>Waar vind ik het wetboek?</summary><p>Het Wetboek van Strafrecht staat direct als PDF klaar vanaf deze site. De belangrijkste straffen staan ook op de APV-pagina.</p></details>
-          <details><summary>Hoe solliciteer ik voor overheid?</summary><p>Ga naar Vacatures en gebruik de overheidknop of het overheidkanaal. Politie, ambulance en pechhulp lopen via de overheidserver.</p></details>
-          <details><summary>Hoe solliciteer ik voor staff?</summary><p>Gebruik de staff sollicitatieknop op Vacatures of de supportserver. Zorg dat je rustig kunt uitleggen, bewijs kunt beoordelen en regels kent.</p></details>
+          <details><summary>Hoe solliciteer ik voor overheid?</summary><p>Gebruik de overheidserver via het Servers-menu. Politie, ambulance en pechhulp lopen via die Discord.</p></details>
+          <details><summary>Hoe solliciteer ik voor staff?</summary><p>Gebruik de supportserver via het Servers-menu. Zorg dat je rustig kunt uitleggen, bewijs kunt beoordelen en regels kent.</p></details>
           <details><summary>Waar maak ik een ticket?</summary><p>Tickets lopen via de supportserver. Voeg clips, tijdstip, betrokken spelers en een korte uitleg toe.</p></details>
           <details><summary>Wat doe ik als ik nieuw ben in RP?</summary><p>Begin simpel: maak een character, zoek normaal werk of interactie, lees de APV en vraag support als je iets niet begrijpt.</p></details>
         </div>
@@ -651,7 +527,7 @@ const pages = [
           <ol class="timeline">
             <li><strong>FiveM werkt</strong><span>GTA V, FiveM en microfoon zijn klaar.</span></li>
             <li><strong>Discord joined</strong><span>Main server en eventueel support/overheid/onderwereld.</span></li>
-            <li><strong>APV gelezen</strong><span>Basisregels en wapengebruik zijn duidelijk.</span></li>
+            <li><strong>Regels gelezen</strong><span>Basisregels en wapengebruik zijn duidelijk.</span></li>
             <li><strong>Character klaar</strong><span>Naam, achtergrond en doel zijn bedacht.</span></li>
           </ol>
         </div>
