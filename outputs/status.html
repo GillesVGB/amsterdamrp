@@ -43,7 +43,7 @@
           </div>
           <div class="nav-more nav-servers">
             <button type="button" aria-expanded="false">Servers</button>
-            <div class="more-menu"><a href="https://discord.gg/9W7wgZF6T4" target="_blank" rel="noopener">Main</a><a href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support</a><a href="https://discord.gg/k3NhmZdxty" target="_blank" rel="noopener">Overheid</a><a href="https://discord.gg/feCbm7nYh4" target="_blank" rel="noopener">Onderwereld</a></div>
+            <div class="more-menu"><a href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Main</a><a href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support</a><a href="https://discord.gg/k3NhmZdxty" target="_blank" rel="noopener">Overheid</a><a href="https://discord.gg/feCbm7nYh4" target="_blank" rel="noopener">Onderwereld</a></div>
           </div>
           <button class="theme-toggle" type="button" data-theme-toggle aria-label="Schakel naar zwart thema">
             <span class="theme-dot" aria-hidden="true"></span>
@@ -63,33 +63,35 @@
           <p class="eyebrow">Live status</p>
           <h1>Serverstatus</h1>
           <p class="hero-lead">Bekijk bereikbaarheid, capaciteit en connectinformatie. De serverknoppen staan overal onder Servers in de navigatie.</p>
-          <div class="hero-actions"><a class="button primary" href="https://discord.gg/9W7wgZF6T4" target="_blank" rel="noopener">Join main</a><a class="button secondary" href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support</a></div>
+          <div class="hero-actions"><a class="button primary" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Join main</a><a class="button secondary" href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support</a></div>
         </div>
       </div>
     </section>
       
-      <section class="container section status-dashboard" data-status-widget>
+      <section class="container section status-dashboard" data-status-widget data-status-api="/api/status" data-discord-invite="PPcBUGhePj" data-fivem-code="" data-fivem-endpoint="http://185.229.35.13:30120/dynamic.json">
         <div class="status-main">
           <div class="status-signal" aria-hidden="true"><span></span><span></span><span></span></div>
           <p class="eyebrow">Amsterdam Roleplay</p>
           <h2 id="serverState">Dashboard gereed voor serverdata</h2>
-          <p>Totdat een FiveM-endpoint is ingesteld toont deze pagina een duidelijke handmatige status, connectadvies en laatste update.</p>
+          <p>Live status wordt opgehaald via de FiveM server-IP en Discord invite. Als de FiveM API geen antwoord geeft, blijft de Discord data wel zichtbaar.</p>
           <div class="status-actions">
-            <a class="button primary" href="https://discord.gg/9W7wgZF6T4" target="_blank" rel="noopener">Main Discord</a>
+            <a class="button primary" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Main Discord</a>
             <a class="button secondary" href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support Discord</a>
           </div>
         </div>
         <div class="status-cards">
-          <article><span>Nu online</span><strong data-status="players">Niet gekoppeld</strong><small>koppel FiveM endpoint</small></article>
-          <article><span>Capaciteit</span><strong data-status="capacity">Niet gekoppeld</strong><small>max spelers via endpoint</small></article>
+          <article><span>FiveM online</span><strong data-status="players">Niet gekoppeld</strong><small>via server-IP</small></article>
+          <article><span>FiveM slots</span><strong data-status="capacity">Niet gekoppeld</strong><small>max spelers</small></article>
           <article><span>Bezetting</span><strong data-status="fill">-</strong><small>wordt automatisch berekend</small></article>
+          <article><span>Discord members</span><strong data-status="discordMembers">Laden...</strong><small>via main invite</small></article>
+          <article><span>Discord online</span><strong data-status="discordOnline">Laden...</strong><small>ongeveer online</small></article>
           <article><span>Laatste update</span><strong data-status="updated">-</strong><small>lokale tijd</small></article>
         </div>
       </section>
 
       <section class="container section slim">
         <div class="server-grid">
-          <a class="feature-card link-card" href="https://discord.gg/9W7wgZF6T4" target="_blank" rel="noopener"><h3>Main</h3><p>Algemene server en community.</p></a>
+          <a class="feature-card link-card" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener"><h3>Main</h3><p>Algemene server en community.</p></a>
           <a class="feature-card link-card" href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener"><h3>Support</h3><p>Tickets en staff sollicitaties.</p></a>
           <a class="feature-card link-card" href="https://discord.gg/k3NhmZdxty" target="_blank" rel="noopener"><h3>Overheid</h3><p>Politie, ambulance en pechhulp.</p></a>
           <a class="feature-card link-card" href="https://discord.gg/feCbm7nYh4" target="_blank" rel="noopener"><h3>Onderwereld</h3><p>Criminele routes en aanvragen.</p></a>
@@ -115,7 +117,7 @@
         <div class="footer-column">
           <h2>Direct</h2>
           <div class="footer-links">
-            <a href="https://discord.gg/9W7wgZF6T4" target="_blank" rel="noopener">Main server</a>
+            <a href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Main server</a>
             <a href="https://discord.gg/qjwspjT2zg" target="_blank" rel="noopener">Support server</a>
             <a href="https://discord.gg/k3NhmZdxty" target="_blank" rel="noopener">Overheid server</a>
             <a href="https://discord.gg/feCbm7nYh4" target="_blank" rel="noopener">Onderwereld server</a>

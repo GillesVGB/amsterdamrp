@@ -124,18 +124,149 @@ function initStatus() {
   const root = document.querySelector("[data-status-widget]");
   if (!root) return;
 
-  const data = window.AR_STATUS || {
+  const config = {
+    statusApi: root.dataset.statusApi || "",
+    discordInviteCode: root.dataset.discordInvite || "",
+    fivemCode: root.dataset.fivemCode || "",
+    fivemEndpoint: root.dataset.fivemEndpoint || "",
+  };
+
+  const data = {
     players: null,
     maxPlayers: null,
     state: "Live serverdata nog niet gekoppeld",
-    peakHour: "Koppel live data om piekdrukte te tonen.",
-    peakDay: "Koppel live data om dagrecords te tonen.",
+    discordMembers: null,
+    discordOnline: null,
+    discordMembersText: config.discordInviteCode ? "Laden..." : "Niet gekoppeld",
+    discordOnlineText: config.discordInviteCode ? "Laden..." : "Niet gekoppeld",
+    playersText: config.fivemCode || config.fivemEndpoint ? "Laden..." : "Niet gekoppeld",
+    capacityText: config.fivemCode || config.fivemEndpoint ? "Laden..." : "Niet gekoppeld",
+    ...(window.AR_STATUS || {}),
   };
 
   function setText(name, value) {
-    document.querySelectorAll(`[data-status="${name}"]`).forEach((el) => {
+    document.querySelectorAll('[data-status="' + name + '"]').forEach((el) => {
       el.textContent = value;
     });
+  }
+
+  function numberText(value, fallback) {
+    const number = Number(value);
+    return Number.isFinite(number) ? new Intl.NumberFormat("nl-NL").format(number) : fallback;
+  }
+
+  function getFivemUrl() {
+    if (config.fivemEndpoint) return config.fivemEndpoint;
+    if (config.fivemCode) return "https://servers-frontend.fivem.net/api/servers/single/" + encodeURIComponent(config.fivemCode);
+    return "";
+  }
+
+  async function fetchJson(url) {
+    const urls = [
+      url,
+      "https://api.allorigins.win/raw?url=" + encodeURIComponent(url),
+      "https://api.allorigins.win/get?url=" + encodeURIComponent(url),
+    ];
+    let lastError;
+
+    for (const target of urls) {
+      try {
+        const response = await fetch(target, { cache: "no-store" });
+        if (!response.ok) throw new Error("Status " + response.status);
+        const text = await response.text();
+        const json = JSON.parse(text);
+
+        if (json && typeof json.contents === "string") {
+          return JSON.parse(json.contents);
+        }
+
+        return json;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    throw lastError;
+  }
+
+  async function loadDiscordStats() {
+    if (!config.discordInviteCode) return;
+
+    try {
+      const invite = await fetchJson("https://discord.com/api/v10/invites/" + encodeURIComponent(config.discordInviteCode) + "?with_counts=true");
+      data.discordMembers = invite.approximate_member_count;
+      data.discordOnline = invite.approximate_presence_count;
+      data.discordMembersText = "Niet beschikbaar";
+      data.discordOnlineText = "Niet beschikbaar";
+    } catch {
+      data.discordMembers = null;
+      data.discordOnline = null;
+      data.discordMembersText = "Niet beschikbaar";
+      data.discordOnlineText = "Niet beschikbaar";
+    }
+  }
+
+  async function loadFivemStats() {
+    const url = getFivemUrl();
+    if (!url) return;
+
+    try {
+      const json = await fetchJson(url);
+      const server = json.Data || json;
+      const vars = server.vars || {};
+      data.players = server.clients ?? server.players?.length ?? data.players;
+      data.maxPlayers = server.sv_maxclients ?? server.maxPlayers ?? vars.sv_maxClients ?? vars.sv_maxclients ?? data.maxPlayers;
+      data.playersText = "Niet beschikbaar";
+      data.capacityText = "Niet beschikbaar";
+
+      const players = Number(data.players);
+      data.state = Number.isFinite(players) ? "FiveM server online" : "FiveM serverdata gevonden";
+    } catch {
+      data.players = null;
+      data.maxPlayers = null;
+      data.playersText = "Offline";
+      data.capacityText = "Niet gevonden";
+      data.state = "FiveM server offline of niet gevonden";
+    }
+  }
+
+  async function loadStatusApi() {
+    if (!config.statusApi || window.location.protocol === "file:") return false;
+
+    try {
+      const response = await fetch(config.statusApi, { cache: "no-store" });
+      if (!response.ok) throw new Error("Status API " + response.status);
+
+      const status = await response.json();
+      const fivem = status.fivem || {};
+      const discord = status.discord || {};
+
+      data.players = fivem.players ?? data.players;
+      data.maxPlayers = fivem.maxPlayers ?? data.maxPlayers;
+      data.discordMembers = discord.members ?? data.discordMembers;
+      data.discordOnline = discord.online ?? data.discordOnline;
+      data.playersText = "Niet beschikbaar";
+      data.capacityText = "Niet beschikbaar";
+      data.discordMembersText = "Niet beschikbaar";
+      data.discordOnlineText = "Niet beschikbaar";
+      data.state = fivem.online === false ? "FiveM server offline" : "Live serverdata actief";
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async function loadLiveData() {
+    const loadedFromApi = await loadStatusApi();
+
+    if (!loadedFromApi) {
+      await Promise.allSettled([loadDiscordStats(), loadFivemStats()]);
+    }
+
+    if (!getFivemUrl() && config.discordInviteCode) {
+      data.state = "Discord statistieken actief, FiveM nog niet gekoppeld";
+    }
+    update();
   }
 
   function update() {
@@ -146,18 +277,20 @@ function initStatus() {
     const maxPlayers = hasMaxPlayers ? Number(data.maxPlayers) : NaN;
     const hasLiveCount = Number.isFinite(players) && Number.isFinite(maxPlayers) && maxPlayers > 0;
 
-    setText("players", Number.isFinite(players) ? players : "Niet gekoppeld");
-    setText("capacity", Number.isFinite(maxPlayers) ? maxPlayers : "Niet gekoppeld");
+    setText("players", numberText(players, data.playersText || "Niet gekoppeld"));
+    setText("capacity", numberText(maxPlayers, data.capacityText || "Niet gekoppeld"));
     setText("fill", hasLiveCount ? Math.round((players / maxPlayers) * 100) + "%" : "-");
+    setText("discordMembers", numberText(data.discordMembers, data.discordMembersText || "Niet gekoppeld"));
+    setText("discordOnline", numberText(data.discordOnline, data.discordOnlineText || "Niet gekoppeld"));
     setText("updated", now.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" }));
-    setText("peakHour", data.peakHour);
-    setText("peakDay", data.peakDay);
     const state = document.querySelector("#serverState");
     if (state) state.textContent = data.state;
   }
 
   update();
+  loadLiveData();
   setInterval(update, 15000);
+  setInterval(loadLiveData, 60000);
 }
 
 initRules();
