@@ -21,7 +21,6 @@ const nav = [
   ["regels", "Regels", "regels.html"],
   ["status", "Status", "status.html"],
   ["store", "Store", storeUrl, true],
-  ["joinen", "Joinen", "joinen.html"],
 ];
 
 const extraNav = [
@@ -241,9 +240,9 @@ const pages = [
             <h3>Regels volledig</h3>
             <p>65 artikelen, strafcategorieen en zoekfunctie op een pagina.</p>
           </a>
-          <a class="feature-card link-card" href="joinen.html">
-            <h3>Start nu</h3>
-            <p>De korte route voor nieuwe spelers: Discord, regels en FiveM.</p>
+          <a class="feature-card link-card" href="${discord.main}" target="_blank" rel="noopener">
+            <h3>Join Discord</h3>
+            <p>Start via de main Discord en gebruik daarna het F8 connect-command op deze pagina.</p>
           </a>
           <a class="feature-card link-card" href="${storeUrl}" target="_blank" rel="noopener">
             <h3>Store</h3>
@@ -281,7 +280,6 @@ const pages = [
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a class="button primary" href="${discord.main}" target="_blank" rel="noopener">Join main server</a>
             <a class="button secondary" href="regels.html">Regels lezen</a>
-            <a class="button ghost" href="joinen.html">Meer join-info</a>
           </div>
         </div>
       </section>`,
@@ -434,54 +432,6 @@ const pages = [
           <a class="feature-card link-card" href="${discord.support}" target="_blank" rel="noopener"><h3>Support</h3><p>Tickets en staff sollicitaties.</p></a>
           <a class="feature-card link-card" href="${discord.overheid}" target="_blank" rel="noopener"><h3>Overheid</h3><p>Politie, ambulance en pechhulp.</p></a>
           <a class="feature-card link-card" href="${discord.onderwereld}" target="_blank" rel="noopener"><h3>Onderwereld</h3><p>Criminele routes en aanvragen.</p></a>
-        </div>
-      </section>`,
-  },
-  {
-    id: "joinen",
-    file: "joinen.html",
-    title: "Joinen",
-    description: "Startgids om Amsterdam Roleplay te joinen via FiveM en Discord.",
-    eyebrow: "Joinen",
-    heading: "Van installatie naar de server.",
-    intro:
-      "Een startpagina voor nieuwe spelers met uitleg over FiveM, APV, characterbouw en de juiste Discord-routes.",
-    actions: [button("Join main server", discord.main, "primary", true), button("APV openen", "regels.html", "secondary")],
-    stats: [
-      ["Stap 1", "Installeren"],
-      ["Stap 2", "APV lezen"],
-      ["Stap 3", "Joinen"],
-    ],
-    content: `
-      <section class="band">
-        <div class="container" style="text-align: center;">
-          <p class="eyebrow">Snelle Connect</p>
-          <p style="margin-bottom: 0.75rem; font-size: 0.9rem;">Plak in FiveM:</p>
-          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.4rem; padding: 0.7rem; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin: 0 auto 0.5rem; max-width: 350px; cursor: pointer;" onclick="navigator.clipboard.writeText('${fivemConnectCommand}'); alert('Gekopieerd!');">
-            <code>${fivemConnectCommand}</code>
-          </div>
-          <p style="font-size: 0.8rem; color: var(--muted);">Klik om te kopiëren</p>
-        </div>
-      </section>
-
-      <section class="container section">
-        <div class="section-head">
-          <p class="eyebrow">Startgids</p>
-          <h2>Begin netjes, speel sterker.</h2>
-        </div>
-        <div class="guide-list">
-          <article><span>01</span><div><h3>Installeer FiveM</h3><p>Zorg voor een werkende GTA V-installatie, FiveM-client en een stabiele microfoon.</p></div></article>
-          <article><span>02</span><div><h3>Join de main Discord</h3><p>Gebruik de serverknop om updates, regels en communityinformatie te volgen.</p></div></article>
-          <article><span>03</span><div><h3>Lees APV en wetboek</h3><p>Regels over RDM, VDM, FailRP, wapens en straffen bepalen wat kan.</p></div></article>
-          <article><span>04</span><div><h3>Maak een character</h3><p>Bedenk naam, achtergrond, doelen en gedrag voordat je grote scenario's zoekt.</p></div></article>
-        </div>
-      </section>
-
-      <section class="container section slim">
-        <div class="card-grid three">
-          <article class="feature-card"><h3>In character</h3><p>Je reageert vanuit je personage en niet vanuit wat jij als speler weet.</p></article>
-          <article class="feature-card"><h3>Value of life</h3><p>Je personage wil overleven en neemt dreiging serieus.</p></article>
-          <article class="feature-card"><h3>Easy Weapons</h3><p>Wapenbezit en gebruik hebben duidelijke gevolgen in APV en wetboek.</p></article>
         </div>
       </section>`,
   },
