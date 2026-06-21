@@ -10,7 +10,8 @@ const fivemServerPort = "30120";
 const fivemStatusEndpoint = `http://${fivemServerIp}:${fivemServerPort}/dynamic.json`;
 const fivemServerCode = "";
 const discordInviteCode = "PPcBUGhePj";
-const statusApiPath = "/api/status";
+const statusApiUrl = "https://amsterdam-roleplay-status.onrender.com/";
+const cfxJoinUrl = "https://cfx.re/join/8emey4v";
 // Wijzig deze URL later als je de echte store-link hebt.
 const storeUrl = "https://store.amsterdamroleplay.nl";
 
@@ -47,6 +48,10 @@ function button(label, href, tone = "primary", external = false) {
 
 function hero(page) {
   const actions = (page.actions || []).join("");
+  const stats = (page.stats || [])
+    .map(([label, value]) => `<div class="metric-card"><span>${label}</span><strong>${value}</strong></div>`)
+    .join("");
+  const metrics = stats ? `<div class="metric-panel hero-metrics" data-count="${page.stats.length}" aria-label="Pagina highlights">${stats}</div>` : "";
 
   return `
     <section class="page-hero ${page.heroClass || ""}">
@@ -59,6 +64,7 @@ function hero(page) {
           <p class="hero-lead">${page.intro}</p>
           <div class="hero-actions">${actions}</div>
         </div>
+        ${metrics}
       </div>
     </section>`;
 }
@@ -93,9 +99,9 @@ function pageShell(page) {
       (() => {
         try {
           const savedTheme = localStorage.getItem("ar-theme");
-          document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
         } catch {
-          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.theme = "dark";
         }
       })();
     </script>
@@ -182,19 +188,16 @@ const pages = [
     intro:
       "Een compacte hub voor regels, straffen, wetboek, store en de juiste Discord server voor elke route.",
     actions: [
-      button("Bekijk regels", "regels.html"),
-      button("Join main server", discord.main, "secondary", true),
-      button("Open wetboek", wetboekPdf, "ghost", true),
+      button("Join main server", discord.main, "primary", true),
     ],
     stats: [
       ["Regels", "65 artikelen"],
-      ["Wetboek", "13 pagina's"],
-      ["Focus", "Easy Weapons"],
+      ["Server", "Easy Weapons"],
     ],
     content: `
       <section class="band">
         <div class="container">
-          <div style="text-align: center; max-width: 760px; margin: 0 auto;">
+          <div class="center-copy">
             <p class="eyebrow">Snel starten</p>
             <h2>Alles voor Amsterdam Roleplay op een plek.</h2>
             <p>Een lichte, snelle hub voor spelers die meteen willen weten waar ze moeten zijn: regels, straffen, store en de juiste Discord-route.</p>
@@ -225,7 +228,7 @@ const pages = [
 
       <section class="band">
         <div class="container">
-          <div style="text-align: center; max-width: 760px; margin: 0 auto;">
+          <div class="center-copy">
             <p class="eyebrow">Startflow</p>
             <h2>Van Discord naar de stad.</h2>
             <p>Nieuwe spelers moeten niet zoeken. Deze site stuurt je direct naar de juiste plek en laat zien wat je eerst moet lezen.</p>
@@ -272,20 +275,20 @@ const pages = [
       </section>
 
       <section class="band">
-        <div class="container" style="text-align: center;">
+        <div class="container center-copy">
           <p class="eyebrow">Hoe join je?</p>
-          <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Join Amsterdam Roleplay via F8.</h2>
-          <p style="font-size: 1.2rem; margin-bottom: 1.5rem; max-width: 680px; margin-left: auto; margin-right: auto;">Join eerst de Discord, start FiveM, druk op <strong>F8</strong> en plak het connect-command hieronder.</p>
-          <div style="background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 1rem; word-break: break-all; margin: 0 auto 1.5rem; max-width: 430px; cursor: pointer;" onclick="navigator.clipboard.writeText('${fivemConnectCommand}'); alert('Connect gekopieerd!');">
-            <span style="display:block; color: var(--muted); font-family: inherit; font-size: 0.78rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.35rem;">F8 connect</span>
+          <h2>Join Amsterdam Roleplay via F8.</h2>
+          <p class="section-lead">Join eerst de Discord, start FiveM, druk op <strong>F8</strong> en plak het connect-command hieronder.</p>
+          <div class="connect-command" onclick="navigator.clipboard.writeText('${fivemConnectCommand}'); alert('Connect gekopieerd!');">
+            <span>F8 connect</span>
             <code>${fivemConnectCommand}</code>
           </div>
-          <div class="quick-steps" style="max-width: 900px; margin: 0 auto 1.5rem;">
+          <div class="quick-steps connect-steps">
             <div><p>Stap 1</p><h3>Join Discord</h3><span>Pak de main Discord voor updates, regels en community-info.</span></div>
             <div><p>Stap 2</p><h3>Start FiveM</h3><span>Zorg dat GTA V en je microfoon werken, open FiveM en druk op F8.</span></div>
             <div><p>Stap 3</p><h3>Connect met F8</h3><span>Plak <strong>${fivemConnectCommand}</strong> en druk op Enter.</span></div>
           </div>
-          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <div class="center-actions">
             <a class="button primary" href="${discord.main}" target="_blank" rel="noopener">Join main server</a>
             <a class="button secondary" href="regels.html">Regels lezen</a>
           </div>
@@ -301,11 +304,10 @@ const pages = [
     heading: "Algemene Plaatselijke Verordening",
     intro:
       "Alle APV-artikelen staan doorzoekbaar op deze pagina. Daaronder vind je direct wat Cat 0 t/m Cat 9 betekent.",
-    actions: [button("Open APV bron", apvUrl, "primary", true)],
+    actions: [button("Naar wetboek", "#wetboek")],
     stats: [
       ["Artikelen", "65"],
-      ["Categorieen", "0 t/m 9"],
-      ["Variabel", "Context"],
+      ["Strafcats", "Cat 0-9"],
     ],
     extraScripts: '<script src="assets/apv-rules.js"></script>',
     content: `
@@ -366,7 +368,7 @@ const pages = [
         </div>
       </section>
 
-      <section class="band">
+      <section class="band" id="wetboek">
         <div class="container">
           <a class="document-card document-link" href="${wetboekPdf}" target="_blank" rel="noopener">
             <span class="document-icon" aria-hidden="true">
@@ -397,12 +399,11 @@ const pages = [
       "Bekijk bereikbaarheid, capaciteit en connectinformatie. De serverknoppen staan overal onder Servers in de navigatie.",
     actions: [button("Join main", discord.main, "primary", true), button("Support", discord.support, "secondary", true)],
     stats: [
-      ["Status", "Dashboard"],
-      ["Update", "15 sec"],
-      ["Servers", "4 routes"],
+      ["Status", "Live"],
+      ["Update", "30 sec"],
     ],
     content: `
-      <section class="container section status-dashboard" data-status-widget data-status-api="${statusApiPath}" data-discord-invite="${discordInviteCode}" data-fivem-code="${fivemServerCode}" data-fivem-endpoint="${fivemStatusEndpoint}">
+      <section class="container section status-dashboard" data-status-widget data-status-api="${statusApiUrl}" data-discord-invite="${discordInviteCode}" data-fivem-code="${fivemServerCode}" data-fivem-endpoint="">
         <div class="status-main">
           <div class="status-signal" aria-hidden="true"><span></span><span></span><span></span></div>
           <p class="eyebrow">Amsterdam Roleplay</p>
@@ -443,8 +444,8 @@ const pages = [
       "Snel antwoord op de belangrijkste vragen over joinen, Discord, regels, support en wetboek.",
     actions: [button("Join main server", discord.main, "primary", true), button("Regels lezen", "regels.html", "secondary")],
     stats: [
-      ["Start", "Joinen + Discord"],
-      ["Lezen", "Regels + wetboek"],
+      ["Start", "Joinen"],
+      ["Lezen", "APV + Wetboek"],
       ["Hulp", "Support"],
     ],
     content: `
@@ -457,7 +458,7 @@ const pages = [
           <details open><summary>Hoe join ik Amsterdam Roleplay?</summary><p>Installeer FiveM, zorg dat GTA V werkt, join de main Discord en zoek Amsterdam Roleplay in FiveM. Gebruik de serverknop als startpunt.</p></details>
           <details><summary>Welke Discord moet ik joinen?</summary><p>Main is voor de community, Support voor tickets en staff sollicitaties, Overheid voor politie/ambulance/pechhulp en Onderwereld voor criminele routes.</p></details>
           <details><summary>Moet ik de APV lezen?</summary><p>Ja. De APV bepaalt wat wel en niet mag. Lees vooral regels over RDM, VDM, FailRP, combatloggen, wapens en overvallen.</p></details>
-          <details><summary>Waar vind ik het wetboek?</summary><p>Het Wetboek van Strafrecht staat direct als PDF klaar vanaf deze site. De belangrijkste straffen staan ook op de APV-pagina.</p></details>
+          <details><summary>Waar vind ik het wetboek?</summary><p>Het Wetboek van Strafrecht staat direct op deze site. De belangrijkste straffen staan ook op de APV-pagina.</p></details>
           <details><summary>Hoe solliciteer ik voor overheid?</summary><p>Gebruik de overheidserver via het Servers-menu. Politie, ambulance en pechhulp lopen via die Discord.</p></details>
           <details><summary>Hoe solliciteer ik voor staff?</summary><p>Gebruik de supportserver via het Servers-menu. Zorg dat je rustig kunt uitleggen, bewijs kunt beoordelen en regels kent.</p></details>
           <details><summary>Waar maak ik een ticket?</summary><p>Tickets lopen via de supportserver. Voeg clips, tijdstip, betrokken spelers en een korte uitleg toe.</p></details>
@@ -604,61 +605,78 @@ ul, ol { padding-left: 1.2rem; }
 .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 8px; background: var(--theme-toggle-bg); padding: 9px; }
 .menu-toggle span { display: block; height: 2px; margin: 5px 0; border-radius: 999px; background: var(--text); }
 
-.page-hero { position: relative; min-height: 560px; display: flex; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--banner-bg); }
+.page-hero { position: relative; min-height: 610px; display: flex; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--banner-bg); }
 .hero-bg, .hero-photo-shade { position: absolute; inset: 0; }
 .hero-bg { background-image: url("assets/banner-amsterdam-roleplay.webp"); background-size: cover; background-position: center; transform: scale(1.01); }
-.hero-photo-shade { background: linear-gradient(90deg, rgba(2, 7, 13, 0.98) 0%, rgba(2, 7, 13, 0.94) 36%, rgba(2, 7, 13, 0.62) 54%, rgba(2, 7, 13, 0.16) 78%, rgba(2, 7, 13, 0.04) 100%), linear-gradient(0deg, rgba(2, 7, 13, 0.55) 0%, rgba(2, 7, 13, 0.1) 42%, rgba(2, 7, 13, 0) 72%); }
-.hero-inner { position: relative; z-index: 1; display: block; padding: clamp(58px, 8vh, 88px) 0 104px; }
-.hero-copy-block { max-width: 680px; }
+.hero-photo-shade { background: linear-gradient(90deg, rgba(2, 7, 13, 0.98) 0%, rgba(2, 7, 13, 0.9) 38%, rgba(2, 7, 13, 0.48) 66%, rgba(2, 7, 13, 0.08) 100%), linear-gradient(0deg, rgba(2, 7, 13, 0.72) 0%, rgba(2, 7, 13, 0.12) 52%, rgba(2, 7, 13, 0) 76%); }
+.hero-inner { position: relative; z-index: 1; display: grid; align-content: start; gap: 28px; padding: clamp(76px, 9vh, 96px) 0 76px; }
+.hero-copy-block { max-width: 760px; }
 .eyebrow { color: var(--blue); font-size: 0.76rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
   .page-hero .eyebrow { color: var(--hero-eyebrow); text-shadow: 0 2px 18px rgba(0, 0, 0, 0.38); }
 h1 { margin-top: 14px; color: var(--text); font-size: clamp(2.8rem, 6.2vw, 5.8rem); line-height: 0.96; letter-spacing: 0; }
   .page-hero h1 { max-width: 720px; color: var(--hero-h1); font-size: clamp(2.65rem, 4.55vw, 4.85rem); line-height: 0.98; text-shadow: 0 14px 44px rgba(0, 0, 0, 0.55); }
   .page-hero h1 span { display: block; }
 .hero-lead { max-width: 610px; margin-top: 18px; color: rgba(255, 255, 255, 0.9); font-size: clamp(1rem, 1.55vw, 1.18rem); line-height: 1.58; text-shadow: 0 8px 30px rgba(0, 0, 0, 0.46); }
-.hero-actions { display: flex; flex-wrap: nowrap; gap: 12px; margin-top: 24px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 @media (max-width: 820px) {
   .hero-actions { flex-wrap: wrap; }
 }
-.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; padding: 13px 18px; font-weight: 900; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease; }
+.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; padding: 13px 18px; font-weight: 900; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
 .button:hover { transform: translateY(-2px); }
   .button.primary { color: var(--button-primary-text); background: linear-gradient(135deg, var(--button-primary-start), var(--gold)); box-shadow: 0 16px 42px rgba(46, 168, 201, 0.22); }
 .button.secondary { border: 1px solid var(--line); background: var(--secondary-bg); color: var(--text); }
 .button.ghost { border: 1px solid rgba(241, 186, 88, 0.62); color: var(--ghost-text); background: rgba(241, 186, 88, 0.12); }
 .page-hero .button.ghost { color: #ffe5a8; background: rgba(3, 9, 19, 0.52); border-color: rgba(241, 186, 88, 0.76); }
-.section { padding: 42px 0; }
+.section { padding: 54px 0; }
 .section.slim { padding-top: 6px; }
 .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 16px; }
+.center-copy { text-align: center; max-width: 840px; margin: 0 auto; }
+.section-lead { max-width: 700px; margin: 14px auto 0; font-size: clamp(1rem, 1.8vw, 1.18rem); }
+.center-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 h2 { margin-top: 7px; font-size: clamp(1.85rem, 3.6vw, 3.35rem); line-height: 1.04; letter-spacing: 0; }
 h3 { color: var(--text); font-size: 1.1rem; }
 p { color: var(--muted); line-height: 1.62; }
-.card-grid { display: grid; gap: 14px; }
+.card-grid { display: grid; gap: 16px; }
 .card-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .card-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .card-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.feature-card, .job-card, .law-card, .document-card, .status-cards article, .text-panel { border: 1px solid var(--line); border-radius: 8px; background: var(--card-bg); box-shadow: var(--shadow); }
-.feature-card { min-height: 162px; padding: 20px; }
+.feature-card, .job-card, .law-card, .document-card, .status-cards article, .text-panel { border: 1px solid var(--line); border-radius: 8px; background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft)); box-shadow: var(--shadow); }
+.feature-card { position: relative; overflow: hidden; min-height: 170px; padding: 24px; display: flex; flex-direction: column; align-items: flex-start; }
+.feature-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--gold)); opacity: 0.42; }
 .feature-card.wide { min-height: 128px; }
 .feature-card p, .job-card p, .law-card p { margin-top: 8px; font-size: 0.95rem; }
+.feature-card .button { margin-top: auto; }
 .link-card { display: block; transition: transform 180ms ease, border-color 180ms ease; }
 .link-card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
 .card-index { display: inline-grid; place-items: center; min-width: 42px; height: 32px; margin-bottom: 20px; border-radius: 7px; background: rgba(46, 168, 201, 0.12); color: var(--blue); font-size: 0.76rem; font-weight: 900; }
 .band { padding: 34px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(135deg, var(--band-bg) 0%, var(--band-bg) 100%); }
+.band[id] { scroll-margin-top: 96px; }
 .band:nth-of-type(even) { background: var(--bg); border-color: transparent; }
 .band h2 { color: var(--text); }
 .band p { color: var(--muted); }
 .band .container > div { max-width: 100%; margin: 0 auto; }
 .band-dark { background: var(--bg-deep); }
 .band-light { background: var(--bg); }
-.quick-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
-.quick-steps div { min-height: 86px; border: 1px solid var(--line); border-radius: 8px; padding: 16px; background: var(--card-bg-soft); box-shadow: var(--shadow); }
+.quick-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.quick-steps div { min-height: 102px; border: 1px solid var(--line); border-radius: 8px; padding: 20px; background: linear-gradient(180deg, var(--card-bg-soft), var(--metric-bg)); box-shadow: var(--shadow); }
 .quick-steps p { color: var(--muted); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; }
 .quick-steps h3 { margin-top: 8px; font-size: 1.22rem; }
+.connect-steps { max-width: 960px; margin: 22px auto 0; text-align: left; }
+.connect-command { max-width: 470px; margin: 22px auto 0; border: 1px solid var(--line-strong); border-radius: 8px; padding: 16px 18px; background: rgba(3, 9, 19, 0.42); box-shadow: var(--shadow); cursor: pointer; }
+.connect-command span { display: block; margin-bottom: 7px; color: var(--muted); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; }
+.connect-command code { color: var(--text); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: clamp(1rem, 2vw, 1.22rem); font-weight: 900; word-break: break-word; }
 .split { display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 54px; align-items: center; }
-.metric-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.metric-panel div { min-height: 118px; border: 1px solid var(--line); border-radius: 8px; padding: 20px; background: var(--metric-bg); }
-.metric-panel span { color: var(--muted); font-size: 0.76rem; font-weight: 900; text-transform: uppercase; }
-.metric-panel strong { display: block; margin-top: 12px; font-size: 1.2rem; }
+.metric-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 12px; }
+.metric-panel div { min-height: 104px; border: 1px solid var(--line); border-radius: 8px; padding: 18px; background: linear-gradient(180deg, var(--card-bg), var(--metric-bg)); box-shadow: var(--shadow); }
+.metric-panel span { color: var(--muted); font-size: 0.76rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; }
+.metric-panel strong { display: block; margin-top: 12px; color: var(--text); font-size: clamp(1.18rem, 2vw, 1.72rem); line-height: 1.08; overflow-wrap: anywhere; }
+.hero-metrics { width: min(760px, 100%); }
+.hero-metrics[data-count="2"] { width: min(520px, 100%); }
+.hero-metrics[data-count="1"] { width: min(260px, 100%); }
+.hero-metrics div { position: relative; overflow: hidden; min-height: 104px; padding: 18px 20px; backdrop-filter: blur(16px); background: linear-gradient(160deg, rgba(17, 26, 31, 0.9), rgba(3, 9, 19, 0.72)); border-color: rgba(241, 186, 88, 0.34); box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28); }
+.hero-metrics div::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, var(--cyan), var(--gold)); opacity: 0.8; }
+.hero-metrics span { color: #b8cbe0; }
+.hero-metrics strong { color: #ffffff; font-size: clamp(1.28rem, 2.1vw, 1.78rem); line-height: 1.08; }
 
 .server-grid, .law-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .law-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -822,9 +840,12 @@ p { color: var(--muted); line-height: 1.62; }
   .page-hero { min-height: 560px; }
   .hero-bg { background-position: 0% center; transform: scale(1.06); }
   .hero-photo-shade { background: linear-gradient(90deg, rgba(2, 7, 13, 0.97) 0%, rgba(2, 7, 13, 0.9) 62%, rgba(2, 7, 13, 0.34) 100%), linear-gradient(0deg, rgba(2, 7, 13, 0.55) 0%, rgba(2, 7, 13, 0.08) 42%, rgba(2, 7, 13, 0) 72%); }
-  .hero-inner { padding: 40px 0 78px; }
+  .hero-inner { gap: 20px; padding: 40px 0 48px; }
   h1, .page-hero h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
   .hero-lead { font-size: 0.98rem; line-height: 1.55; }
+  .hero-metrics { gap: 12px; }
+  .hero-metrics div { min-height: 86px; padding: 16px 18px; }
+  .hero-metrics strong { font-size: clamp(1.2rem, 6vw, 1.55rem); }
   .card-grid.two, .card-grid.three, .card-grid.four, .job-grid, .server-grid, .law-grid, .status-cards, .info-layout, .sanction-table, .metric-panel, .quick-steps { grid-template-columns: 1fr; }
   .section { padding: 34px 0; }
   .section.slim { padding-top: 4px; }
@@ -1077,28 +1098,35 @@ function initStatus() {
 
   async function loadStatusApi() {
     if (!config.statusApi || window.location.protocol === "file:") return false;
+    const urls = [config.statusApi];
 
-    try {
-      const response = await fetch(config.statusApi, { cache: "no-store" });
-      if (!response.ok) throw new Error("Status API " + response.status);
-
-      const status = await response.json();
-      const fivem = status.fivem || {};
-      const discord = status.discord || {};
-
-      data.players = fivem.players ?? data.players;
-      data.maxPlayers = fivem.maxPlayers ?? data.maxPlayers;
-      data.discordMembers = discord.members ?? data.discordMembers;
-      data.discordOnline = discord.online ?? data.discordOnline;
-      data.playersText = "Niet beschikbaar";
-      data.capacityText = "Niet beschikbaar";
-      data.discordMembersText = "Niet beschikbaar";
-      data.discordOnlineText = "Niet beschikbaar";
-      data.state = fivem.online === false ? "FiveM server offline" : "Live serverdata actief";
-      return true;
-    } catch {
-      return false;
+    if (config.statusApi !== "/api/status") {
+      urls.push("/api/status");
     }
+
+    for (const url of urls) {
+      try {
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) throw new Error("Status API " + response.status);
+
+        const status = await response.json();
+        const fivem = status.fivem || {};
+        const discord = status.discord || {};
+
+        data.players = fivem.players ?? status.players ?? data.players;
+        data.maxPlayers = fivem.maxPlayers ?? status.maxPlayers ?? data.maxPlayers;
+        data.discordMembers = discord.members ?? data.discordMembers;
+        data.discordOnline = discord.online ?? data.discordOnline;
+        data.playersText = "Niet beschikbaar";
+        data.capacityText = "Niet beschikbaar";
+        data.discordMembersText = "Niet beschikbaar";
+        data.discordOnlineText = "Niet beschikbaar";
+        data.state = (fivem.online ?? status.online) === false ? "FiveM server offline" : "Live serverdata actief";
+        return true;
+      } catch {}
+    }
+
+    return false;
   }
 
   async function loadLiveData() {

@@ -12,9 +12,9 @@
       (() => {
         try {
           const savedTheme = localStorage.getItem("ar-theme");
-          document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
         } catch {
-          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.theme = "dark";
         }
       })();
     </script>
@@ -63,7 +63,23 @@
           <p class="eyebrow">Easy Weapons Amsterdam</p>
           <h1>Amsterdam Roleplay</h1>
           <p class="hero-lead">Een compacte hub voor regels, straffen, wetboek, store en de juiste Discord server voor elke route.</p>
-          <div class="hero-actions"><a class="button primary" href="regels.html">Bekijk regels</a><a class="button secondary" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Join main server</a><a class="button ghost" href="assets/documents/wetboek-van-strafrecht-amrp.pdf" target="_blank" rel="noopener">Open wetboek</a></div>
+          <div class="hero-actions"><a class="button primary" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Join main server</a></div>
+        </div>
+        <div class="metric-panel hero-metrics" data-count="2"><div><span>Regels</span><strong>65 artikelen</strong></div><div><span>Server</span><strong>Easy Weapons</strong></div></div>
+      </div>
+    </section>
+
+    <section class="live-status-band" data-status-widget data-status-api="https://amsterdam-roleplay-status.onrender.com/" data-discord-invite="PPcBUGhePj" data-fivem-code="" data-fivem-endpoint="">
+      <div class="container live-status-inner">
+        <span class="status-pulse-dot" data-status-signal aria-hidden="true"></span>
+        <div class="live-status-copy">
+          <p class="eyebrow">Live server</p>
+          <p class="live-status-text"><span data-status="stateCompact">Gegevens laden...</span> - <strong data-status="playersCompact">-</strong> spelers</p>
+        </div>
+        <span class="status-badge" data-status="badge">Laden</span>
+        <div class="live-status-actions">
+          <a class="button primary" data-status-join href="https://cfx.re/join/8emey4v" target="_blank" rel="noopener">Speel nu</a>
+          <a class="button secondary" href="status.html">Bekijk status</a>
         </div>
       </div>
     </section>
@@ -147,21 +163,23 @@
         </div>
       </section>
 
-      <section class="band">
-        <div class="container" style="text-align: center;">
+      <section class="band connect-band">
+        <div class="container connect-band-inner">
           <p class="eyebrow">Hoe join je?</p>
-          <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Join Amsterdam Roleplay via F8.</h2>
-          <p style="font-size: 1.2rem; margin-bottom: 1.5rem; max-width: 680px; margin-left: auto; margin-right: auto;">Join eerst de Discord, start FiveM, druk op <strong>F8</strong> en plak het connect-command hieronder.</p>
-          <div style="background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 1rem; word-break: break-all; margin: 0 auto 1.5rem; max-width: 430px; cursor: pointer;" onclick="navigator.clipboard.writeText('connect 185.229.35.13'); alert('Connect gekopieerd!');">
-            <span style="display:block; color: var(--muted); font-family: inherit; font-size: 0.78rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.35rem;">F8 connect</span>
-            <code>connect 185.229.35.13</code>
-          </div>
-          <div class="quick-steps" style="max-width: 900px; margin: 0 auto 1.5rem;">
+          <h2>Join Amsterdam Roleplay via F8.</h2>
+          <p class="connect-lead">Join eerst de Discord, start FiveM, druk op <strong>F8</strong> en plak het connect-command hieronder.</p>
+
+    <div class="connect-block" data-connect-copy="connect 185.229.35.13" tabindex="0" role="button" aria-label="Kopieer F8 connect command">
+      <span class="connect-label">F8 connect</span>
+      <code>connect 185.229.35.13</code>
+      <span class="connect-hint">Klik om te kopieren</span>
+    </div>
+          <div class="quick-steps connect-steps">
             <div><p>Stap 1</p><h3>Join Discord</h3><span>Pak de main Discord voor updates, regels en community-info.</span></div>
             <div><p>Stap 2</p><h3>Start FiveM</h3><span>Zorg dat GTA V en je microfoon werken, open FiveM en druk op F8.</span></div>
             <div><p>Stap 3</p><h3>Connect met F8</h3><span>Plak <strong>connect 185.229.35.13</strong> en druk op Enter.</span></div>
           </div>
-          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <div class="connect-actions">
             <a class="button primary" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Join main server</a>
             <a class="button secondary" href="regels.html">Regels lezen</a>
           </div>

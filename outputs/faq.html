@@ -12,9 +12,9 @@
       (() => {
         try {
           const savedTheme = localStorage.getItem("ar-theme");
-          document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
         } catch {
-          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.theme = "dark";
         }
       })();
     </script>
@@ -65,9 +65,11 @@
           <p class="hero-lead">Snel antwoord op de belangrijkste vragen over joinen, Discord, regels, support en wetboek.</p>
           <div class="hero-actions"><a class="button primary" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Join main server</a><a class="button secondary" href="regels.html">Regels lezen</a></div>
         </div>
+        <div class="metric-panel hero-metrics" data-count="3"><div><span>Start</span><strong>Joinen</strong></div><div><span>Lezen</span><strong>APV + Wetboek</strong></div><div><span>Hulp</span><strong>Support</strong></div></div>
       </div>
     </section>
       
+
       <section class="container section">
         <div class="section-head">
           <p class="eyebrow">Nieuwe spelers</p>
@@ -77,7 +79,7 @@
           <details open><summary>Hoe join ik Amsterdam Roleplay?</summary><p>Installeer FiveM, zorg dat GTA V werkt, join de main Discord en zoek Amsterdam Roleplay in FiveM. Gebruik de serverknop als startpunt.</p></details>
           <details><summary>Welke Discord moet ik joinen?</summary><p>Main is voor de community, Support voor tickets en staff sollicitaties, Overheid voor politie/ambulance/pechhulp en Onderwereld voor criminele routes.</p></details>
           <details><summary>Moet ik de APV lezen?</summary><p>Ja. De APV bepaalt wat wel en niet mag. Lees vooral regels over RDM, VDM, FailRP, combatloggen, wapens en overvallen.</p></details>
-          <details><summary>Waar vind ik het wetboek?</summary><p>Het Wetboek van Strafrecht staat direct als PDF klaar vanaf deze site. De belangrijkste straffen staan ook op de APV-pagina.</p></details>
+          <details><summary>Waar vind ik het wetboek?</summary><p>Het Wetboek van Strafrecht staat direct op deze site. De belangrijkste straffen staan ook op de APV-pagina.</p></details>
           <details><summary>Hoe solliciteer ik voor overheid?</summary><p>Gebruik de overheidserver via het Servers-menu. Politie, ambulance en pechhulp lopen via die Discord.</p></details>
           <details><summary>Hoe solliciteer ik voor staff?</summary><p>Gebruik de supportserver via het Servers-menu. Zorg dat je rustig kunt uitleggen, bewijs kunt beoordelen en regels kent.</p></details>
           <details><summary>Waar maak ik een ticket?</summary><p>Tickets lopen via de supportserver. Voeg clips, tijdstip, betrokken spelers en een korte uitleg toe.</p></details>

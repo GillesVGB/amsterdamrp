@@ -12,9 +12,9 @@
       (() => {
         try {
           const savedTheme = localStorage.getItem("ar-theme");
-          document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
         } catch {
-          document.documentElement.dataset.theme = "light";
+          document.documentElement.dataset.theme = "dark";
         }
       })();
     </script>
@@ -63,11 +63,13 @@
           <p class="eyebrow">APV en straffen</p>
           <h1>Algemene Plaatselijke Verordening</h1>
           <p class="hero-lead">Alle APV-artikelen staan doorzoekbaar op deze pagina. Daaronder vind je direct wat Cat 0 t/m Cat 9 betekent.</p>
-          <div class="hero-actions"><a class="button primary" href="https://apv-amsterdamroleplay.onrender.com/" target="_blank" rel="noopener">Open APV bron</a></div>
+          <div class="hero-actions"><a class="button primary" href="#wetboek">Naar wetboek</a></div>
         </div>
+        <div class="metric-panel hero-metrics" data-count="2"><div><span>Artikelen</span><strong>65</strong></div><div><span>Strafcats</span><strong>Cat 0-9</strong></div></div>
       </div>
     </section>
       
+
       <section class="container section">
         <div class="rules-toolbar">
           <label class="search-box">
@@ -125,7 +127,7 @@
         </div>
       </section>
 
-      <section class="band">
+      <section class="band" id="wetboek">
         <div class="container">
           <a class="document-card document-link" href="assets/documents/wetboek-van-strafrecht-amrp.pdf" target="_blank" rel="noopener">
             <span class="document-icon" aria-hidden="true">
