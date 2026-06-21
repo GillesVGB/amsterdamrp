@@ -10,7 +10,7 @@ const fivemServerPort = "30120";
 const fivemStatusEndpoint = `http://${fivemServerIp}:${fivemServerPort}/dynamic.json`;
 const fivemServerCode = "";
 const discordInviteCode = "PPcBUGhePj";
-const statusApiUrl = "/api/status";
+const statusApiUrl = "https://amsterdam-roleplay-status.onrender.com/";
 const cfxJoinUrl = "https://cfx.re/join/8emey4v";
 // Wijzig deze URL later als je de echte store-link hebt.
 const storeUrl = "https://store.amsterdamroleplay.nl";
@@ -1284,11 +1284,7 @@ function initStatus() {
 
   async function loadStatusApi() {
     if (!config.statusApi || window.location.protocol === "file:") return false;
-    const urls = [];
-
-    if (!/^https?:\/\//i.test(config.statusApi) || canUseExternalStatus()) {
-      urls.push(config.statusApi);
-    }
+    const urls = [config.statusApi];
 
     if (config.statusApi !== "/api/status") {
       urls.push("/api/status");

@@ -416,11 +416,7 @@ function initStatus() {
 
   async function loadStatusApi() {
     if (!config.statusApi) return false;
-    const urls = [];
-
-    if (!isExternalApi(config.statusApi) || canUseExternalStatus()) {
-      urls.push(config.statusApi);
-    }
+    const urls = [config.statusApi];
 
     if (config.statusApi !== "/api/status" && window.location.protocol !== "file:") {
       urls.push("/api/status");
