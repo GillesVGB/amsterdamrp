@@ -10,7 +10,7 @@ const fivemServerPort = "30120";
 const fivemStatusEndpoint = `http://${fivemServerIp}:${fivemServerPort}/dynamic.json`;
 const fivemServerCode = "";
 const discordInviteCode = "PPcBUGhePj";
-const statusApiUrl = "https://amsterdam-roleplay-status.onrender.com/";
+const statusApiUrl = "/api/status";
 const cfxJoinUrl = "https://cfx.re/join/8emey4v";
 // Wijzig deze URL later als je de echte store-link hebt.
 const storeUrl = "https://store.amsterdamroleplay.nl";
@@ -41,9 +41,49 @@ const serverLinks = [
   ["Onderwereld", discord.onderwereld],
 ];
 
+const legalLinks = [
+  ["privacy", "Privacybeleid", "privacy.html"],
+  ["cookies", "Cookiebeleid", "cookies.html"],
+];
+
 function button(label, href, tone = "primary", external = false) {
   const target = external ? ' target="_blank" rel="noopener"' : "";
   return `<a class="button ${tone}" href="${href}"${target}>${label}</a>`;
+}
+
+function cookieConsentMarkup() {
+  return `
+    <section class="cookie-banner" data-cookie-banner hidden aria-label="Cookie melding">
+      <div class="cookie-banner-inner">
+        <div>
+          <h2>Cookies en live status</h2>
+          <p>We bewaren alleen noodzakelijke voorkeuren. Met jouw toestemming laden we ook externe live serverstatus van Amsterdam Roleplay.</p>
+        </div>
+        <div class="cookie-actions">
+          <button class="cookie-button" type="button" data-cookie-choice="necessary">Alleen nodig</button>
+          <button class="cookie-button" type="button" data-cookie-settings>Instellingen</button>
+          <button class="cookie-button primary" type="button" data-cookie-choice="all">Alles accepteren</button>
+        </div>
+      </div>
+    </section>
+    <section class="cookie-modal" data-cookie-modal hidden aria-label="Cookie instellingen">
+      <div class="cookie-modal-panel">
+        <h2>Cookie instellingen</h2>
+        <p>Noodzakelijke opslag is nodig voor je thema en cookievoorkeur. Externe live status is optioneel.</p>
+        <div class="cookie-option">
+          <label><input type="checkbox" checked disabled /> Noodzakelijk</label>
+          <p>Onthoudt je thema, cookiekeuze en basis sitevoorkeuren.</p>
+        </div>
+        <div class="cookie-option">
+          <label><input type="checkbox" data-cookie-live-status /> Live serverstatus</label>
+          <p>Laadt optioneel live serverstatus. Zonder toestemming gebruiken we waar mogelijk de eigen server-fallback.</p>
+        </div>
+        <div class="cookie-modal-actions">
+          <button class="cookie-button" type="button" data-cookie-close>Sluiten</button>
+          <button class="cookie-button primary" type="button" data-cookie-save>Opslaan</button>
+        </div>
+      </div>
+    </section>`;
 }
 
 function hero(page) {
@@ -81,6 +121,9 @@ function pageShell(page) {
     .join("");
   const footerLinks = [...nav, ...extraNav]
     .map(([id, label, href, external]) => `<a data-page-link="${id}" href="${href}"${external ? ' target="_blank" rel="noopener"' : ""}>${label}</a>`)
+    .join("");
+  const legalFooterLinks = legalLinks
+    .map(([id, label, href]) => `<a data-page-link="${id}" href="${href}">${label}</a>`)
     .join("");
 
   const documentTitle = page.title === "Amsterdam Roleplay" ? page.title : `${page.title} | Amsterdam Roleplay`;
@@ -169,8 +212,13 @@ function pageShell(page) {
             <a href="${discord.onderwereld}" target="_blank" rel="noopener">Onderwereld server</a>
           </div>
         </div>
+        <div class="footer-column">
+          <h2>Informatie</h2>
+          <div class="footer-links">${legalFooterLinks}<button class="footer-link-button" type="button" data-cookie-settings>Cookiekeuze</button></div>
+        </div>
       </div>
     </footer>
+    ${cookieConsentMarkup()}
     ${page.extraScripts || ""}
     <script src="script.js"></script>
   </body>
@@ -481,6 +529,46 @@ const pages = [
         </div>
       </section>`,
   },
+  {
+    id: "privacy",
+    file: "privacy.html",
+    title: "Privacybeleid",
+    description: "Privacybeleid voor de Amsterdam Roleplay communityhub.",
+    eyebrow: "Privacy",
+    heading: "Privacybeleid",
+    intro:
+      "Hier lees je welke gegevens deze communityhub verwerkt en welke externe diensten gebruikt kunnen worden.",
+    actions: [button("Cookiebeleid", "cookies.html")],
+    content: `
+      <section class="container section">
+        <div class="card-grid two">
+          <article class="text-panel"><h3>Over deze site</h3><p>Amsterdam Roleplay is een communityhub met regels, status, wetboek, store en Discord-routes voor spelers.</p></article>
+          <article class="text-panel"><h3>Welke gegevens?</h3><p>Deze site vraagt geen accountgegevens en bevat geen eigen registratieformulier. Je browser kan wel je thema en cookievoorkeur opslaan in localStorage.</p></article>
+          <article class="text-panel"><h3>Externe links</h3><p>Discord, de store en Cfx.re zijn externe diensten. Als je daarop klikt, gelden ook hun eigen voorwaarden en privacyregels.</p></article>
+          <article class="text-panel"><h3>Serverstatus</h3><p>Voor live status kan de site servergegevens ophalen. Zonder toestemming gebruikt de site waar mogelijk de eigen fallback.</p></article>
+          <article class="text-panel"><h3>Vragen</h3><p>Voor privacyvragen kun je via de supportserver contact zoeken met het Amsterdam Roleplay-team.</p></article>
+        </div>
+      </section>`,
+  },
+  {
+    id: "cookies",
+    file: "cookies.html",
+    title: "Cookiebeleid",
+    description: "Cookiebeleid en cookie-instellingen voor Amsterdam Roleplay.",
+    eyebrow: "Cookies",
+    heading: "Cookiebeleid",
+    intro:
+      "Deze site gebruikt minimale opslag voor voorkeuren en optioneel externe live status.",
+    actions: ['<button class="button primary" type="button" data-cookie-settings>Cookie instellingen</button>', button("Privacybeleid", "privacy.html", "secondary")],
+    content: `
+      <section class="container section">
+        <div class="card-grid three">
+          <article class="feature-card"><h3>Noodzakelijk</h3><p>We gebruiken localStorage voor thema, cookievoorkeur en basisinteractie. Dit is nodig om de site prettig te laten werken.</p></article>
+          <article class="feature-card"><h3>Live serverstatus</h3><p>Met toestemming mag de site live serverstatus ophalen. Zonder toestemming blijft de basisstatus via de eigen server werken.</p></article>
+          <article class="feature-card"><h3>Geen advertentiecookies</h3><p>Deze hub plaatst geen advertentiecookies en gebruikt geen tracking voor marketing.</p></article>
+        </div>
+      </section>`,
+  },
 ];
 
 for (const page of pages) {
@@ -621,7 +709,7 @@ h1 { margin-top: 14px; color: var(--text); font-size: clamp(2.8rem, 6.2vw, 5.8re
 @media (max-width: 820px) {
   .hero-actions { flex-wrap: wrap; }
 }
-.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; padding: 13px 18px; font-weight: 900; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 8px; padding: 13px 18px; font: inherit; font-weight: 900; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
 .button:hover { transform: translateY(-2px); }
   .button.primary { color: var(--button-primary-text); background: linear-gradient(135deg, var(--button-primary-start), var(--gold)); box-shadow: 0 16px 42px rgba(46, 168, 201, 0.22); }
 .button.secondary { border: 1px solid var(--line); background: var(--secondary-bg); color: var(--text); }
@@ -809,13 +897,32 @@ p { color: var(--muted); line-height: 1.62; }
 .sanction-table span { color: var(--muted); }
 .text-panel { padding: 24px; }
 
+.cookie-banner, .cookie-modal { position: fixed; z-index: 140; }
+.cookie-banner[hidden], .cookie-modal[hidden] { display: none; }
+.cookie-banner { left: 50%; bottom: 18px; width: min(960px, calc(100% - 28px)); transform: translateX(-50%); border: 1px solid var(--line-strong); border-radius: 12px; padding: 16px; background: rgba(9, 17, 25, 0.94); box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42); backdrop-filter: blur(18px); }
+.cookie-banner-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; }
+.cookie-banner h2, .cookie-modal h2 { margin: 0; color: #ffffff; font-size: 1.05rem; line-height: 1.2; }
+.cookie-banner p, .cookie-modal p { margin-top: 6px; color: rgba(245, 249, 255, 0.78); font-size: 0.92rem; line-height: 1.55; }
+.cookie-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.cookie-button { min-height: 42px; border: 1px solid var(--line); border-radius: 8px; padding: 10px 13px; color: var(--text); background: var(--secondary-bg); font: inherit; font-weight: 900; cursor: pointer; }
+.cookie-button.primary { color: var(--button-primary-text); border-color: transparent; background: linear-gradient(135deg, var(--button-primary-start), var(--gold)); }
+.cookie-button:hover { border-color: var(--line-strong); transform: translateY(-1px); }
+.cookie-modal { inset: 0; display: grid; place-items: center; padding: 18px; background: rgba(2, 7, 13, 0.62); }
+.cookie-modal-panel { width: min(560px, 100%); border: 1px solid var(--line-strong); border-radius: 12px; padding: 20px; background: var(--panel); box-shadow: var(--shadow); }
+.cookie-modal h2, .cookie-modal p { color: var(--text); }
+.cookie-modal p { color: var(--muted); }
+.cookie-option { display: grid; gap: 6px; margin-top: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: var(--card-bg-soft); }
+.cookie-option label { display: flex; gap: 10px; align-items: center; color: var(--text); font-weight: 900; }
+.cookie-option input { width: 18px; height: 18px; accent-color: var(--cyan); }
+.cookie-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+
 .footer { border-top: 1px solid var(--line); background: var(--card-bg-soft); }
-.footer-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 0.8fr); gap: 34px; padding: 48px 0; }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 0.85fr); gap: 28px; padding: 48px 0; }
 .footer p { margin-top: 16px; max-width: 440px; font-size: 0.92rem; }
 .footer-column h2 { margin: 0 0 16px; font-size: 0.88rem; color: var(--soft); text-transform: uppercase; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
-.footer-links a { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; color: var(--muted); font-size: 0.88rem; font-weight: 800; }
-.footer-links a:hover, .footer-links a.is-active { color: var(--text); border-color: var(--line-strong); background: rgba(46, 168, 201, 0.08); }
+.footer-links a, .footer-link-button { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; color: var(--muted); background: transparent; font: inherit; font-size: 0.88rem; font-weight: 800; cursor: pointer; }
+.footer-links a:hover, .footer-links a.is-active, .footer-link-button:hover { color: var(--text); border-color: var(--line-strong); background: rgba(46, 168, 201, 0.08); }
 
 @media (max-width: 1040px) {
   .nav-links { position: absolute; inset: 78px 16px auto 16px; display: none; flex-direction: column; align-items: stretch; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--menu-bg); box-shadow: var(--shadow); }
@@ -846,6 +953,9 @@ p { color: var(--muted); line-height: 1.62; }
   .hero-metrics { gap: 12px; }
   .hero-metrics div { min-height: 86px; padding: 16px 18px; }
   .hero-metrics strong { font-size: clamp(1.2rem, 6vw, 1.55rem); }
+  .cookie-banner-inner { grid-template-columns: 1fr; }
+  .cookie-actions, .cookie-modal-actions { justify-content: stretch; }
+  .cookie-button { width: 100%; }
   .card-grid.two, .card-grid.three, .card-grid.four, .job-grid, .server-grid, .law-grid, .status-cards, .info-layout, .sanction-table, .metric-panel, .quick-steps { grid-template-columns: 1fr; }
   .section { padding: 34px 0; }
   .section.slim { padding-top: 4px; }
@@ -986,6 +1096,82 @@ function initRules() {
   render();
 }
 
+const COOKIE_CONSENT_KEY = "ar-cookie-consent";
+
+function getCookieConsent() {
+  try {
+    const saved = localStorage.getItem(COOKIE_CONSENT_KEY);
+    return saved ? JSON.parse(saved) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveCookieConsent(consent) {
+  const nextConsent = {
+    necessary: true,
+    liveStatus: Boolean(consent.liveStatus),
+    savedAt: new Date().toISOString(),
+  };
+
+  try {
+    localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(nextConsent));
+  } catch {}
+
+  window.dispatchEvent(new CustomEvent("ar-cookie-consent-change", { detail: nextConsent }));
+}
+
+function canUseExternalStatus() {
+  return getCookieConsent()?.liveStatus === true;
+}
+
+function initCookieConsent() {
+  const banner = document.querySelector("[data-cookie-banner]");
+  const modal = document.querySelector("[data-cookie-modal]");
+  const liveStatusToggle = document.querySelector("[data-cookie-live-status]");
+
+  function openModal() {
+    const consent = getCookieConsent();
+    if (liveStatusToggle) liveStatusToggle.checked = consent?.liveStatus !== false;
+    modal?.removeAttribute("hidden");
+  }
+
+  function closeModal() {
+    modal?.setAttribute("hidden", "");
+  }
+
+  function hideBanner() {
+    banner?.setAttribute("hidden", "");
+  }
+
+  if (!getCookieConsent()) {
+    banner?.removeAttribute("hidden");
+  }
+
+  document.querySelectorAll("[data-cookie-settings]").forEach((button) => {
+    button.addEventListener("click", openModal);
+  });
+
+  document.querySelectorAll("[data-cookie-close]").forEach((button) => {
+    button.addEventListener("click", closeModal);
+  });
+
+  document.querySelectorAll("[data-cookie-choice]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const choice = button.dataset.cookieChoice;
+      saveCookieConsent({ liveStatus: choice === "all" });
+      hideBanner();
+      closeModal();
+    });
+  });
+
+  document.querySelector("[data-cookie-save]")?.addEventListener("click", () => {
+    saveCookieConsent({ liveStatus: liveStatusToggle?.checked === true });
+    hideBanner();
+    closeModal();
+  });
+}
+
 function initStatus() {
   const root = document.querySelector("[data-status-widget]");
   if (!root) return;
@@ -1098,7 +1284,11 @@ function initStatus() {
 
   async function loadStatusApi() {
     if (!config.statusApi || window.location.protocol === "file:") return false;
-    const urls = [config.statusApi];
+    const urls = [];
+
+    if (!/^https?:\/\//i.test(config.statusApi) || canUseExternalStatus()) {
+      urls.push(config.statusApi);
+    }
 
     if (config.statusApi !== "/api/status") {
       urls.push("/api/status");
@@ -1167,6 +1357,7 @@ function initStatus() {
 }
 
 initRules();
+initCookieConsent();
 initStatus();
 `,
   "utf8"

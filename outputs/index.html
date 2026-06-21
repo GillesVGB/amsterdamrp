@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section class="live-status-band" data-status-widget data-status-api="https://amsterdam-roleplay-status.onrender.com/" data-discord-invite="PPcBUGhePj" data-fivem-code="" data-fivem-endpoint="">
+    <section class="live-status-band" data-status-widget data-status-api="/api/status" data-discord-invite="PPcBUGhePj" data-fivem-code="" data-fivem-endpoint="">
       <div class="container live-status-inner">
         <span class="status-pulse-dot" data-status-signal aria-hidden="true"></span>
         <div class="live-status-copy">
@@ -211,8 +211,47 @@
             <a href="https://discord.gg/feCbm7nYh4" target="_blank" rel="noopener">Onderwereld server</a>
           </div>
         </div>
+        <div class="footer-column">
+          <h2>Informatie</h2>
+          <div class="footer-links">
+            <a data-page-link="privacy" href="privacy.html">Privacybeleid</a>
+            <a data-page-link="cookies" href="cookies.html">Cookiebeleid</a>
+            <button class="footer-link-button" type="button" data-cookie-settings>Cookiekeuze</button>
+          </div>
+        </div>
       </div>
     </footer>
+    <section class="cookie-banner" data-cookie-banner hidden aria-label="Cookie melding">
+      <div class="cookie-banner-inner">
+        <div>
+          <h2>Cookies en live status</h2>
+          <p>We bewaren alleen noodzakelijke voorkeuren. Met jouw toestemming laden we ook externe live serverstatus van Amsterdam Roleplay.</p>
+        </div>
+        <div class="cookie-actions">
+          <button class="cookie-button" type="button" data-cookie-choice="necessary">Alleen nodig</button>
+          <button class="cookie-button" type="button" data-cookie-settings>Instellingen</button>
+          <button class="cookie-button primary" type="button" data-cookie-choice="all">Alles accepteren</button>
+        </div>
+      </div>
+    </section>
+    <section class="cookie-modal" data-cookie-modal hidden aria-label="Cookie instellingen">
+      <div class="cookie-modal-panel">
+        <h2>Cookie instellingen</h2>
+        <p>Noodzakelijke opslag is nodig voor je thema en cookievoorkeur. Externe live status is optioneel.</p>
+        <div class="cookie-option">
+          <label><input type="checkbox" checked disabled /> Noodzakelijk</label>
+          <p>Onthoudt je thema, cookiekeuze en basis sitevoorkeuren.</p>
+        </div>
+        <div class="cookie-option">
+          <label><input type="checkbox" data-cookie-live-status /> Live serverstatus</label>
+          <p>Laadt optioneel live serverstatus. Zonder toestemming gebruiken we waar mogelijk de eigen server-fallback.</p>
+        </div>
+        <div class="cookie-modal-actions">
+          <button class="cookie-button" type="button" data-cookie-close>Sluiten</button>
+          <button class="cookie-button primary" type="button" data-cookie-save>Opslaan</button>
+        </div>
+      </div>
+    </section>
     
     <script src="script.js"></script>
   </body>

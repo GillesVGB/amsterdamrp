@@ -153,6 +153,82 @@ function initConnectCopy() {
   });
 }
 
+const COOKIE_CONSENT_KEY = "ar-cookie-consent";
+
+function getCookieConsent() {
+  try {
+    const saved = localStorage.getItem(COOKIE_CONSENT_KEY);
+    return saved ? JSON.parse(saved) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveCookieConsent(consent) {
+  const nextConsent = {
+    necessary: true,
+    liveStatus: Boolean(consent.liveStatus),
+    savedAt: new Date().toISOString(),
+  };
+
+  try {
+    localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(nextConsent));
+  } catch {}
+
+  window.dispatchEvent(new CustomEvent("ar-cookie-consent-change", { detail: nextConsent }));
+}
+
+function canUseExternalStatus() {
+  return getCookieConsent()?.liveStatus === true;
+}
+
+function initCookieConsent() {
+  const banner = document.querySelector("[data-cookie-banner]");
+  const modal = document.querySelector("[data-cookie-modal]");
+  const liveStatusToggle = document.querySelector("[data-cookie-live-status]");
+
+  function openModal() {
+    const consent = getCookieConsent();
+    if (liveStatusToggle) liveStatusToggle.checked = consent?.liveStatus !== false;
+    modal?.removeAttribute("hidden");
+  }
+
+  function closeModal() {
+    modal?.setAttribute("hidden", "");
+  }
+
+  function hideBanner() {
+    banner?.setAttribute("hidden", "");
+  }
+
+  if (!getCookieConsent()) {
+    banner?.removeAttribute("hidden");
+  }
+
+  document.querySelectorAll("[data-cookie-settings]").forEach((button) => {
+    button.addEventListener("click", openModal);
+  });
+
+  document.querySelectorAll("[data-cookie-close]").forEach((button) => {
+    button.addEventListener("click", closeModal);
+  });
+
+  document.querySelectorAll("[data-cookie-choice]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const choice = button.dataset.cookieChoice;
+      saveCookieConsent({ liveStatus: choice === "all" });
+      hideBanner();
+      closeModal();
+    });
+  });
+
+  document.querySelector("[data-cookie-save]")?.addEventListener("click", () => {
+    saveCookieConsent({ liveStatus: liveStatusToggle?.checked === true });
+    hideBanner();
+    closeModal();
+  });
+}
+
 function initStatus() {
   const widgets = [...document.querySelectorAll("[data-status-widget]")];
   if (!widgets.length) return;
@@ -340,7 +416,11 @@ function initStatus() {
 
   async function loadStatusApi() {
     if (!config.statusApi) return false;
-    const urls = [config.statusApi];
+    const urls = [];
+
+    if (!isExternalApi(config.statusApi) || canUseExternalStatus()) {
+      urls.push(config.statusApi);
+    }
 
     if (config.statusApi !== "/api/status" && window.location.protocol !== "file:") {
       urls.push("/api/status");
@@ -446,8 +526,10 @@ function initStatus() {
   update();
   loadLiveData();
   setInterval(loadLiveData, 30000);
+  window.addEventListener("ar-cookie-consent-change", loadLiveData);
 }
 
 initRules();
 initConnectCopy();
+initCookieConsent();
 initStatus();
