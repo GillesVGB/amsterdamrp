@@ -473,10 +473,6 @@ function initStatus() {
       await loadFivemStats();
     }
 
-    if (!getFivemUrl() && config.discordInviteCode && data.online !== true) {
-      data.online = data.online === false ? false : null;
-    }
-
     data.loading = false;
     update();
   }
