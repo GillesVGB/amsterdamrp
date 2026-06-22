@@ -92,6 +92,15 @@ function initRules() {
     });
 
     count.textContent = rules.length === 1 ? "1 APV-regel" : rules.length + " APV-regels";
+
+    if (!rules.length) {
+      list.innerHTML = `<div class="rule-empty">
+        <strong>Geen regels gevonden</strong>
+        <p>Probeer een andere zoekterm of kies opnieuw Alles.</p>
+      </div>`;
+      return;
+    }
+
     list.innerHTML = rules
       .map(
         (rule) => `<details class="rule-card cat${rule.category}">
@@ -250,6 +259,9 @@ function initStatus() {
     state: "Gegevens laden...",
     discordMembers: null,
     discordOnline: null,
+    queue: null,
+    maintenance: false,
+    maintenanceText: "",
     ...(window.AR_STATUS || {}),
   };
 
@@ -331,6 +343,9 @@ function initStatus() {
       data.hostname = fivem.hostname ?? data.hostname;
       data.discordMembers = discord.members ?? data.discordMembers;
       data.discordOnline = discord.online ?? data.discordOnline;
+      data.queue = fivem.queue ?? status.queue ?? data.queue;
+      data.maintenance = status.maintenance ?? fivem.maintenance ?? data.maintenance;
+      data.maintenanceText = status.maintenanceText ?? status.maintenanceMessage ?? fivem.maintenanceText ?? data.maintenanceText;
       if (fivem.online === true || fivem.online === false) data.online = fivem.online;
       return true;
     }
@@ -344,6 +359,9 @@ function initStatus() {
       data.players = status.players ?? data.players;
       data.maxPlayers = status.maxPlayers ?? data.maxPlayers;
       data.hostname = status.serverName ?? status.hostname ?? data.hostname;
+      data.queue = status.queue ?? status.queueSize ?? status.playersQueue ?? data.queue;
+      data.maintenance = status.maintenance ?? status.maintenanceMode ?? data.maintenance;
+      data.maintenanceText = status.maintenanceText ?? status.maintenanceMessage ?? status.message ?? data.maintenanceText;
       data.online = status.online === true || status.status === "online";
       if (status.online === false || status.status === "offline") data.online = false;
       if (status.join) data.joinUrl = status.join;
@@ -383,6 +401,11 @@ function initStatus() {
 
   async function loadDiscordStats() {
     if (!config.discordInviteCode) return;
+    if (!canUseExternalStatus()) {
+      data.discordMembers = null;
+      data.discordOnline = null;
+      return;
+    }
 
     try {
       const invite = await fetchJson("https://discord.com/api/v10/invites/" + encodeURIComponent(config.discordInviteCode) + "?with_counts=true");
@@ -462,13 +485,19 @@ function initStatus() {
     const now = new Date();
     const players = Number(data.players);
     const maxPlayers = Number(data.maxPlayers);
+    const queue = Number(data.queue);
     const hasLiveCount = Number.isFinite(players) && Number.isFinite(maxPlayers) && maxPlayers > 0;
     const fillPercent = hasLiveCount ? Math.round((players / maxPlayers) * 100) : 0;
+    const maintenanceActive = data.maintenance === true || data.maintenance === "true" || data.maintenance === "active";
 
     if (data.loading) {
       data.state = "Gegevens laden...";
       setVisualState("loading");
       setBadge("Laden", "loading");
+    } else if (maintenanceActive) {
+      data.state = "Onderhoud actief";
+      setVisualState("loading");
+      setBadge("Onderhoud", "loading");
     } else if (data.online === true && hasLiveCount) {
       data.state = "Server online - " + numberText(players, "?") + "/" + numberText(maxPlayers, "?") + " spelers";
       setVisualState("online");
@@ -491,8 +520,11 @@ function initStatus() {
     setText("playersCompact", numberText(players, data.online === false ? "0" : "-"));
     setText("capacity", numberText(maxPlayers, "-"));
     setText("fill", hasLiveCount ? fillPercent + "%" : "-");
-    setText("discordMembers", numberText(data.discordMembers, "Niet beschikbaar"));
-    setText("discordOnline", numberText(data.discordOnline, "Niet beschikbaar"));
+    setText("queue", Number.isFinite(queue) && queue > 0 ? numberText(queue, "-") : "Geen wachtrij");
+    setText("maintenance", maintenanceActive ? "Actief" : "Geen");
+    setText("maintenanceText", maintenanceActive ? data.maintenanceText || "Er is een onderhoudsmelding actief." : "Geen melding actief");
+    setText("discordMembers", canUseExternalStatus() ? numberText(data.discordMembers, "Niet beschikbaar") : "Cookiekeuze nodig");
+    setText("discordOnline", canUseExternalStatus() ? numberText(data.discordOnline, "Niet beschikbaar") : "Cookiekeuze nodig");
     setText("updated", now.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
     setText("hostname", data.hostname || (data.online === false ? "Server niet bereikbaar" : "Servernaam verschijnt zodra de server online is."));
     setText("stateCompact", data.loading ? "Laden..." : data.online === true ? "Online" : data.online === false ? "Offline" : "Status onbekend");
@@ -511,6 +543,10 @@ function initStatus() {
       }
       el.dataset.level = hasLiveCount ? (fillPercent >= 85 ? "high" : fillPercent >= 55 ? "mid" : "low") : "";
       el.dataset.state = data.loading ? "loading" : data.online === true ? "online" : data.online === false ? "offline" : "loading";
+    });
+
+    document.querySelectorAll(".status-card-maintenance").forEach((el) => {
+      el.dataset.maintenance = maintenanceActive ? "active" : "none";
     });
 
     updateJoinLinks();

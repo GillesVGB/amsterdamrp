@@ -39,7 +39,7 @@
           <a data-page-link="home" href="index.html">Home</a><a data-page-link="regels" href="regels.html">Regels</a><a data-page-link="status" href="status.html">Status</a><a data-page-link="store" href="https://store.amsterdamroleplay.nl" target="_blank" rel="noopener">Store</a>
           <div class="nav-more">
             <button type="button" aria-expanded="false">Meer</button>
-            <div class="more-menu"><a data-page-link="faq" href="faq.html">FAQ</a></div>
+            <div class="more-menu"><a data-page-link="faq" href="faq.html">FAQ</a><a data-page-link="changelog" href="changelog.html">Changelog</a></div>
           </div>
           <div class="nav-more nav-servers">
             <button type="button" aria-expanded="false">Servers</button>
@@ -70,7 +70,7 @@
     </section>
       
 
-      <section class="container section status-dashboard" data-status-widget data-status-api="https://amsterdam-roleplay-status.onrender.com/" data-discord-invite="PPcBUGhePj" data-fivem-code="" data-fivem-endpoint="">
+      <section class="container section status-dashboard" data-status-widget data-status-api="/api/status" data-discord-invite="PPcBUGhePj" data-fivem-code="" data-fivem-endpoint="">
         <div class="status-main">
           <div class="status-signal" data-status-signal aria-hidden="true"><span></span><span></span><span></span></div>
           <div class="status-capacity-ring" data-status-capacity-ring aria-hidden="true">
@@ -87,7 +87,7 @@
           <p class="eyebrow">Amsterdam Roleplay</p>
           <h2 id="serverState">Gegevens laden...</h2>
           <p class="status-hostname" data-status="hostname">Servernaam verschijnt zodra de server online is.</p>
-          <p class="status-live-note">Live data via <strong>amsterdam-roleplay-status</strong> - ververst elke 30 seconden</p>
+          <p class="status-live-note">Live data via de beveiligde statuskoppeling - ververst elke 30 seconden</p>
           <div class="status-actions">
             <a class="button primary" data-status-join href="https://cfx.re/join/8emey4v" target="_blank" rel="noopener">Direct joinen</a>
             <a class="button secondary" href="https://discord.gg/PPcBUGhePj" target="_blank" rel="noopener">Discord</a>
@@ -113,6 +113,18 @@
             <strong data-status="fill">-</strong>
             <div class="fill-bar" aria-hidden="true"><div class="fill-bar-track"><div class="fill-bar-fill" data-status="fillBar"></div></div></div>
             <small>capaciteit in gebruik</small>
+          </article>
+          <article>
+            <svg class="status-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h10M7 12h10M7 17h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 5h.01M4 12h.01M4 19h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            <span>Wachtrij</span>
+            <strong data-status="queue">-</strong>
+            <small>spelers in queue</small>
+          </article>
+          <article class="status-card-maintenance">
+            <svg class="status-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5 5L4 17v3h3l5.7-5.7a4 4 0 0 0 5-5l-2.5 2.5-3-3 2.5-2.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <span>Onderhoud</span>
+            <strong data-status="maintenance">Geen</strong>
+            <small data-status="maintenanceText">Geen melding actief</small>
           </article>
           <article>
             <svg class="status-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10a4 4 0 1 1 8 0v1.5c0 .8.2 1.6.6 2.3L18 16H6l1.4-2.2c.4-.7.6-1.5.6-2.3V10Z" stroke="currentColor" stroke-width="2"/><path d="M10 19h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -178,7 +190,7 @@
         </div>
         <div class="footer-column">
           <h2>Pagina's</h2>
-          <div class="footer-links"><a data-page-link="home" href="index.html">Home</a><a data-page-link="regels" href="regels.html">Regels</a><a data-page-link="status" href="status.html">Status</a><a data-page-link="store" href="https://store.amsterdamroleplay.nl" target="_blank" rel="noopener">Store</a><a data-page-link="faq" href="faq.html">FAQ</a></div>
+          <div class="footer-links"><a data-page-link="home" href="index.html">Home</a><a data-page-link="regels" href="regels.html">Regels</a><a data-page-link="status" href="status.html">Status</a><a data-page-link="store" href="https://store.amsterdamroleplay.nl" target="_blank" rel="noopener">Store</a><a data-page-link="faq" href="faq.html">FAQ</a><a data-page-link="changelog" href="changelog.html">Changelog</a></div>
         </div>
         <div class="footer-column">
           <h2>Direct</h2>
@@ -203,7 +215,7 @@
       <div class="cookie-banner-inner">
         <div>
           <h2>Cookies en live status</h2>
-          <p>We bewaren alleen noodzakelijke voorkeuren. Met jouw toestemming laden we ook externe live serverstatus van Amsterdam Roleplay.</p>
+          <p>We bewaren alleen noodzakelijke voorkeuren. Met jouw toestemming tonen we ook live server- en Discordstatus.</p>
         </div>
         <div class="cookie-actions">
           <button class="cookie-button" type="button" data-cookie-choice="necessary">Alleen nodig</button>
@@ -215,14 +227,14 @@
     <section class="cookie-modal" data-cookie-modal hidden aria-label="Cookie instellingen">
       <div class="cookie-modal-panel">
         <h2>Cookie instellingen</h2>
-        <p>Noodzakelijke opslag is nodig voor je thema en cookievoorkeur. Externe live status is optioneel.</p>
+        <p>Noodzakelijke opslag is nodig voor je thema en cookievoorkeur. Live status is optioneel.</p>
         <div class="cookie-option">
           <label><input type="checkbox" checked disabled /> Noodzakelijk</label>
           <p>Onthoudt je thema, cookiekeuze en basis sitevoorkeuren.</p>
         </div>
         <div class="cookie-option">
           <label><input type="checkbox" data-cookie-live-status /> Live serverstatus</label>
-          <p>Laadt optioneel live serverstatus. Zonder toestemming gebruiken we waar mogelijk de eigen server-fallback.</p>
+          <p>Toont optioneel live spelersaantallen en Discordstatus via de site.</p>
         </div>
         <div class="cookie-modal-actions">
           <button class="cookie-button" type="button" data-cookie-close>Sluiten</button>
