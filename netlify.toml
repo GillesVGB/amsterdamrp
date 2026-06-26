@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "outputs"
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/apv"
+  to = "/regels.html"
+  status = 301
+
+[[redirects]]
+  from = "/status"
+  to = "/status.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
