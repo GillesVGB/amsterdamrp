@@ -4,6 +4,11 @@
   publish = "outputs"
 
 [[redirects]]
+  from = "/api/status"
+  to = "/.netlify/functions/status"
+  status = 200
+
+[[redirects]]
   from = "/home"
   to = "/"
   status = 301
