@@ -488,3 +488,182 @@ p { color: var(--muted); line-height: 1.62; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* Amsterdam cyan refresh */
+:root {
+  --bg: #f3fbff;
+  --bg-deep: #dff5ff;
+  --panel: #ffffff;
+  --panel-2: #eaf8ff;
+  --text: #061827;
+  --muted: #5d7485;
+  --soft: #173a55;
+  --blue: #287dff;
+  --cyan: #56d9ff;
+  --gold: #9eeaff;
+  --line: rgba(31, 126, 171, 0.16);
+  --line-strong: rgba(86, 217, 255, 0.5);
+  --shadow: 0 24px 70px rgba(18, 91, 138, 0.15);
+  --body-glow: rgba(86, 217, 255, 0.34);
+  --button-primary-start: #56d9ff;
+  --button-primary-text: #03131f;
+  --header-bg: rgba(246, 252, 255, 0.78);
+  --nav-hover-bg: rgba(86, 217, 255, 0.13);
+  --card-bg: rgba(255, 255, 255, 0.84);
+  --card-bg-soft: rgba(255, 255, 255, 0.72);
+  --panel-glass: rgba(255, 255, 255, 0.72);
+  --metric-bg: rgba(220, 246, 255, 0.72);
+  --secondary-bg: rgba(86, 217, 255, 0.09);
+  --band-bg: rgba(86, 217, 255, 0.07);
+}
+
+:root[data-theme="dark"] {
+  --bg: #041019;
+  --bg-deep: #07131d;
+  --panel: #0b1d2b;
+  --panel-2: #0f283a;
+  --text: #eef9fd;
+  --muted: #a8c7d8;
+  --soft: #d9f4ff;
+  --blue: #2d8cff;
+  --cyan: #5ad8ff;
+  --gold: #8eeaff;
+  --line: rgba(126, 221, 255, 0.18);
+  --line-strong: rgba(126, 221, 255, 0.48);
+  --shadow: 0 26px 90px rgba(0, 0, 0, 0.36);
+  --body-glow: rgba(90, 216, 255, 0.16);
+  --header-bg: rgba(3, 12, 20, 0.78);
+  --nav-hover-bg: rgba(90, 216, 255, 0.12);
+  --card-bg: rgba(10, 29, 43, 0.82);
+  --card-bg-soft: rgba(9, 29, 44, 0.74);
+  --panel-glass: rgba(9, 29, 44, 0.78);
+  --metric-bg: rgba(4, 16, 25, 0.42);
+  --secondary-bg: rgba(126, 221, 255, 0.075);
+  --band-bg: rgba(90, 216, 255, 0.045);
+}
+
+body {
+  background:
+    radial-gradient(circle at 18% -8%, rgba(90, 216, 255, 0.22), transparent 30%),
+    radial-gradient(circle at 88% 12%, rgba(45, 140, 255, 0.17), transparent 28%),
+    linear-gradient(180deg, var(--bg-deep), var(--bg) 42%, var(--body-end));
+}
+
+.site-header {
+  border-bottom-color: var(--line);
+  box-shadow: 0 12px 44px rgba(0, 0, 0, 0.08);
+}
+
+.nav-links a,
+.nav-more > button,
+.theme-toggle,
+.footer-links a,
+.footer-link-button,
+.button,
+.cookie-button,
+.job-actions a,
+.job-card > a,
+.connect-block {
+  border-radius: 999px;
+}
+
+.nav-links a.is-active,
+.nav-links a:hover,
+.nav-more > button:hover,
+.theme-toggle:hover {
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.nav-servers > button,
+.button.primary,
+.cookie-button.primary,
+.release-tag {
+  background: linear-gradient(135deg, var(--cyan), #bff2ff 45%, var(--blue));
+  border-color: rgba(126, 221, 255, 0.44);
+  color: #03131f;
+}
+
+.page-hero {
+  min-height: 570px;
+}
+
+.hero-photo-shade {
+  background:
+    radial-gradient(circle at 22% 20%, rgba(90, 216, 255, 0.22), transparent 30%),
+    linear-gradient(90deg, rgba(2, 10, 18, 0.98) 0%, rgba(2, 10, 18, 0.88) 40%, rgba(2, 10, 18, 0.44) 70%, rgba(2, 10, 18, 0.08) 100%),
+    linear-gradient(0deg, rgba(2, 10, 18, 0.76) 0%, rgba(2, 10, 18, 0.12) 56%, transparent 78%);
+}
+
+.feature-card,
+.job-card,
+.law-card,
+.document-card,
+.status-cards article,
+.text-panel,
+.quick-steps div,
+.metric-panel div,
+.faq-list details,
+.rule-card,
+.release-card,
+.category-scroll,
+.rules-toolbar,
+.cookie-modal-panel,
+.cookie-option,
+.status-main,
+.guide-list article,
+.sanction-table div {
+  border-radius: 18px;
+  border-color: var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.feature-card,
+.job-card,
+.law-card,
+.document-card,
+.status-cards article,
+.text-panel,
+.quick-steps div,
+.metric-panel div {
+  background: linear-gradient(145deg, var(--card-bg), var(--card-bg-soft));
+}
+
+.feature-card:hover,
+.job-card:hover,
+.law-card:hover,
+.document-card:hover,
+.status-cards article:hover,
+.release-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 24px 64px rgba(45, 140, 255, 0.16);
+}
+
+.card-index,
+.category-table th,
+.rules-toolbar,
+.status-card-featured {
+  background: linear-gradient(135deg, rgba(90, 216, 255, 0.16), rgba(45, 140, 255, 0.08));
+}
+
+.hero-metrics div::before,
+.status-cards article::before,
+.release-card::before {
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+}
+
+.live-status-band {
+  background: linear-gradient(90deg, rgba(90, 216, 255, 0.16), rgba(45, 140, 255, 0.08));
+}
+
+.status-main {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(90, 216, 255, 0.24), transparent 35%),
+    linear-gradient(135deg, rgba(90, 216, 255, 0.12), rgba(45, 140, 255, 0.08));
+}
+
+.search-box input,
+input,
+select,
+textarea {
+  border-radius: 14px;
+}
