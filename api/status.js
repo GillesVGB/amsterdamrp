@@ -5,6 +5,10 @@ const DISCORD_GUILD_ID =
   process.env.STATUS_DISCORD_GUILD_ID ||
   process.env.MAIN_DISCORD_GUILD_ID ||
   "1521182073967083610";
+const DISCORD_INVITE_CODE =
+  process.env.STATUS_DISCORD_INVITE_CODE ||
+  process.env.MAIN_DISCORD_INVITE_CODE ||
+  "2WTS4vg8Mr";
 const DISCORD_BOT_TOKEN = cleanToken(
   process.env.STATUS_DISCORD_BOT_TOKEN ||
     process.env.MAIN_DISCORD_BOT_TOKEN ||
@@ -101,12 +105,37 @@ async function getDiscordStatusWithWidget() {
   };
 }
 
+async function getDiscordStatusWithInvite() {
+  if (!DISCORD_INVITE_CODE) return null;
+
+  const invite = await fetchJson(
+    `https://discord.com/api/v10/invites/${encodeURIComponent(DISCORD_INVITE_CODE)}?with_counts=true`,
+    6000
+  );
+
+  return {
+    id: invite.guild?.id || DISCORD_GUILD_ID,
+    name: invite.guild?.name || "Amsterdam Roleplay",
+    members: numberOrNull(invite.approximate_member_count),
+    online: numberOrNull(invite.approximate_presence_count),
+    invite: DISCORD_INVITE_CODE,
+    source: "invite",
+  };
+}
+
 async function getDiscordStatus() {
   try {
     const status = await getDiscordStatusWithBot();
     if (status) return status;
   } catch {
     // Fall back to the public widget if the bot lacks access or counts fail.
+  }
+
+  try {
+    const status = await getDiscordStatusWithInvite();
+    if (status) return status;
+  } catch {
+    // Invite counts can be unavailable if Discord rate-limits or the invite is invalid.
   }
 
   try {
