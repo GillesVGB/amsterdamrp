@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section class="live-status-band" data-status-widget data-status-api="/api/status" data-discord-invite="" data-fivem-code="" data-fivem-endpoint="">
+    <section class="live-status-band" data-status-widget data-status-api="/api/status" data-discord-invite="amsterdamrp" data-fivem-code="" data-fivem-endpoint="">
       <div class="container live-status-inner">
         <span class="status-pulse-dot" data-status-signal aria-hidden="true"></span>
         <div class="live-status-copy">
@@ -83,6 +83,43 @@
         </div>
       </div>
     </section>
+
+      <section class="container section home-live-dashboard" aria-label="Live Amsterdam Roleplay dashboard">
+        <div class="home-live-head">
+          <div>
+            <p class="eyebrow">Command center</p>
+            <h2>Live overzicht voor je joint.</h2>
+          </div>
+          <a class="button secondary" href="status.html">Open volledige status</a>
+        </div>
+        <div class="home-live-grid">
+          <article class="home-live-card home-live-card-main">
+            <span>Serverstatus</span>
+            <strong data-status="stateCompact">Laden...</strong>
+            <small><b data-status="playersCompact">-</b> spelers online</small>
+          </article>
+          <article class="home-live-card">
+            <span>Slots</span>
+            <strong data-status="capacity">-</strong>
+            <small>FiveM capaciteit</small>
+          </article>
+          <article class="home-live-card">
+            <span>Wachtrij</span>
+            <strong data-status="queue">-</strong>
+            <small>spelers in queue</small>
+          </article>
+          <article class="home-live-card">
+            <span>Discord online</span>
+            <strong data-status="discordOnline">Laden...</strong>
+            <small>nu actief</small>
+          </article>
+          <article class="home-live-card">
+            <span>Onderhoud</span>
+            <strong data-status="maintenance">Geen</strong>
+            <small data-status="maintenanceText">Geen melding actief</small>
+          </article>
+        </div>
+      </section>
       
       <section class="band home-command-band">
         <div class="container">
@@ -180,6 +217,55 @@
             <h3>Support Discord</h3>
             <p>Vragen, reports of appeals gaan rechtstreeks via Discord.</p>
           </a>
+        </div>
+      </section>
+
+      <section class="container section">
+        <div class="section-head">
+          <p class="eyebrow">Updates</p>
+          <h2>Nieuw en handig op Amsterdam RP.</h2>
+        </div>
+        <div class="card-grid three">
+          <a class="feature-card link-card update-card" href="status.html">
+            <span>Status</span>
+            <h3>Live servermonitor</h3>
+            <p>Spelers, slots, wachtrij, onderhoud en Discord-tellingen staan nu overzichtelijk bij elkaar.</p>
+          </a>
+          <a class="feature-card link-card update-card" href="https://staff.amsterdamrp.store/staff/" target="_blank" rel="noopener">
+            <span>Staff</span>
+            <h3>Staff portaal</h3>
+            <p>Staffleden, dossiers, profielen en interne tools zijn bereikbaar via het staff portaal.</p>
+          </a>
+          <a class="feature-card link-card update-card" href="https://overheid.amsterdamrp.store/overheid/" target="_blank" rel="noopener">
+            <span>Overheid</span>
+            <h3>Overheid dashboard</h3>
+            <p>Politie, toetsen, certificaten en VOG-aanvragen staan centraal in het overheid portaal.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="band home-faq-band">
+        <div class="container home-faq-grid">
+          <div>
+            <p class="eyebrow">Nieuwe spelers</p>
+            <h2>Veelgestelde vragen zonder zoeken.</h2>
+            <p>De belangrijkste startvragen staan hier kort. Voor alles wat uitgebreider is, staat de volledige FAQ klaar.</p>
+            <a class="button secondary" href="faq.html">Bekijk alle vragen</a>
+          </div>
+          <div class="home-mini-faq">
+            <details open>
+              <summary>Hoe join ik de server?</summary>
+              <p>Join de Discord, lees de regels en gebruik daarna <strong>connect 185.229.35.13</strong> in FiveM via F8.</p>
+            </details>
+            <details>
+              <summary>Waar vind ik overheid en staff?</summary>
+              <p>Gebruik het Portalen-menu bovenaan of open direct het overheid portaal, staff portaal of de staffregels.</p>
+            </details>
+            <details>
+              <summary>Waar zie ik storingen?</summary>
+              <p>Op de statuspagina zie je live of de server online is, hoeveel spelers er zijn en of er onderhoud actief is.</p>
+            </details>
+          </div>
         </div>
       </section>
 
