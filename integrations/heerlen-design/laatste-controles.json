@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "Geen horizontale overflow op 1440, 768, 390 en 320 px",
+    "Mobiele onderwerpkeuze sluit het menu en filtert de artikelen",
+    "Originele React-app is byte voor byte ongewijzigd",
+    "Professionele servermelding blijft na verversen; toekomstige beheermeldingen blijven intact",
+    "Login gebruikt hetzelfde Discord-lijnicoon als het communityblok",
+    "Geen JavaScript-fouten of schrijfacties naar externe APIs"
+  ],
+  "errors": [],
+  "blockedWrites": [],
+  "overflow": []
+}

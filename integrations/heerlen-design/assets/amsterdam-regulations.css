@@ -1,0 +1,440 @@
+/* Scoped Heerlen regulations layout; original Amsterdam styles remain intact. */
+#amrp-regulations{--bg:var(--amrp-bg);--sidebar:var(--amrp-sidebar);--surface:var(--amrp-surface);--surface-hover:var(--amrp-wash);--border:var(--amrp-border);--text:var(--amrp-text);--muted:var(--amrp-muted);--quiet:var(--amrp-quiet);--blue:var(--amrp-blue);--blue-strong:#2482ff;--blue-wash:var(--amrp-wash);--input:var(--amrp-surface);--hero:var(--amrp-wash);--green:#62cba4}
+#amrp-regulations *{box-sizing:border-box}
+#amrp-regulations{scroll-behavior:smooth;scroll-padding-top:100px}
+#amrp-regulations{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',Arial,sans-serif;font-size:14px;line-height:1.55}
+#amrp-regulations button,#amrp-regulations input,#amrp-regulations select{font:inherit}
+#amrp-regulations button,#amrp-regulations a,#amrp-regulations summary,#amrp-regulations select{-webkit-tap-highlight-color:transparent}
+#amrp-regulations button,#amrp-regulations a{color:inherit}
+#amrp-regulations button{cursor:pointer}
+#amrp-regulations a{text-decoration:none}
+#amrp-regulations button{background:none;border:0}
+#amrp-regulations button:disabled{cursor:default;opacity:.5}
+#amrp-regulations svg{width:20px;height:20px;display:block;flex-shrink:0;stroke-width:1.7}
+#amrp-regulations span[data-icon]{display:inline-flex;flex-shrink:0}
+#amrp-regulations h1,#amrp-regulations h2,#amrp-regulations h3,#amrp-regulations p{margin:0}
+#amrp-regulations h1,#amrp-regulations h2,#amrp-regulations h3{font-family:'Manrope',Arial,sans-serif}
+#amrp-regulations a:focus-visible,#amrp-regulations button:focus-visible,#amrp-regulations summary:focus-visible,#amrp-regulations input:focus-visible,#amrp-regulations select:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+#amrp-regulations button:hover,#amrp-regulations a:hover{transition:background .18s,color .18s}
+#amrp-regulations ::selection{background:#297ade66}
+#amrp-regulations [hidden]{display:none!important}
+#amrp-regulations .skip-link{position:fixed;left:20px;top:-80px;z-index:99;padding:12px 20px;border-radius:8px;background:var(--blue-strong);color:white}
+#amrp-regulations .skip-link:focus{top:10px}
+#amrp-regulations .sidebar{width:254px;height:100dvh;position:fixed;inset:0 auto 0 0;background:var(--sidebar);border-right:1px solid var(--border);padding:31px 19px 18px;display:flex;flex-direction:column;z-index:30;overflow:auto}
+#amrp-regulations .brand{display:flex;align-items:center;gap:10px;padding-left:7px;margin-bottom:39px}
+#amrp-regulations .brand img{object-fit:cover;mix-blend-mode:screen;width:54px;height:54px;flex-shrink:0}
+#amrp-regulations .brand>span{font-family:'Manrope',Arial,sans-serif;font-size:19px;letter-spacing:2.2px;font-weight:800;line-height:1.25}
+#amrp-regulations .brand small{display:block;font-family:'DM Sans',Arial,sans-serif;font-weight:500;font-size:10px;letter-spacing:5.2px;margin-top:3px}
+#amrp-regulations .sidebar-label{font-size:10px;font-weight:650;letter-spacing:1.65px;color:var(--quiet);margin:0 11px 13px;display:flex;align-items:center;gap:12px}
+#amrp-regulations .label-line{height:1px;flex:1;background:var(--border)}
+#amrp-regulations .primary-nav{display:grid;gap:5px}
+#amrp-regulations .nav-item{display:flex;align-items:center;gap:12px;padding:12px 13px;color:var(--muted);font-size:13px;font-weight:500;border-radius:7px;min-height:44px}
+#amrp-regulations .nav-item svg{width:18px;height:18px}
+#amrp-regulations .nav-item:hover{background:var(--surface-hover);color:var(--text)}
+#amrp-regulations .nav-item.active{background:var(--blue-wash);color:var(--blue);box-shadow:inset 3px 0 var(--blue)}
+#amrp-regulations .nav-count{margin-left:auto;font-size:10px;padding:1px 6px;min-width:22px;text-align:center;border-radius:4px;background:#7e92b418;color:var(--quiet)}
+#amrp-regulations .active .nav-count{background:#3a8fff20;color:var(--blue)}
+#amrp-regulations .topic-label{margin-top:32px}
+#amrp-regulations .topic-nav{display:grid;gap:4px}
+#amrp-regulations .topic-nav a{padding:9px 12px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px;border-radius:6px;min-height:38px}
+#amrp-regulations .topic-nav a:hover,#amrp-regulations .topic-nav a.active{color:var(--text);background:var(--surface-hover)}
+#amrp-regulations .topic-dot{height:5px;width:5px;border-radius:50%;background:var(--quiet)}
+#amrp-regulations .topic-nav .active .topic-dot{background:var(--blue)}
+#amrp-regulations .topic-number{margin-left:auto;color:var(--quiet);font-size:10px}
+#amrp-regulations .saved-nav{border-top:1px solid var(--border);border-radius:0;margin-top:21px;padding-top:20px;font-size:12px}
+#amrp-regulations .sidebar-bottom{margin-top:auto;padding-top:32px}
+#amrp-regulations .community-box{border:1px solid var(--border);border-radius:9px;padding:17px 15px;background:linear-gradient(150deg,#2780f409,transparent)}
+#amrp-regulations .community-icon{color:var(--blue);margin-bottom:12px}
+#amrp-regulations .community-icon svg{width:24px;height:24px}
+#amrp-regulations .community-box strong{font-size:12px;display:block;margin-bottom:6px}
+#amrp-regulations .community-box p{font-size:11px;line-height:1.8;color:var(--muted)}
+#amrp-regulations .community-box a{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);margin-top:14px;padding-top:12px;font-size:11px;font-weight:600;color:var(--blue)}
+#amrp-regulations .community-box a svg{width:14px;height:14px}
+#amrp-regulations .sidebar-foot{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--quiet);padding:19px 3px 0}
+#amrp-regulations .sidebar-foot>span:last-child{margin-left:auto;font-size:9px;border:1px solid var(--border);border-radius:4px;padding:1px 5px}
+#amrp-regulations .tiny-dot{height:5px;width:5px;background:var(--green);border-radius:50%}
+#amrp-regulations .workspace{margin-left:254px}
+#amrp-regulations .topbar{height:77px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 44px;position:sticky;top:0;background:var(--bg);z-index:20}
+#amrp-regulations .breadcrumb{display:flex;align-items:center;gap:13px;font-size:12px;white-space:nowrap}
+#amrp-regulations .breadcrumb>span:first-child{color:var(--quiet)}
+#amrp-regulations .breadcrumb svg{width:13px;height:13px;color:var(--quiet)}
+#amrp-regulations .breadcrumb strong{font-weight:500}
+#amrp-regulations .topbar-actions{display:flex;gap:17px;align-items:center}
+#amrp-regulations .search-shortcut{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:11px}
+#amrp-regulations .search-shortcut svg{width:15px;height:15px}
+#amrp-regulations kbd{font:10px 'DM Sans',Arial,sans-serif;border:1px solid var(--border);border-radius:4px;padding:2px 5px;color:var(--quiet)}
+#amrp-regulations .search-shortcut kbd{margin-left:13px}
+#amrp-regulations .topbar-divider{height:19px;width:1px;background:var(--border)}
+#amrp-regulations .icon-button{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid var(--border);border-radius:7px;color:var(--muted)}
+#amrp-regulations .icon-button:hover{color:var(--text);background:var(--surface-hover)}
+#amrp-regulations .icon-button svg{width:17px;height:17px}
+#amrp-regulations .discord-top{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--text)}
+#amrp-regulations .discord-top svg{width:15px;height:15px}
+#amrp-regulations .discord-top>span:last-child{color:var(--quiet);margin-left:4px}
+#amrp-regulations .discord-top>span:last-child svg{width:12px;height:12px}
+#amrp-regulations .menu-toggle{display:none}
+#amrp-regulations main{max-width:1450px;margin:0 auto;padding:36px 44px 0;outline:none}
+#amrp-regulations .hero{position:relative;overflow:hidden;display:flex;justify-content:space-between;border:1px solid #27384f;border-radius:12px;background:radial-gradient(ellipse at 92% 60%,#123b681e,transparent 50%),linear-gradient(110deg,var(--hero),var(--surface));min-height:322px;padding:36px 38px 29px;isolation:isolate}
+#amrp-regulations .hero-copy{position:relative;z-index:2}
+#amrp-regulations .eyebrow{font-size:9px;letter-spacing:1.7px;font-weight:650;color:var(--blue);display:flex;align-items:center;gap:8px}
+#amrp-regulations .eyebrow>span{height:5px;width:5px;background:var(--blue);border-radius:50%}
+#amrp-regulations h1{font-size:46px;letter-spacing:-1.7px;font-weight:800;line-height:1.15;margin:17px 0}
+#amrp-regulations h1 em{color:var(--blue);font-style:normal}
+#amrp-regulations .hero-copy>p{color:var(--muted);font-size:12px;line-height:1.9}
+#amrp-regulations .hero-meta{display:flex;align-items:center;gap:16px;color:var(--muted);font-size:10px;margin-top:24px}
+#amrp-regulations .hero-meta>span{display:flex;align-items:center;gap:7px}
+#amrp-regulations .hero-meta svg{height:13px;width:13px;color:var(--blue)}
+#amrp-regulations .hero-meta i{height:11px;width:1px;background:var(--border)}
+#amrp-regulations .hero-art{position:absolute;right:0;top:0;bottom:0;width:42%;display:flex;align-items:center;justify-content:center}
+#amrp-regulations .art-grid{position:absolute;inset:0;background-image:linear-gradient(#4784c50c 1px,transparent 1px),linear-gradient(90deg,#4784c50c 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse,#000 10%,transparent 75%)}
+#amrp-regulations .hero-art::before{content:'';position:absolute;width:220px;height:220px;background:#0077ff15;filter:blur(35px);border-radius:50%}
+#amrp-regulations .hero-art img{width:290px;height:290px;mix-blend-mode:screen;position:relative;object-fit:contain;transform:translateY(-10px);filter:drop-shadow(0 14px 26px #0070ff15)}
+#amrp-regulations .orbit{border:1px solid #3779bc20;border-radius:50%;position:absolute;width:246px;height:246px}
+#amrp-regulations .orbit-two{width:302px;height:302px;border-style:dashed;opacity:.6}
+#amrp-regulations .art-coordinate{position:absolute;font-size:8px;letter-spacing:2px;color:#6b8eae;z-index:2}
+#amrp-regulations .coordinate-one{top:33px;right:36px}
+#amrp-regulations .coordinate-two{bottom:63px;left:29px}
+#amrp-regulations .art-caption{position:absolute;bottom:26px;display:flex;align-items:center;gap:7px;font-size:8px;letter-spacing:2px;color:#7493b8}
+#amrp-regulations .art-caption>span{height:3px;width:16px;background:var(--blue)}
+#amrp-regulations .topic-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:19px 0 35px}
+#amrp-regulations .topic-card{padding:16px 17px 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface);text-align:left;display:block;min-width:0}
+#amrp-regulations .topic-card:hover,#amrp-regulations .topic-card.active{border-color:#437dbe;background:var(--surface-hover)}
+#amrp-regulations .topic-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+#amrp-regulations .topic-icon{color:var(--blue)}
+#amrp-regulations .topic-icon svg{width:19px;height:19px}
+#amrp-regulations .topic-card-top>span:last-child{color:var(--quiet);font-size:9px;letter-spacing:.2px}
+#amrp-regulations .topic-card strong{font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;justify-content:space-between;line-height:1.4}
+#amrp-regulations .topic-card strong svg{height:12px;width:12px;color:var(--quiet)}
+#amrp-regulations .topic-card p{font-size:10px;line-height:1.6;color:var(--quiet);margin-top:6px}
+#amrp-regulations .section-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:23px}
+#amrp-regulations .section-eyebrow{color:var(--quiet);font-size:8px;letter-spacing:1.6px;margin-bottom:8px}
+#amrp-regulations h2{font-size:20px;letter-spacing:-.5px;line-height:1.4;display:flex;align-items:center;gap:10px;font-weight:750}
+#amrp-regulations .heading-count{font-family:'DM Sans',Arial,sans-serif;font-size:10px;letter-spacing:0;color:var(--muted);background:var(--surface-hover);border:1px solid var(--border);border-radius:5px;padding:2px 7px;font-weight:500}
+#amrp-regulations .section-heading p{color:var(--muted);font-size:11px;margin-top:6px}
+#amrp-regulations .text-button{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:10px;white-space:nowrap;padding:8px 0}
+#amrp-regulations .text-button:hover{color:var(--blue)}
+#amrp-regulations .text-button svg{width:14px;height:14px}
+#amrp-regulations .filter-bar{display:flex;gap:12px}
+#amrp-regulations .search-field{display:flex;align-items:center;gap:11px;background:var(--input);border:1px solid var(--border);border-radius:7px;flex:1;padding:0 14px;min-width:0;height:45px}
+#amrp-regulations .search-field:focus-within{border-color:var(--blue);box-shadow:0 0 0 2px #3185f51a}
+#amrp-regulations .search-field svg{color:var(--quiet);height:17px;width:17px}
+#amrp-regulations .search-field input{min-width:0;width:100%;border:0;outline:none;background:transparent;color:var(--text);font-size:11px;height:100%}
+#amrp-regulations .search-field input:focus-visible{outline:none}
+#amrp-regulations .search-field input::placeholder{color:var(--quiet)}
+#amrp-regulations .search-field kbd{padding:0 5px}
+#amrp-regulations .category-field{display:flex;align-items:center;padding:0 13px;gap:8px;border:1px solid var(--border);border-radius:7px;background:var(--input);min-width:193px}
+#amrp-regulations .category-field svg{width:14px;height:14px;color:var(--quiet)}
+#amrp-regulations .category-field select{background:var(--input);color:var(--muted);border:0;outline:0;font-size:10px;height:43px;flex:1;max-width:180px}
+#amrp-regulations .results-line{min-height:45px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:10px;color:var(--quiet)}
+#amrp-regulations #amrp-r-result-count{color:var(--muted)}
+#amrp-regulations #amrp-r-list-hint{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:9px}
+#amrp-regulations #amrp-r-list-hint svg{height:11px;width:11px}
+#amrp-regulations .active-filters{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+#amrp-regulations .filter-chip{border:1px solid #2f5991;background:var(--blue-wash);color:var(--blue);border-radius:4px;font-size:9px;padding:2px 7px;display:flex;align-items:center;gap:5px}
+#amrp-regulations .filter-chip svg{width:11px;height:11px}
+#amrp-regulations .rules-list{border:1px solid var(--border);border-radius:9px;overflow:hidden;background:var(--surface)}
+#amrp-regulations .rule+.rule{border-top:1px solid var(--border)}
+#amrp-regulations .rule summary{list-style:none;cursor:pointer;display:flex;gap:16px;align-items:center;padding:19px 21px;transition:background .15s}
+#amrp-regulations .rule summary::-webkit-details-marker{display:none}
+#amrp-regulations .rule summary:hover{background:var(--surface-hover)}
+#amrp-regulations .rule-number{font-size:11px;border-radius:6px;color:var(--muted);background:var(--surface-hover);border:1px solid var(--border);width:38px;height:38px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:500}
+#amrp-regulations .rule-title{min-width:0;flex:1}
+#amrp-regulations .rule-title h3{font-family:'DM Sans',Arial,sans-serif;font-size:12px;font-weight:600;line-height:1.5}
+#amrp-regulations .rule-title p{font-size:10px;color:var(--quiet);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px;max-width:580px}
+#amrp-regulations .sanction-badge{font-size:9px;white-space:nowrap;padding:4px 8px;border-radius:4px;color:#e3a9b0;background:#8c435323;border:1px solid #8c43532e}
+#amrp-regulations .sanction-badge[data-level=low]{color:#7fc1a7;background:#286b4f1a;border-color:#39795d2e}
+#amrp-regulations .sanction-badge[data-level=medium]{color:#d0b07f;background:#7b60251a;border-color:#9774392e}
+#amrp-regulations .sanction-badge[data-level=var]{color:var(--muted);background:var(--surface-hover);border-color:var(--border)}
+#amrp-regulations .rule-chevron{margin-left:5px;color:var(--quiet);transition:transform .2s}
+#amrp-regulations .rule-chevron svg{height:15px;width:15px}
+#amrp-regulations details[open] .rule-chevron{transform:rotate(90deg)}
+#amrp-regulations details[open] summary{background:var(--surface-hover)}
+#amrp-regulations details[open] .rule-number{color:var(--blue);border-color:#3479cb55;background:var(--blue-wash)}
+#amrp-regulations .rule-body{padding:6px 22px 20px 76px;font-size:12px;line-height:1.9;color:var(--muted);border-top:1px solid var(--border);animation:amrp-rule-reveal .2s ease}
+#amrp-regulations .rule-body p{margin:16px 0}
+#amrp-regulations .rule-body strong{color:var(--text);font-weight:600}
+#amrp-regulations .rule-body ul{padding-left:18px}
+#amrp-regulations .rule-toolbar{border-top:1px solid var(--border);padding-top:14px;display:flex;gap:20px}
+#amrp-regulations .rule-toolbar button{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:7px;padding:4px 0}
+#amrp-regulations .rule-toolbar button:hover,#amrp-regulations .rule-toolbar button.saved{color:var(--blue)}
+#amrp-regulations .rule-toolbar svg{height:14px;width:14px}
+#amrp-regulations .source-note{display:flex;align-items:flex-start;gap:12px;padding:15px 18px;margin:0 0 20px;border:1px solid #ad813833;border-radius:7px;background:#ab7b2610;color:var(--muted);font-size:11px}
+#amrp-regulations .source-note>span{color:#d9af70;margin-top:2px}
+#amrp-regulations .source-note svg{height:17px;width:17px}
+#amrp-regulations .sanction-table{width:100%;border-collapse:collapse;font-size:12px}
+#amrp-regulations .sanction-table th{text-align:left;font-weight:500;color:var(--quiet);font-size:10px;padding:15px 20px;background:var(--surface-hover)}
+#amrp-regulations .sanction-table td{padding:17px 20px;border-top:1px solid var(--border);color:var(--muted);vertical-align:top;line-height:1.7}
+#amrp-regulations .sanction-table td:first-child{white-space:nowrap;color:var(--text);font-weight:600}
+#amrp-regulations .sanction-table td:nth-child(2){color:var(--text);min-width:180px}
+#amrp-regulations .sanction-table th:first-child{width:16%}
+#amrp-regulations .sanction-table tr:hover td{background:var(--surface-hover)}
+#amrp-regulations .sanctions-followup{padding:20px;font-size:12px;color:var(--muted);border-top:1px solid var(--border)}
+#amrp-regulations .sanctions-followup strong{color:var(--text)}
+#amrp-regulations .empty-state{text-align:center;padding:60px 20px;border:1px dashed var(--border);border-radius:9px}
+#amrp-regulations .empty-state>span{display:inline-flex;color:var(--quiet);margin-bottom:12px}
+#amrp-regulations .empty-state svg{height:28px;width:28px}
+#amrp-regulations .empty-state h3{font-size:16px}
+#amrp-regulations .empty-state p{color:var(--muted);margin:8px 0 19px;font-size:12px}
+#amrp-regulations .primary-button{background:var(--blue-strong);padding:9px 15px;color:#fff;font-size:11px;border-radius:6px}
+#amrp-regulations .help-banner{display:flex;align-items:center;gap:16px;margin:31px 0 36px;padding:22px 24px;border:1px solid var(--border);border-radius:9px;background:linear-gradient(95deg,#307bdd0b,transparent)}
+#amrp-regulations .help-icon{background:var(--blue-wash);color:var(--blue);padding:11px;border-radius:8px;display:flex}
+#amrp-regulations .help-icon svg{height:20px;width:20px}
+#amrp-regulations .help-banner h3{font-size:12px;font-family:'DM Sans',Arial,sans-serif;font-weight:600}
+#amrp-regulations .help-banner p{font-size:10px;color:var(--muted);margin-top:4px}
+#amrp-regulations .help-banner a{font-size:10px;display:flex;align-items:center;gap:12px;white-space:nowrap;margin-left:auto;color:var(--blue)}
+#amrp-regulations .help-banner a svg{height:15px;width:15px}
+#amrp-regulations footer{display:flex;align-items:center;border-top:1px solid var(--border);padding:20px 0 24px;gap:20px;color:var(--quiet);font-size:9px}
+#amrp-regulations footer>div{display:flex;align-items:center;gap:7px}
+#amrp-regulations footer img{mix-blend-mode:screen}
+#amrp-regulations footer p{margin:auto}
+#amrp-regulations footer button{display:flex;align-items:center;gap:6px;color:var(--quiet);font-size:9px;padding:5px 0}
+#amrp-regulations footer svg{height:12px;width:12px}
+#amrp-regulations .back-top{position:fixed;right:24px;bottom:24px;background:var(--surface);box-shadow:0 4px 20px #0003;z-index:25;width:38px;height:38px}
+#amrp-regulations .toast{position:fixed;bottom:24px;left:calc(50% + 127px);transform:translateX(-50%);background:var(--text);color:var(--bg);border-radius:8px;padding:12px 22px;font-size:12px;box-shadow:0 5px 20px #0005;z-index:60;max-width:90vw}
+#amrp-regulations .noscript{position:fixed;bottom:0;background:#953640;color:white;width:100%;padding:20px;text-align:center;z-index:70}
+#amrp-regulations .copy-input{position:fixed;left:-1000px}
+#amrp-regulations .page-only .rules-section{padding-top:17px}
+#amrp-regulations .page-only .section-heading{margin-bottom:28px}
+#amrp-regulations .page-only h2{font-size:28px}
+#amrp-regulations .page-only .section-description{font-size:12px}
+html[data-amrp-theme=light] #amrp-regulations .brand img,html[data-amrp-theme=light] #amrp-regulations footer img{mix-blend-mode:normal;background:#10151f;border-radius:7px}
+html[data-amrp-theme=light] #amrp-regulations .hero-art{background:radial-gradient(ellipse,#10213c 40%,transparent 73%)}
+html[data-amrp-theme=light] #amrp-regulations .hero-art img{mix-blend-mode:screen}
+html[data-amrp-theme=light] #amrp-regulations .sanction-badge{color:#ab334b;background:#fff0f2;border-color:#eed0d6}
+html[data-amrp-theme=light] #amrp-regulations .sanction-badge[data-level=low]{color:#287456;background:#eef8f1;border-color:#cde6d6}
+html[data-amrp-theme=light] #amrp-regulations .sanction-badge[data-level=medium]{color:#926513;background:#fff7e8;border-color:#e9ddc6}
+html[data-amrp-theme=light] #amrp-regulations .sanction-badge[data-level=var]{color:var(--muted);background:var(--surface-hover);border-color:var(--border)}
+@keyframes amrp-rule-reveal{from{opacity:.5}to{opacity:1}}
+@media(min-width:1500px){#amrp-regulations main{padding-top:45px}
+#amrp-regulations .hero{min-height:350px}
+#amrp-regulations h1{font-size:52px}
+#amrp-regulations .hero-art img{width:330px;height:330px}
+#amrp-regulations .topic-card strong{font-size:12px}
+#amrp-regulations .topic-card p{font-size:11px}
+#amrp-regulations .topic-card{padding:20px}
+#amrp-regulations .rule-title h3{font-size:14px}
+#amrp-regulations .rule-title p{font-size:12px}
+#amrp-regulations .rule summary{padding:21px 24px}
+#amrp-regulations .sanction-badge{font-size:10px}
+#amrp-regulations .hero-copy>p{font-size:14px}
+#amrp-regulations .section-heading p{font-size:12px}
+#amrp-regulations h2{font-size:24px}
+}
+@media(max-width:1200px){#amrp-regulations .sidebar{width:230px;padding-left:15px;padding-right:15px}
+#amrp-regulations .workspace{margin-left:230px}
+#amrp-regulations .topbar{padding:0 28px}
+#amrp-regulations main{padding:28px 28px 0}
+#amrp-regulations .hero{padding:29px;min-height:310px}
+#amrp-regulations h1{font-size:40px}
+#amrp-regulations .hero-art{width:38%}
+#amrp-regulations .hero-art img{width:245px;height:245px}
+#amrp-regulations .orbit-one{width:210px;height:210px}
+#amrp-regulations .orbit-two{width:260px;height:260px}
+#amrp-regulations .coordinate-two{left:0}
+#amrp-regulations .hero-meta{font-size:9px;gap:12px}
+#amrp-regulations .topic-cards{gap:9px}
+#amrp-regulations .topic-card{padding:15px 12px}
+#amrp-regulations .topic-card p{display:none}
+#amrp-regulations .topic-card strong{font-size:10px}
+#amrp-regulations .toast{left:calc(50% + 115px)}
+#amrp-regulations .search-shortcut kbd{margin-left:0}
+#amrp-regulations h2{font-size:18px}
+#amrp-regulations .section-heading .text-button{font-size:9px}
+}
+@media(max-width:1000px){#amrp-regulations .search-shortcut{display:none}
+#amrp-regulations .hero-art{opacity:.85}
+#amrp-regulations .hero-meta>span:last-child{display:none}
+#amrp-regulations .topic-cards{grid-template-columns:repeat(2,1fr)}
+#amrp-regulations .topic-card p{display:block}
+#amrp-regulations .topic-card strong{font-size:12px}
+#amrp-regulations .topic-card-top{margin-bottom:8px}
+#amrp-regulations .category-field{min-width:170px}
+#amrp-regulations .category-field select{max-width:155px}
+#amrp-regulations .rule summary{gap:12px;padding:17px 16px}
+#amrp-regulations .rule-title p{max-width:340px}
+#amrp-regulations .rule-body{padding-left:66px}
+#amrp-regulations .help-banner{padding:20px;gap:12px}
+#amrp-regulations .help-banner p{max-width:250px}
+#amrp-regulations .section-heading h2{font-size:17px}
+#amrp-regulations .section-heading{align-items:flex-start}
+#amrp-regulations .text-button>span:last-child{max-width:75px;white-space:normal;text-align:left}
+}
+@media(max-width:800px){#amrp-regulations .sidebar{transform:translateX(-100%);transition:transform .22s;width:254px}
+#amrp-regulations .nav-open .sidebar{transform:translateX(0)}
+#amrp-regulations .scrim{position:fixed;inset:0;z-index:29;background:#0009;backdrop-filter:blur(3px)}
+#amrp-regulations .workspace{margin-left:0}
+#amrp-regulations .topbar{height:65px;padding:0 22px;gap:12px}
+#amrp-regulations .menu-toggle{display:flex}
+#amrp-regulations .breadcrumb{margin-right:auto;font-size:11px;gap:8px}
+#amrp-regulations .topbar-actions{gap:12px}
+#amrp-regulations .discord-top{font-size:10px}
+#amrp-regulations .discord-top>span:last-child{display:none}
+#amrp-regulations .topbar-divider{display:none}
+#amrp-regulations main{padding:23px 22px 0}
+#amrp-regulations .hero-art{width:40%;opacity:1}
+#amrp-regulations .hero{min-height:300px}
+#amrp-regulations .hero-copy{max-width:70%}
+#amrp-regulations .topic-card p{display:block}
+#amrp-regulations .toast{left:50%}
+#amrp-regulations .topic-card strong{font-size:12px}
+#amrp-regulations .section-heading h2{font-size:19px}
+#amrp-regulations .text-button>span:last-child{max-width:initial;white-space:nowrap}
+}
+@media(max-width:540px){#amrp-regulations .topbar{padding:0 16px}
+#amrp-regulations .breadcrumb>span:first-child,#amrp-regulations .breadcrumb>span:nth-child(2){display:none}
+#amrp-regulations .discord-top{font-size:0}
+#amrp-regulations .discord-top>span:first-child svg{width:18px;height:18px}
+#amrp-regulations .topbar-actions{gap:10px}
+#amrp-regulations main{padding:18px 16px 0}
+#amrp-regulations .hero{padding:27px 23px;min-height:300px}
+#amrp-regulations .hero-copy{max-width:100%}
+#amrp-regulations h1{font-size:37px;line-height:1.16;margin-top:17px}
+#amrp-regulations .hero-copy>p{font-size:11px;max-width:230px}
+#amrp-regulations .hero-art{width:170px;right:-35px;top:28px;opacity:.34;z-index:0;pointer-events:none}
+#amrp-regulations .hero-art img{height:220px;width:220px}
+#amrp-regulations .art-coordinate,#amrp-regulations .art-caption,#amrp-regulations .orbit{display:none}
+#amrp-regulations .hero-meta{margin-top:25px;font-size:10px}
+#amrp-regulations .hero-meta>span:last-child{display:flex;max-width:128px;font-size:9px;line-height:1.3}
+#amrp-regulations .hero-meta>span:last-child svg{display:none}
+#amrp-regulations .eyebrow{font-size:8px;letter-spacing:1.2px}
+#amrp-regulations .topic-cards{gap:9px;margin-top:13px;margin-bottom:27px}
+#amrp-regulations .topic-card{padding:14px 13px}
+#amrp-regulations .topic-card strong{font-size:10px}
+#amrp-regulations .topic-card p{display:none}
+#amrp-regulations .topic-card-top>span:last-child{font-size:8px}
+#amrp-regulations .topic-icon svg{height:17px;width:17px}
+#amrp-regulations .section-heading{display:block;margin-bottom:17px}
+#amrp-regulations .section-heading h2{font-size:18px;max-width:310px;display:block}
+#amrp-regulations .heading-count{display:inline-block;margin-left:8px;vertical-align:2px}
+#amrp-regulations .section-heading p{font-size:10px}
+#amrp-regulations .text-button{padding:13px 0 0;min-height:34px;font-size:10px!important}
+#amrp-regulations .filter-bar{flex-direction:column;gap:9px}
+#amrp-regulations .category-field{height:38px;align-self:flex-start;padding:0 12px;min-width:187px}
+#amrp-regulations .category-field select{height:36px;max-width:none;width:158px}
+#amrp-regulations .search-field{height:43px;flex:none}
+#amrp-regulations #amrp-r-list-hint{display:none}
+#amrp-regulations .results-line{padding:8px 0;min-height:41px}
+#amrp-regulations .rule summary{padding:15px 12px;gap:10px;flex-wrap:wrap;position:relative;padding-right:32px}
+#amrp-regulations .rule-number{height:33px;width:33px;font-size:10px}
+#amrp-regulations .rule-title{width:calc(100% - 48px);flex:auto}
+#amrp-regulations .rule-title h3{font-size:11px}
+#amrp-regulations .rule-title p{font-size:9px;max-width:260px}
+#amrp-regulations .sanction-badge{margin-left:43px;font-size:8px;padding:3px 7px;margin-top:-4px}
+#amrp-regulations .rule-chevron{position:absolute;right:12px;top:26px}
+#amrp-regulations .rule-body{padding:1px 17px 18px;font-size:11px;line-height:1.9}
+#amrp-regulations .rule-toolbar{gap:20px}
+#amrp-regulations .rule-toolbar button{min-height:32px}
+#amrp-regulations .help-banner{display:grid;grid-template-columns:38px 1fr;gap:12px;padding:19px 16px;margin:24px 0}
+#amrp-regulations .help-icon{padding:9px}
+#amrp-regulations .help-icon svg{width:18px;height:18px}
+#amrp-regulations .help-banner a{grid-column:2;margin-left:0;justify-self:start;margin-top:3px}
+#amrp-regulations .help-banner h3{font-size:11px}
+#amrp-regulations .help-banner p{font-size:10px}
+#amrp-regulations .help-banner p{max-width:none}
+#amrp-regulations footer{font-size:8px;gap:12px;flex-wrap:wrap;padding:17px 0 22px}
+#amrp-regulations footer p{order:3;width:100%;margin:0}
+#amrp-regulations footer button{margin-left:auto;font-size:8px}
+#amrp-regulations footer img{width:24px;height:24px}
+#amrp-regulations .source-note{font-size:10px;padding:13px}
+#amrp-regulations .sanction-table{font-size:10px}
+#amrp-regulations .sanction-table th,#amrp-regulations .sanction-table td{padding:13px 11px}
+#amrp-regulations .sanction-table th:last-child,#amrp-regulations .sanction-table td:last-child{display:none}
+#amrp-regulations .sanction-table td:nth-child(2){min-width:0}
+#amrp-regulations .page-only h2{font-size:25px}
+#amrp-regulations .page-only .section-heading{margin-bottom:18px}
+#amrp-regulations .back-top{right:15px;bottom:15px}
+#amrp-regulations .toast{font-size:11px;bottom:18px}
+#amrp-regulations .brand{min-height:54px}
+#amrp-regulations .nav-item{min-height:45px}
+}
+#amrp-regulations .hero-copy>p{font-size:14px}
+#amrp-regulations .hero-meta{font-size:11px}
+#amrp-regulations .topic-card strong{font-size:12px}
+#amrp-regulations .topic-card p{font-size:11px}
+#amrp-regulations .section-heading p{font-size:12px}
+#amrp-regulations .search-field input{font-size:13px}
+#amrp-regulations .category-field select{font-size:12px}
+#amrp-regulations .rule-title h3{font-size:14px}
+#amrp-regulations .rule-title p{font-size:12px}
+#amrp-regulations .rule-body{font-size:14px}
+#amrp-regulations .sanction-badge{font-size:10px}
+#amrp-regulations .results-line{font-size:11px}
+#amrp-regulations .rule-toolbar button{font-size:12px}
+#amrp-regulations .help-banner h3{font-size:14px}
+#amrp-regulations .help-banner p{font-size:12px}
+#amrp-regulations .help-banner a{font-size:12px}
+#amrp-regulations .sanction-table{font-size:13px}
+#amrp-regulations .sanction-table th{font-size:11px}
+#amrp-regulations .community-box p{font-size:12px}
+#amrp-regulations .community-box strong{font-size:13px}
+@media screen and (max-width:540px){#amrp-regulations .hero-copy>p{font-size:12px}
+#amrp-regulations .hero-meta{font-size:10px}
+#amrp-regulations .topic-card strong{font-size:11px}
+#amrp-regulations .section-heading p{font-size:11px}
+#amrp-regulations .category-field{min-width:213px}
+#amrp-regulations .category-field select{width:181px}
+#amrp-regulations .rule-title h3{font-size:13px}
+#amrp-regulations .rule-title p{font-size:11px}
+#amrp-regulations .rule-body{font-size:14px}
+#amrp-regulations .sanction-badge{font-size:10px}
+#amrp-regulations .help-banner h3{font-size:13px}
+#amrp-regulations .help-banner p{font-size:11px}
+#amrp-regulations .help-banner a{font-size:12px}
+#amrp-regulations .rule-toolbar button{font-size:12px}
+#amrp-regulations .sanction-table,#amrp-regulations .sanction-table tbody,#amrp-regulations .sanction-table tr{display:block}
+#amrp-regulations .sanction-table thead{display:none}
+#amrp-regulations .sanction-table tbody tr{display:grid;grid-template-columns:110px 1fr;padding:15px 17px;border-top:1px solid var(--border);gap:9px}
+#amrp-regulations .sanction-table tbody tr:first-child{border-top:0}
+#amrp-regulations .sanction-table td{display:block;border:0;padding:0;font-size:12px;min-width:0!important}
+#amrp-regulations .sanction-table td:last-child{display:block;grid-column:1/-1;font-size:11px}
+#amrp-regulations .sanctions-followup{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){#amrp-regulations{scroll-behavior:auto}
+#amrp-regulations *,#amrp-regulations *::before,#amrp-regulations *::after{animation:none!important;transition:none!important}
+}
+@media print{#amrp-regulations{color-scheme:light}
+#amrp-regulations{background:white;color:black}
+#amrp-regulations .sidebar,#amrp-regulations .topbar,#amrp-regulations .hero-art,#amrp-regulations .topic-cards,#amrp-regulations .filter-bar,#amrp-regulations .results-line,#amrp-regulations .rule-toolbar,#amrp-regulations .help-banner,#amrp-regulations footer,#amrp-regulations .back-top,#amrp-regulations .toast,#amrp-regulations .text-button{display:none!important}
+#amrp-regulations .workspace{margin:0}
+#amrp-regulations main{max-width:none;padding:0}
+#amrp-regulations .hero{background:white!important;border:0;padding:0;min-height:0;margin-bottom:25px}
+#amrp-regulations .hero h1{font-size:32px}
+#amrp-regulations .hero p,#amrp-regulations .hero-meta,#amrp-regulations .eyebrow,#amrp-regulations .hero h1 em{color:#333!important}
+#amrp-regulations .rule{break-inside:avoid}
+#amrp-regulations .rule-title h3{color:black}
+#amrp-regulations .rule-title p{display:none}
+#amrp-regulations .rule summary{padding:12px 8px}
+#amrp-regulations .rule-body{border:0;padding:0 12px;font-size:11px;color:#333}
+#amrp-regulations .rule-body strong{color:black}
+#amrp-regulations .rule-number{border:0;background:white;color:#333}
+#amrp-regulations .rules-list,#amrp-regulations .rule+.rule{border-color:#ddd}
+#amrp-regulations .source-note{color:#333}
+#amrp-regulations .sanction-table td,#amrp-regulations .sanction-table th{color:#222!important;background:white!important;border-color:#ddd}
+#amrp-regulations .sanction-table td:last-child,#amrp-regulations .sanction-table th:last-child{display:table-cell}
+#amrp-regulations .sanction-badge{background:white!important;color:#333!important;border-color:#ddd!important}
+#amrp-regulations .section-heading h2{color:black}
+#amrp-regulations .heading-count{color:#333;background:white}
+#amrp-regulations .section-heading p{color:#333}
+#amrp-regulations .rule-chevron{display:none}
+#amrp-regulations .hero-meta{display:none}
+}
+
+/* Integration layout, appended to the scoped Heerlen stylesheet. */
+html.amrp-heerlen[data-amrp-regulations] #root{padding-top:0;min-height:0}
+html.amrp-heerlen[data-amrp-regulations] #root>main{min-height:0!important}
+html.amrp-heerlen[data-amrp-regulations] #root .amrp-content,html.amrp-heerlen[data-amrp-regulations] #root footer{display:none!important}
+#amrp-regulations{margin-left:var(--amrp-nav);padding-top:var(--amrp-header);font-size:14px;line-height:1.55}
+#amrp-regulations main{max-width:1280px}
+#amrp-regulations[hidden],.amrp-regulation-topics[hidden]{display:none!important}
+.amrp-nav-count{margin-left:auto;font-size:10px;padding:1px 6px;border-radius:4px;background:var(--amrp-wash);color:var(--amrp-blue)}
+.amrp-regulation-topics nav{display:grid;gap:3px}
+.amrp-regulation-topics nav>a{display:flex;align-items:center;gap:9px;padding:8px 13px;color:var(--amrp-muted);border-radius:6px;font-size:11px;text-decoration:none}
+.amrp-regulation-topics nav>a.active,.amrp-regulation-topics nav>a:hover{background:var(--amrp-wash);color:var(--amrp-text)}
+.amrp-regulation-topics nav i{height:5px;width:5px;border-radius:50%;background:var(--amrp-quiet)}
+.amrp-regulation-topics nav small,.amrp-saved-link small{margin-left:auto;font-size:10px;color:var(--amrp-quiet)}
+.amrp-saved-link{display:flex;align-items:center;gap:9px;padding:13px;border-top:1px solid var(--amrp-border);margin-top:12px;color:var(--amrp-muted);font-size:11px;text-decoration:none}
+.amrp-saved-link svg{height:16px;width:16px;stroke-width:1.6}
+#amrp-regulations .hero-art img{mix-blend-mode:normal;width:220px;height:220px}
+#amrp-regulations .rule-body a{color:var(--amrp-blue);text-decoration:underline}
+@media(max-width:540px){#amrp-regulations .hero-art img{width:180px;height:180px}#amrp-regulations .toast{left:50%;width:max-content;max-width:90vw}#amrp-regulations .rule-title{min-width:0;width:0;flex:1}#amrp-regulations .rule-title p{max-width:100%}}
+@media print{html.amrp-heerlen[data-amrp-regulations] #root{display:none!important}#amrp-regulations{margin:0;padding:0}#amrp-regulations .rule-body,#amrp-regulations .rule-body strong{color:#222}}

@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "build": "node work/build-site.mjs",
-    "start": "node server.js"
+    "start": "node server.js",
+    "design:preview": "node integrations/heerlen-design/preview.cjs",
+    "design:apply": "node integrations/heerlen-design/apply-design.mjs"
   },
   "engines": {
     "node": ">=20"
