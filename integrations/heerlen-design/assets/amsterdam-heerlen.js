@@ -42,7 +42,7 @@
  const themeButton=topbar.querySelector('.amrp-theme-toggle');let theme='dark';try{theme=localStorage.getItem('amsterdam-design-theme')==='light'?'light':'dark';}catch{}
  function setTheme(value){theme=value;html.dataset.amrpTheme=value;themeButton.setAttribute('aria-label',value==='dark'?'Licht thema inschakelen':'Donker thema inschakelen');themeButton.setAttribute('aria-pressed',String(value==='light'));try{localStorage.setItem('amsterdam-design-theme',value);}catch{}}
  themeButton.addEventListener('click',()=>setTheme(theme==='dark'?'light':'dark'));setTheme(theme);
- const serverCard=create('section','amrp-server-card','<div class="amrp-server-heading"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h5l3-8 4 16 3-8h5"/></svg>Serverstatus</span><small>FIVEM</small></div><div class="amrp-server-state" role="status" aria-live="polite"><i></i><strong data-status-label>Controleren…</strong></div><p data-status-description>De actuele serverstatus wordt opgehaald.</p><div class="amrp-server-numbers"><div><strong data-status-players>—</strong><span>spelers online</span></div><div><strong data-status-capacity>—</strong><span>plaatsen</span></div></div><div class="amrp-server-check"><span data-status-checked>Nog niet gecontroleerd</span><button type="button" aria-label="Serverstatus vernieuwen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7a9 9 0 0 0-15-2L2 8m0-5v5h5m-3 9a9 9 0 0 0 15 2l3-3m0 5v-5h-5"/></svg></button></div><a class="amrp-server-join" target="_blank" rel="noopener noreferrer">Open FiveM <span aria-hidden="true">→</span></a>');
+ const serverCard=create('section','amrp-server-card','<div class="amrp-server-heading"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h5l3-8 4 16 3-8h5"/></svg>Serverstatus</span><small>FIVEM</small></div><div class="amrp-server-state" role="status" aria-live="polite"><i></i><strong data-status-label>Controleren…</strong></div><p data-status-description>De actuele serverstatus wordt opgehaald.</p><div class="amrp-server-numbers"><div><strong data-status-players>—</strong><span>spelers online</span></div><div><strong data-status-capacity>—</strong><span>plaatsen</span></div></div><div class="amrp-server-check"><span data-status-checked>Nog niet gecontroleerd</span><button type="button" aria-label="Serverstatus vernieuwen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7a9 9 0 0 0-15-2L2 8m0-5v5h5m-3 9a9 9 0 0 0 15 2l3-3m0 5v-5h-5"/></svg></button></div>');
  serverCard.setAttribute('aria-label','FiveM-serverstatus');serverCard.dataset.status='loading';
  let statusActive=false,statusTimer=null,statusRequest=null;
  const statusText=(selector,value)=>{const el=serverCard.querySelector(selector);if(el.textContent!==value)el.textContent=value;};
@@ -76,7 +76,6 @@
  function mountStatus(copy){
   const native=copy.querySelector(':scope > div:has(.tabular-nums)');if(!native)return;
   native.classList.add('amrp-home-status');if(serverCard.parentElement!==copy)copy.insertBefore(serverCard,native);
-  const originalJoin=copy.querySelector('a[href*="cfx.re/join/"]');if(originalJoin)serverCard.querySelector('.amrp-server-join').href=originalJoin.href;
   if(!statusActive){statusActive=true;refreshStatus();statusTimer=setInterval(refreshStatus,30000);}
  }
  serverCard.querySelector('button').addEventListener('click',refreshStatus);
