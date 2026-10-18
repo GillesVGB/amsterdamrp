@@ -1,32 +1,35 @@
-# Amsterdam Roleplay
+# Amsterdam Roleplay — nieuw ontwerp
 
-Deze repository bevat de bestaande statische website in `outputs/` en het nieuwe Heerlen-ontwerp als integratiepakket in [`integrations/heerlen-design`](integrations/heerlen-design/LEES-MIJ.md).
+Het nieuwe Amsterdam-ontwerp staat rechtstreeks in deze repository. Het gebruikt de uitstraling en regelgeving van Heerlen Roleplay, met Amsterdam als identiteit. De oude statische website is verwijderd op verzoek van de eigenaar. De vorige versie blijft terug te halen via commit `d5b2811f8224ac94233012d7f7523c15a0eed86d`.
 
-Het nieuwe ontwerp is gemaakt voor de publieke React-app van amsterdamrp.nl. Die app en haar backend verschillen van de oudere statische website in deze repository. Daarom blijven de bestaande bestanden en standaard deployconfiguratie behouden. Het integratiepakket is apart toegevoegd; deze commit installeert het niet automatisch op amsterdamrp.nl.
+Inbegrepen: navigatie, responsive styling, thema, paginazoeker, 65 APV-artikelen, strafcategorieën, algemene regels, Discord-regels, zoeken en filters, bewaarde artikelen, artikellinks en afdrukken. De serverstatuskaart bevat status, spelers, capaciteit, controletijd en vernieuwen. De knop Open FiveM is verwijderd.
 
-## Nieuw ontwerp bekijken
+## Lokaal bekijken
 
-Gebruik Node.js 20 of nieuwer:
-
-```sh
-npm run design:preview
-```
-
-Open http://127.0.0.1:4300/regels#apv. Het voorbeeld haalt de bestaande publieke Amsterdam-app op en voegt het nieuwe ontwerp en de overgenomen Heerlen-regels toe. Internettoegang is nodig. Het voorbeeld blokkeert schrijfacties en is niet bedoeld voor echte aankopen of accountwijzigingen.
-
-## Installeren op de huidige Amsterdam-app
+Node.js 20 of nieuwer en internettoegang zijn nodig. Er zijn geen npm-dependencies nodig.
 
 ```sh
-npm run design:apply -- --root /pad/naar/de/bestaande/publieke/webmap
+npm run preview
 ```
 
-Zie de [installatie-instructies](integrations/heerlen-design/LEES-MIJ.md) en het [controleverslag](integrations/heerlen-design/CONTROLE.md). Het script controleert de originele appbuild en bewaart een back-up van de index. Gebruik hiervoor de webmap van de huidige React-app; de oudere `outputs/`-map is geen geschikte installatiedoelmap.
+Open http://127.0.0.1:4300/regels#apv. Voor de homepage: http://127.0.0.1:4300/.
 
-## Bestaande statische website
+Het voorbeeld haalt de publieke Amsterdam-app en gegevens van amsterdamrp.nl op en voegt de ontwerpbestanden lokaal toe. Deze repository bevat niet de oorspronkelijke React-broncode of backend. De preview is alleen-lezen: accountwijzigingen, betalingen, uploads en rolclaims worden geblokkeerd. De Discord-login gaat naar de bestaande website.
+
+## Installeren op de bestaande Amsterdam-app
 
 ```sh
-npm run build
-npm start
+npm run apply -- --root /volledig/pad/naar/de/bestaande/publieke/webmap
 ```
 
-Deze commando's blijven de oudere statische website en haar bestaande status-API gebruiken.
+Het script controleert de bestaande React-build, bewaart de originele index en voegt de vijf ontwerpassets toe. De bestaande backend blijft verantwoordelijk voor inloggen, afrekenen, betalingen, winkelgegevens, skins en rolclaims.
+
+Dit project is een ontwerp- en integratiepakket. Alleen deze repository op een statische hosting publiceren levert de oorspronkelijke backendfuncties niet op. Er is geen automatische productie-deployment toegevoegd.
+
+Zie [installatie en terugzetten](LEES-MIJ.md) en [uitgevoerde controles](CONTROLE.md).
+
+## Bestanden controleren
+
+```sh
+npm run check
+```

@@ -1,12 +1,14 @@
 {
-  "name": "amsterdam-roleplay-site",
-  "version": "1.0.0",
+  "name": "amsterdam-roleplay-heerlen-design",
+  "version": "1.1.0",
   "private": true,
+  "description": "Amsterdam Roleplay design, regulations and read-only preview",
   "scripts": {
-    "build": "node work/build-site.mjs",
-    "start": "node server.js",
-    "design:preview": "node integrations/heerlen-design/preview.cjs",
-    "design:apply": "node integrations/heerlen-design/apply-design.mjs"
+    "preview": "node preview.cjs",
+    "design:preview": "node preview.cjs",
+    "apply": "node apply-design.mjs",
+    "design:apply": "node apply-design.mjs",
+    "check": "node scripts/check.mjs"
   },
   "engines": {
     "node": ">=20"
